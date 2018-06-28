@@ -1,4 +1,4 @@
-## INVOFEST 2018
+# INVOFEST 2018
 
 ### Fitur yang harus segera dibuat dan dikembangkan :
 1. IT Competition
