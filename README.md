@@ -1,6 +1,6 @@
 ## INVOFEST 2018
 
-Fitur yang harus segera dibuat dan dikembangkan :
+### Fitur yang harus segera dibuat dan dikembangkan :
 1. IT Competition
     - Halaman kompetisi
     - Halaman registrasi
@@ -10,7 +10,7 @@ Fitur yang harus segera dibuat dan dikembangkan :
     - Login member
     - Daftar kompetisi (pilih kompetisi, melengkapi data, konfirmasi pembayaran, upload berkas lomba)
 <br><br>
-Pembagian Tugas :
+### Pembagian Tugas :
 1. Bayu Adi Prasetyo : Membuat dan mengembangkan fitur pada halaman admin.
 2. Fredy Nur Apriyanto : Membuat dan mengembangkan fitur pada halaman member.
 3. M. Wijaya    : Membuat dan mengembangkan halaman login dan registrasi.
