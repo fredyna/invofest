@@ -9,3 +9,8 @@ Fitur yang harus segera dibuat dan dikembangkan :
     - Registrasi akun member
     - Login member
     - Daftar kompetisi (pilih kompetisi, melengkapi data, konfirmasi pembayaran, upload berkas lomba)
+<br><br>
+Pembagian Tugas :
+1. Bayu Adi Prasetyo : Membuat dan mengembangkan fitur pada halaman admin.
+2. Fredy Nur Apriyanto : Membuat dan mengembangkan fitur pada halaman member.
+3. M. Wijaya    : Membuat dan mengembangkan halaman login dan registrasi.
