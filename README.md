@@ -9,6 +9,9 @@
     - Registrasi akun member
     - Login member
     - Daftar kompetisi (pilih kompetisi, melengkapi data, konfirmasi pembayaran, upload berkas lomba)
+2. Registrasi Workshop
+3. Registrasi Seminar
+4. Registrasi Talkshow
 <br><br>
 ### Pembagian Tugas :
 1. Bayu Adi Prasetyo : Membuat dan mengembangkan fitur pada halaman admin.
