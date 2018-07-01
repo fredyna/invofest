@@ -17,3 +17,11 @@
 1. Bayu Adi Prasetyo : Membuat dan mengembangkan fitur pada halaman admin.
 2. Fredy Nur Apriyanto : Membuat dan mengembangkan fitur pada halaman member.
 3. M. Wijaya    : Membuat dan mengembangkan halaman login dan registrasi.
+
+### Catatan
+- sudah dibuatkan middleware untuk memisahkan admin dan member
+- default ketika register role == 'member', untuk uji coba mendaftarkan sebagai admin bisa edit langsung di database
+- konfirmasi email belum dibuat, tetapi sudah ditambahkan kolom konfirmasi di tabel users.
+- untuk login tambahkan /login setelah url
+- untuk logout tambahkan /logout setelah url
+- untuk register tambahkan /register setelah url

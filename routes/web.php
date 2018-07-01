@@ -15,3 +15,29 @@ Route::get('/', function () {
     return view('member.beranda');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/check', function() {})->middleware('auth','role');
+
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
+    
+    Route::get('/', function() {
+        return view('admin.admin_home');
+    });
+    
+});
+
+Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
+    
+    Route::get('/', function() {
+        return view('member.member_home');
+    });
+    
+});
+
+
+
