@@ -23,7 +23,7 @@ class CreatePesertasTable extends Migration
             $table->string('kategori', 10);
             $table->string('nama', 100);
             $table->string('asal_institusi', 100);
-            $table->string('nomo_hp', 15);
+            $table->string('nomor_hp', 15);
             /**
              * jenis kelamin :
              * 
