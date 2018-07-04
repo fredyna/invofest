@@ -49,7 +49,7 @@ Route::get('/check', function() {})->middleware('auth','role');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
     
     Route::get('/', function() {
-        return view('admin.admin_home');
+        return view('admin.pages.beranda');
     });
     
 });
