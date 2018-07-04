@@ -1,5 +1,46 @@
 @extends('template.member_depan.master')
-@section('content')    
+@section('content')  
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="javascript:void(0)" rel="tooltip" title="Informatics Vocational Festival 2018 - Politeknik Harapan Bersama" data-placement="bottom">
+                    <img src="{{ url('img/logo/invofest_logo_light.png') }}" alt="Logo Invofest 2018" style="width:40px;"> Invofest 2018
+                </a>
+                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar bar1"></span>
+                    <span class="navbar-toggler-bar bar2"></span>
+                    <span class="navbar-toggler-bar bar3"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="{{ url('img/blurred-image-1.jpg') }}">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ URL::to('/#beranda') }}">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ URL::to('/#section-acara') }}">Acara</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Jadwal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ URL::to('/#section-info') }}">Informasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:void(0)">Galeri</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-outline-primary" rel="tooltip" onclick="location.href='{{ route('login') }}'" title="Silahkan masuk atau daftar" data-placement="bottom">
+                            Masuk <i class="fa fa-sign-in"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar -->
+
     <div class="wrapper">
 
         <!-- section beranda -->
@@ -63,7 +104,7 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-3 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
                         <div class="kotak-acara">
-                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/microphone.png') }}" alt="Microphone">
+                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/microphone.png') }}" alt="TALKSHOW">
                             <h5 class="text-center">TALKSHOW</h5>
                             <p class="ket-acara text-center">Talkshow interaktif dengan tema Big Data dan Machine Learning</p>
                             <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
@@ -71,7 +112,7 @@
                     </div>
                     <div class="col-md-6 col-lg-3 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
                         <div class="kotak-acara">
-                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/student.png') }}" alt="Microphone">
+                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/student.png') }}" alt="WORKSHOP">
                             <h5 class="text-center">WORKSHOP</h5>
                             <p class="ket-acara text-center">Workshop IT : UI/UX Design, Data Science, Cyber Security, dan Web Services</p>
                             <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
@@ -79,7 +120,7 @@
                     </div>
                     <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
                         <div class="kotak-acara">
-                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/presentation.png') }}" alt="Microphone">
+                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/presentation.png') }}" alt="SEMINAR">
                             <h5 class="text-center">SEMINAR NASIONAL</h5>
                             <p class="ket-acara text-center">Seminar nasional dengan tema Artificial Intelegence dalam Transformasi Teknologi Industri Masa Depan</p>
                             <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
@@ -87,10 +128,10 @@
                     </div>
                     <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
                         <div class="kotak-acara">
-                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/trophy.png') }}" alt="Microphone">
+                            <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/trophy.png') }}" alt="COMPETITION">
                             <h5 class="text-center">IT COMPETITION</h5>
                             <p class="ket-acara text-center">Kompetisi IT : Application Development, Web Design, dan Database Programming untuk pelajar dan mahasiswa tingkat nasional</p>
-                            <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
+                            <a href="{{ url('/itcompetition') }}" class="btn btn-outline-primary">Info Lengkap</a>
                         </div>
                     </div>
                 </div>
@@ -127,7 +168,7 @@
                         <div class="col-md-3 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                             <img src="{{ url('img/tokoh/afnizar.png') }}" alt="Afnizar" class="img-fluid mx-auto d-block" width="150" height="150">
                             <h6 class="text-center">Afnizar Nur Ghifari</h6>
-                            <p class="text-center">UI Designer at Bukalapak</p>
+                            <p class="text-center">UX Designer at Bukalapak</p>
                         </div>
                         <div class="col-md-3 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                             <img src="{{ url('img/tokoh/farah.png') }}" alt="Farah" class="img-fluid mx-auto d-block" width="150" height="150">
@@ -155,7 +196,7 @@
         <!-- section-daftar -->
         <div id="section-daftar" class="section section-daftar text-center" style="background-image: url('{{ url('img/group/group1.png') }}');">
             <h2 class="wow tada" data-wow-duration="1s" data-wow-delay="0s">APA LAGI YANG KAMU TUNGGU ?</h2>
-            <a href="javascript:void(0)" class="btn btn-light wow pulse" data-wow-duration="1s" data-wow-delay="0.5s">DAFTAR SEKARANG</a>
+            <a href="#section-acara" class="btn btn-light wow pulse" data-wow-duration="1s" data-wow-delay="0.5s">DAFTAR SEKARANG</a>
         </div>
         <!-- end section daftar -->
 
@@ -211,52 +252,5 @@
         </div>
         <!-- end section-foto -->
 
-        <!-- section sponsor -->
-        <div id="section-sponsor" class="section section-sponsor">
-            <div class="container">
-                <h4 class="section-title text-center">Sponsor Acara</h4>
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-2 col-md-4 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                    <div class="col-lg-2 col-md-4 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url('img/sponsor/sponsor.png') }}" alt="Kominfo" class="mx-auto d-block">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end section sponsor -->
+        @include('member.partials._sponsor')
 @endsection
