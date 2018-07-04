@@ -72,6 +72,7 @@
         </nav>
 
         <main class="py-4">
+            @include('layouts.partials._alertRegisterSuccess');
             @yield('content')
         </main>
     </div>

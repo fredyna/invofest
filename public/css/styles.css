@@ -3558,7 +3558,6 @@ Created using IcoMoon - icomoon.io
     display: inline-block;
     font: normal normal normal 14px/1 'Nucleo Outline';
     font-size: inherit;
-    speak: none;
     text-transform: none;
     /* Better Font Rendering */
     -webkit-font-smoothing: antialiased;
@@ -4388,7 +4387,7 @@ Created using IcoMoon - icomoon.io
 
 .footer nav {
     display: inline-block;
-    float: left;
+    /* float: left; */
 }
 
 .footer ul {
@@ -4687,6 +4686,36 @@ Created using IcoMoon - icomoon.io
     margin-bottom: 3%;
 }
 
+/* ----------------------
+    penghargaan - IT Competition
+-----------------------*/
+
+#penghargaan {
+    background-color: #022851;
+    border-radius: 7px;
+    transition: transform .2s;
+    box-shadow: 5px 5px 3px 0 rgba(0, 0, 0, 0.3), 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+#penghargaan:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+    box-shadow: 7px 7px 5px 0 rgba(0, 0, 0, 0.4), 7px 7px 7px 0 rgba(0, 0, 0, 0.3);
+    background-color: #012f61;
+}
+
+#penghargaan h5,
+#penghargaan h6,
+#penghargaan p {
+    color: #FFF;
+}
+
+#penghargaan img {
+    margin-top:5%;
+    margin-bottom: 5%;
+}
+
 .landing-page .section-team .team .team-player img {
     max-width: 100px;
 }
@@ -4933,7 +4962,7 @@ Created using IcoMoon - icomoon.io
 .page-header:after,
 .page-header:before {
     position: absolute;
-    z-index: 1;
+    z-index: -2;
     width: 100%;
     height: 100%;
     display: block;
@@ -6067,6 +6096,11 @@ Created using IcoMoon - icomoon.io
 
     #section-acara .kotak-acara .btn {
         left: 37%;
+    }
+
+    #section-acara .kotak-acara .btn-it {
+        left: 10%;
+        width: 80%;
     }
 }
 

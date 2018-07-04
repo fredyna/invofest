@@ -14,22 +14,22 @@
         <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="{{ url('img/blurred-image-1.jpg') }}">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#beranda">Beranda</a>
+                    <a class="nav-link" href="{{ URL::to('/#beranda') }}">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#section-acara">Acara</a>
+                    <a class="nav-link" href="{{ URL::to('/#section-acara') }}">Acara</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Jadwal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#section-info">Informasi</a>
+                    <a class="nav-link" href="{{ URL::to('/#section-info') }}">Informasi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Galeri</a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="btn btn-outline-primary" rel="tooltip" title="Silahkan masuk atau daftar" data-placement="bottom">
+                    <button type="button" class="btn btn-outline-primary" rel="tooltip" onclick="location.href='{{ route('login') }}'" title="Silahkan masuk atau daftar" data-placement="bottom">
                         Masuk
                     </button>
                 </li>
