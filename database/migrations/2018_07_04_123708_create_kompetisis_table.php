@@ -16,6 +16,12 @@ class CreateKompetisisTable extends Migration
         Schema::create('kompetisis', function (Blueprint $table) {
             $table->increments('id');
             /**
+             * membuat relasi tabel one to one
+             * dengan kondisi on delete cascade
+             */
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            /**
              * jenis lomnba
              * 
              * 1. adc (Application Development Competition)
@@ -28,18 +34,18 @@ class CreateKompetisisTable extends Migration
             $table->string('no_ketua_tim', 15);
             $table->string('email_ketua_tim', 100);
             $table->string('foto_ketua_tim', 100);
-            $table->string('nama_anggota_1', 100);
-            $table->string('no_anggota_1', 100);
-            $table->string('email_anggota_1', 100);
-            $table->string('foto_anggota_1', 100);
-            $table->string('nama_anggota_2', 100);
-            $table->string('no_anggota_2', 100);
-            $table->string('email_anggota_2', 100);
-            $table->string('foto_anggota_2', 100);
-            $table->string('ket_mahasiswa_aktif', 100);
+            $table->string('nama_anggota_1', 100)->nullable();
+            $table->string('no_anggota_1', 100)->nullable();
+            $table->string('email_anggota_1', 100)->nullable();
+            $table->string('foto_anggota_1', 100)->nullable();
+            $table->string('nama_anggota_2', 100)->nullable();
+            $table->string('no_anggota_2', 100)->nullable();
+            $table->string('email_anggota_2', 100)->nullable();
+            $table->string('foto_anggota_2', 100)->nullable();
+            $table->string('ket_mahasiswa_aktif', 100)->nullable();
             $table->boolean('konfirmasi_bayar')->default(false);
-            $table->string('link_berkas', 255);
-            $table->string('link_video', 255);
+            $table->string('link_berkas', 255)->nullable();
+            $table->string('link_video', 255)->nullable();
             $table->timestamps();
         });
     }
