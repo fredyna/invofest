@@ -48,9 +48,12 @@ Route::get('/check', function() {})->middleware('auth','role');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
     
-    Route::get('/', function() {
-        return view('admin.pages.beranda');
-    });
+    Route::get('/', 'AdminController@index');
+    Route::get('/inbox', 'AdminController@inbox');
+    Route::get('/workshop', 'AdminController@workshop');
+    Route::get('/seminar', 'AdminController@seminar');
+    Route::get('/talkshow', 'AdminController@talkshow');
+    
     
 });
 

@@ -21,7 +21,7 @@
             <div class="col-xs-12"> 
             <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Registrasi Acara Baru</h3>
+                  <h3 class="box-title">Data Workshop</h3>
                 </div>
                 <!-- /.box-header -->
 
@@ -34,9 +34,6 @@
                         <th>Nama Institusi</th>
                         <th>Mahasiswa / Umum</th>
                         <th>No.HP</th>
-                        <th>Talkshow</th>
-                        <th>Seminar</th>
-                        <th>Workshop</th>
                         <th>Kategori Workshop</th>
                         <th>Konfirmasi</th>
                       </tr>
@@ -44,13 +41,20 @@
                     <tbody>
 
                         <?php 
-                            $workshop = 1;
-                            $seminar = 1;
-                            $talkshow = 1;
                             $kategori = 'mahasiswa';
+                            $workshop = "Web Services"
                             ?>
                        
-                        <tr>
+                        <tr <?php if ($workshop == 'UI/UX Design') {
+                            echo 'class="bg-maroon"';
+                        } elseif ($workshop == 'Web Services') {
+                            echo 'class="bg-purple"';
+                        } elseif($workshop == 'Cyber Security'){
+                            echo 'class="bg-navy"';
+                        }else {
+                            echo 'class="bg-olive"';
+                        }?>
+                         >
                                 <td>001</td>
                                 <td>Bayu Adi Prasetiyo</td>
                                 <td>University Of Singapore</td>
@@ -62,29 +66,8 @@
                                     }?>
                                 </td>
                                 <td>085643281795</td>
-                                <td>
-                                    <?php if($talkshow == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>
-                                    <?php if($seminar == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>                                    
-                                    <?php if($workshop == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>UI/X</td>
-                                <td> <a class="btn btn-info" href="#">Konfirmasi</a> </td>
+                                <td><?php echo $workshop; ?></td>
+                                <td> <a class="btn btn-info" href="#">Detail</a> </td>
                             </tr>
                     </tbody>
                   </table>

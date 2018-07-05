@@ -21,7 +21,7 @@
             <div class="col-xs-12"> 
             <div class="box">
                 <div class="box-header">
-                  <h3 class="box-title">Registrasi Acara Baru</h3>
+                  <h3 class="box-title">Seminar</h3>
                 </div>
                 <!-- /.box-header -->
 
@@ -34,21 +34,13 @@
                         <th>Nama Institusi</th>
                         <th>Mahasiswa / Umum</th>
                         <th>No.HP</th>
-                        <th>Talkshow</th>
-                        <th>Seminar</th>
-                        <th>Workshop</th>
-                        <th>Kategori Workshop</th>
-                        <th>Konfirmasi</th>
+                        <th>email</th>
+                        <th>Detail</th>
                       </tr>
                     </thead>
                     <tbody>
 
-                        <?php 
-                            $workshop = 1;
-                            $seminar = 1;
-                            $talkshow = 1;
-                            $kategori = 'mahasiswa';
-                            ?>
+                            <?php $kategori = 'mahasiswa';?>
                        
                         <tr>
                                 <td>001</td>
@@ -62,29 +54,8 @@
                                     }?>
                                 </td>
                                 <td>085643281795</td>
-                                <td>
-                                    <?php if($talkshow == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>
-                                    <?php if($seminar == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>                                    
-                                    <?php if($workshop == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>UI/X</td>
-                                <td> <a class="btn btn-info" href="#">Konfirmasi</a> </td>
+                                <td>bayu28.bap@gmail.com</td>
+                                <td> <a class="btn btn-info modalMd" data-toggle="modal" data-target="#modalMd" href="#">Detail</a> </td>
                             </tr>
                     </tbody>
                   </table>
@@ -100,6 +71,30 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+<div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="modalMdTitle"></h4>
+                  </div>
+                  <div class="modal-body">
+                      <div class="modalError"></div>
+                      <div id="modalMdContent"></div>
+                  </div>
+              </div>
+          </div>
+</div>
+
+<script>
+$(document).on('ajaxComplete ready', function () {
+    $('.modalMd').off('click').on('click', function () {
+        $('#modalMdContent').load($(this).attr('value'));
+        $('#modalMdTitle').html($(this).attr('title'));
+    });
+});
+</script>
 
   <script>
         $(function () {

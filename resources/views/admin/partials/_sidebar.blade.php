@@ -19,17 +19,47 @@
  <ul class="sidebar-menu" data-widget="tree">
   <li class="header">MENU</li>
   <li class="active"><a href="javascript:void(0)"><i class="fa fa-home"></i> <span>BERANDA</span></a></li>
-  <li><a href="javascript:void(0)"><i class="fa fa-user"></i> <span>MENU 1</span></a></li>
   <li class="treeview">
       <a href="#">
-        <i class="fa fa-group"></i> <span>MENU 2</span>
+        <i class="fa fa-group"></i> <span>Kompetisi</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          <small class="label pull-right bg-red">5</small>
+
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> Registrasi Baru
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+              <small class="label pull-right bg-red">5</small>
+            </span>
+          </a>
+        </li>
+        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> ADC</a></li>
+        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> WDC</a></li>
+        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> DC</a></li>
+      </ul>
+    </li>
+  <li class="treeview">
+      <a href="#">
+        <i class="fa fa-group"></i> <span>Event</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
         </span>
       </a>
       <ul class="treeview-menu">
-        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> Sub menu 1</a></li>
-        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> Sub Menu 2</a></li>
+        <li>
+          <a href="{{ url('/admin/inbox') }}"><i class="fa fa-angle-double-right"></i> Registrasi Baru
+          <span class="pull-right-container">
+              <small class="label pull-right bg-red">5</small>
+            </span>
+          </a>
+        </li>
+        <li><a href="{{ url('/admin/workshop') }}"><i class="fa fa-angle-double-right"></i> Workshop</a></li>
+        <li><a href="{{ url('/admin/talkshow') }}"><i class="fa fa-angle-double-right"></i> Talkshow</a></li>
+        <li><a href="{{ url('/admin/seminar') }}"><i class="fa fa-angle-double-right"></i> Seminar</a></li>
       </ul>
     </li>
   <li><a href="javascript:void(0)"><i class="fa fa-sign-out"></i> <span>KELUAR</span></a></li>

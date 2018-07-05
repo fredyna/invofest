@@ -13,7 +13,25 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.pages.beranda');
+    }
+
+    public function inbox()
+    {
+        return view('admin.pages.inbox');
+    }
+
+    public function workshop()
+    {
+        return view('admin.pages.workshop');
+    }
+    public function seminar()
+    {
+        return view('admin.pages.seminar');
+    }
+    public function talkshow()
+    {
+        return view('admin.pages.talkshow');
     }
 
     /**
