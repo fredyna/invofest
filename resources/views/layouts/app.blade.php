@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Invofest 2018') }}</title>
+    <link rel="icon" type="image/png" href="{{ url('img/logo/invofest_logo.png') }}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -16,15 +17,14 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ url('font-awesome/css/font-awesome.min.css') }}" />
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <style>
-        .dropdown-item:focus, 
-        .dropdown-item:hover{
-            background-color: #024379;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url('css/normalize.css') }}" />	
+    <link href="{{ url('css/app.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url('css/animate.css') }}" />
+    <link href="{{ url('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ url('css/member.css') }}" rel="stylesheet" />
 </head>
 <body>
     <div id="app">

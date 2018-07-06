@@ -3,7 +3,8 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;;
+use App\Kompetisi;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function kompetisi()
+    {
+        return $this->hasOne(Kompetisi::class);
+    }
 }

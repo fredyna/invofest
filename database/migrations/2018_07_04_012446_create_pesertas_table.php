@@ -19,11 +19,12 @@ class CreatePesertasTable extends Migration
              * 
              * sesuaikan mau pakai barcode atau qr code
              */
-            $table->string('id_peserta', 12);
+            $table->string('id_peserta', 15);
             $table->string('kategori', 10);
             $table->string('nama', 100);
             $table->string('asal_institusi', 100);
             $table->string('nomor_hp', 15);
+            $table->string('email', 100);
             /**
              * jenis kelamin :
              * 
@@ -48,6 +49,13 @@ class CreatePesertasTable extends Migration
             $table->boolean('validasi_workshop')->default(false);
             $table->boolean('validasi_seminar')->default(false);
             $table->boolean('validasi_talkshow')->default(false);
+            /**
+             * jenis pembayaran
+             * 
+             * 1. Langsung
+             * 2. Transfer
+             */
+            $table->string('jenis_pembayaran', 10)->nullable();
             $table->boolean('konfirmasi_bayar')->default(false);
             $table->timestamps();
 
