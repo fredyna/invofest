@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Peserta;
+use Yajra\DataTables\DataTables;
+// use Yajra\DataTables\Services\DataTable;
+
 class AdminController extends Controller
 {
     /**
@@ -74,7 +78,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $peserta = Peserta::findOrFail($id);
+        return $peserta;
     }
 
     /**
@@ -98,5 +103,42 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function apiPeserta()
+    {
+        $peserta = Peserta::all();
+ 
+        return Datatables::of($peserta)
+        ->addColumn('action', function($peserta){
+            return '<a onclick="editForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+        })
+        ->editColumn('seminar', function($peserta){
+            if($peserta->seminar == '1'){
+                
+                return '<a class="label label-success">Yes</a>';
+            }else{
+                return '<a class="label label-danger">Tidak</a> ';
+            }
+        })
+        ->editColumn('workshop', function($peserta){
+            if($peserta->workshop == '1'){
+                
+                return '<a class="label label-success">Yes</a>';
+            }else{
+                return '<a class="label label-danger">Tidak</a> ';
+            }
+        })
+        ->editColumn('talkshow', function($peserta){
+            if($peserta->talkshow == '1'){
+                
+                return '<a onClick="addForm()" class="label label-success">Yes</a>';
+            }else{
+                return '<a class="label label-danger">Tidak</a> ';
+            }
+        })
+        ->rawColumns(['seminar','action','talkshow','workshop'])
+        ->make(true);
     }
 }

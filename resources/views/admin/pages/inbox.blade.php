@@ -29,9 +29,9 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>ID</th>
+                        <th>Id Peserta</th>
                         <th>Nama</th>
-                        <th>Nama Institusi</th>
+                        <th>asal Institusi</th>
                         <th>Mahasiswa / Umum</th>
                         <th>No.HP</th>
                         <th>Talkshow</th>
@@ -43,49 +43,7 @@
                     </thead>
                     <tbody>
 
-                        <?php 
-                            $workshop = 1;
-                            $seminar = 1;
-                            $talkshow = 1;
-                            $kategori = 'mahasiswa';
-                            ?>
-                       
-                        <tr>
-                                <td>001</td>
-                                <td>Bayu Adi Prasetiyo</td>
-                                <td>University Of Singapore</td>
-                                <td>
-                                    <?php if($kategori == 'mahasiswa'){
-                                        echo '<a class="label label-warning">mahasiswa</a>';
-                                    }else {
-                                        echo '<a class="label label bg-purple">umum</a>';
-                                    }?>
-                                </td>
-                                <td>085643281795</td>
-                                <td>
-                                    <?php if($talkshow == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>
-                                    <?php if($seminar == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>                                    
-                                    <?php if($workshop == 1){
-                                        echo '<a class="label label-success">Yes</>';
-                                    }else{
-                                        echo '<a class="label label-danger">No</>';
-                                    } ?>
-                                </td>
-                                <td>UI/X</td>
-                                <td> <a class="btn btn-info" href="#">Konfirmasi</a> </td>
-                            </tr>
+                        
                     </tbody>
                   </table>
                 </div>
@@ -101,17 +59,68 @@
   </div>
   <!-- /.content-wrapper -->
 
+  @include('admin.form.form-inbox')
+
   <script>
-        $(function () {
-          $('#example1').DataTable()
-          $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-          })
-        })
+
+$(function() {
+        var oTable = $('#example2').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '{{ url("admin/api/peserta") }}'
+            },
+            columns: [
+            {data: 'id_peserta', name: 'id_peserta'},
+            {data: 'nama', name: 'nama'},
+            {data: 'asal_institusi', name: 'asal_institusi'},
+            {data: 'foto_ktm', name: 'foto_ktm'},
+            {data: 'nomor_hp', name: 'nomor_hp'},
+            {data: 'talkshow', name: 'talkshow'},
+            {data: 'seminar', name: 'seminar'},
+            {data: 'workshop', name: 'workshop'},
+            {data: 'kategori_workshop', name: 'kategori_workshop'},
+            {data: 'action', name: 'action'},
+    
+        ],
+        });
+    });
+
+    function addForm() {
+        save_method = "add";
+        $('input[name=_method]').val('POST');
+        $('#modal-form').modal('show');
+        $('#modal-form form')[0].reset();
+        $('.modal-title').text('Tambah Peserta');
+      }
+
+      function editForm(id) {
+        save_method = 'edit';
+        $('input[name=_method]').val('PATCH');
+        $('#modal-form form')[0].reset();
+        $.ajax({
+          url: "{{ url('admin/inbox') }}" + '/' + id,
+          type: "GET",
+          dataType: "JSON",
+          success: function(data) {
+            $('#modal-form').modal('show');
+            $('.modal-title').text('Konfirmasi Peserta');
+
+            $('#id').val(data.id);
+            $('#nama').val(data.nama);
+            $('#asal_institusi').val(data.asal_institusi);
+            $('#nomor_hp').val(data.nomor_hp);
+            $('#email').val(data.email);
+            $('#seminar').val(data.seminar);
+            $('#workshop').val(data.workshop);
+            $('#kategori_workshop').val(data.kategori_workshop);
+            $('#keterangan').val(data.keterangan);
+          },
+          error : function() {
+              alert("Nothing Data");
+          }
+        });
+      }
+
       </script>
   @endsection

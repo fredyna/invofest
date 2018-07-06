@@ -53,7 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/workshop', 'AdminController@workshop');
     Route::get('/seminar', 'AdminController@seminar');
     Route::get('/talkshow', 'AdminController@talkshow');
-    
+    Route::get('/api/peserta', 'AdminController@apiPeserta')->name('api.peserta');
+    Route::get('/inbox/{id}', 'AdminController@edit');
+    // Route::resource('peserta', 'AdminController');
     
 });
 
