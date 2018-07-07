@@ -55,6 +55,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/talkshow', 'AdminController@talkshow');
     Route::get('/api/peserta', 'AdminController@apiPeserta')->name('api.peserta');
     Route::get('/inbox/{id}', 'AdminController@edit');
+    Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
+    // Route::post('/peserta/konfirmasi', 'AdminController@konfirmasi');
     // Route::resource('peserta', 'AdminController');
     
 });

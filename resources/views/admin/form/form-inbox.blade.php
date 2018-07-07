@@ -1,7 +1,7 @@
 <div class="modal fade in" id="modal-form" tabindex="1" role="dialog" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form method="post" class="form-horizontal" data-toggle="validator">
+            <form method="post" class="form-horizontal" >
                 {{ csrf_field() }} {{ method_field('POST') }}
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <input type="hidden" id="id" name="id">
+                    <input type="text" id="id" name="id">
                     <div class="form-group">
                         <label for="nama" class="col-md-3 control-label">Nama Peserta</label>
                         <div class="col-md-6">
@@ -27,6 +27,22 @@
                           <span class="help-block with-errors"></span>
                       </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="kategori" class="col-md-3 control-label">Kategori</label>
+                        <div class="col-md-6">
+                            <input type="text" id="kategori" name="kategori" class="form-control" required>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group" hidden id="ktm">
+                        <label for="foto_ktm" class="col-md-3 control-label">Kategori</label>
+                        <div class="col-md-6">
+                        <img id="foto_ktm" src="{{asset('img/foto_ktm/1.jpg')}}" style="width:30px; height:50px">
+                            <span class="help-block with-errors"></span>
+                        </div>
+                      </div>
 
                     <div class="form-group">
                       <label for="nomor_hp" class="col-md-3 control-label">Nomor HP.</label>
@@ -49,19 +65,19 @@
                       <div class="col-md-6">
                           {{-- <input type="checkbox" id="workshop" name="workshop" class="form-control" required> --}}
                           <label>
-                            <input type="checkbox" class="pull-left" id="talkshow" checked>
+                            <input type="checkbox" class="pull-left" id="talkshow" >
                            Talkshow
                         </label>
                         <br/>  
 
                           <label>
-                          <input type="checkbox" class="pull-left" id="seminar" checked>
+                          <input type="checkbox" class="pull-left" id="seminar" >
                            Seminar
                         </label>
                         <br/>
 
                         <label>
-                          <input type="checkbox" class="pull-left" id="workshop" checked>
+                          <input type="checkbox" class="pull-left" id="workshop" >
                            Workshop
                         </label>
 
@@ -96,7 +112,7 @@
                       </div>
 
                       <div class="form-group">
-                        <label for="jenis_pembayaran" class="col-md-8 control-label">Total Bayar : Rp. 250.000</label>
+                        <label id="bayar" name="bayar" class="col-md-8 control-label" ></label>
                       </div>
                      
 

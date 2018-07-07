@@ -105,6 +105,18 @@ class AdminController extends Controller
         //
     }
 
+    public function konfirmasi(Request $request , $id)
+    {
+        // $id = $request->id_peserta;
+        $peserta = Peserta::findOrFail($id);
+        
+        $peserta->konfirmasi_bayar = '1';
+        $peserta->update();
+        // $peserta = dd($request->all());
+        // $peserta = 1;
+        return $peserta;
+    }
+
 
     public function apiPeserta()
     {
@@ -112,7 +124,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="editForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="konfirmForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
         })
         ->editColumn('seminar', function($peserta){
             if($peserta->seminar == '1'){
