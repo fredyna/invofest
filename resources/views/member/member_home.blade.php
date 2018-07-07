@@ -62,7 +62,7 @@
                                 <div class="kotak-acara">
                                     <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/app-development.png') }}" alt="APP DEV">
                                     <h5 class="text-center">APPLICATION DEVELOPMENT COMPETITION</h5>
-                                    <a href="{{ url('/itcompetition/adc') }}" class="btn btn-outline-primary btn-it">Daftar</a>
+                                    <a href="{{ url('/member/isidata/adc') }}" class="btn btn-outline-primary btn-it">Daftar</a>
                                 </div>
                             </div>
                             <div class="col-md-4 kompetisi wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">

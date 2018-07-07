@@ -57,14 +57,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     
     Route::get('/', 'MemberController@showKompetisi')->name('member');
-    Route::get('isidata/{id}', 'MemberController@showFormIsiData')->name('member.isidata');
+    Route::get('isidata/{id}', 'MemberController@showFormIsiData');
     
     
 });
 
 use App\User;
 use App\Kompetisi;
-use Auth;
 
 Route::get('/daftar_kompetisi', function() {
     $user = User::find(Auth::user()->id);
