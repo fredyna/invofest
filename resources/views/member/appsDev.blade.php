@@ -13,7 +13,7 @@
                     <h2 class="title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s" >APPLICATION DEVELOPMENT <br><span style="font-weight: 100;">COMPETITION</span></h2>
                     <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Innovative Apps for a Better Society”</h5>
                     <div class="row justify-content-center">
-                        <a href="javascript:void(0)" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
+                        <a href="{{ route('member') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
                         <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
                     </div>
                 </div>
@@ -80,6 +80,9 @@
 
                     </div>
                 </div>
+                <br /><br />
+                
+                <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Contact Person</h5>
             </div>
         </div>
 

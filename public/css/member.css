@@ -1,0 +1,29 @@
+.dropdown-item:focus, 
+.dropdown-item:hover
+{
+    background-color: #024379;
+}
+
+#kompetisi .kompetisi
+{
+    height: 275px;
+    color: #000;
+}
+
+#kompetisi .kompetisi .kotak-acara
+{
+    border: 2px solid #007bff;
+    padding: 10px;
+    height: 275px;
+    color: #000;
+}
+
+#kompetisi .kompetisi a
+{
+    color: #007bff;
+    font-size: 18px;
+    width: 80%;
+    position: absolute;
+    bottom: 10px;
+    left: 10%;
+}

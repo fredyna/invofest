@@ -63,10 +63,40 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     
-    Route::get('/', function() {
-        return view('member.member_home');
-    });
+    Route::get('/', 'MemberController@showKompetisi')->name('member');
+    Route::get('isidata/{id}', 'MemberController@showFormIsiData');
     
+    
+});
+
+use App\User;
+use App\Kompetisi;
+
+Route::get('/daftar_kompetisi', function() {
+    $user = User::find(Auth::user()->id);
+
+    $kompetisi = new Kompetisi([
+        'jenis_lomba' => 'adc', 
+        'asal_sekolah' => 'Poltek Tegal', 
+        'nama_ketua_tim' => 'Fredy',
+        'no_ketua_tim' => '089989899989', 
+        'email_ketua_tim' => 'mail@sfdfdf.com', 
+        'foto_ketua_tim' => 'aye'
+    ]);
+
+    $user->kompetisi()->save($kompetisi);
+});
+
+Route::get('/update_kompetisi', function() {
+    $user = User::find(1);
+
+    $kompetisi = [
+        'jenis_lomba' => 'wdc', 
+        'asal_sekolah' => 'Poltek Tegal', 
+        'nama_ketua_tim' => 'Fredy Nur',
+    ];
+
+    $user->kompetisi()->update($kompetisi);
 });
 
 

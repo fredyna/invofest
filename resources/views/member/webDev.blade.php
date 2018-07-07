@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="content-center">
                     <h2 class="title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s" >WEB DESIGN <br><span style="font-weight: 100;">COMPETITION</span></h2>
-                    <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Innovative Apps for a Better Society”</h5>
+                    <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “”</h5>
                     <div class="row justify-content-center">
                         <a href="javascript:void(0)" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
                         <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
@@ -27,7 +27,9 @@
                 <h4 class="section-title text-center wow bounceInDown" data-wow-duration="0.5s" data-wow-delay="0s">Deskripsi Lomba</h4>
 
                 <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Penjelasan Umum</h5>
-                <p class="text-justify wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.75s">Application Development Competition 2018 adalah kompetisi pengembangan perangkat lunak sebagai salah satu kategori IT Competition yang diadakan oleh INVOFEST 2018 dan dapat diikuti oleh mahasiswa-mahasiswi diseluruh Indonesia. Tujuan diadakannya kompetisi ini adalah agar mahasiswa-mahasiswi di Indonesia mempunyai wadah untuk menuangkan ide-ide kreatif dan inovatif mereka di bidang pengembangan perangkat lunak yang diharapkan dapat memecahkan masalah dengan efektif dan memiliki dampak yang luas di masyarakat. Untuk kedepannya hasil akhir dari kompetisi ini agar dapat diimplementasikan secara riil serta mendukung perkembangan IT dan StartUp di Indonesia.</p>
+                <p class="text-justify wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.75s">
+                    Web Design Competition (WDC) merupakan salah satu kategori dalam IT Competition di ajang Invofest 2018 yang diselenggarakan oleh Program Studi DIV Teknik Informatika Politeknik Harapan Bersama Tegal. Web Design Competition merupakan kompetisi design web yang ditujukan bagi siswa/siswi SMA/SMK/Sederajat. Dimana para peserta berlomba – lomba dalam membuat suatu karya desain website statis sesuai dengan tema yang ditentukan oleh panitia dan waktu yang telah ditentukan. Website harus karya asli peserta dan benar – benar fresh (belum pernah diikutsertakan dikompetisi manapun). Kreasi dan inovasi design peserta tidak dibatasi dalam mengikuti kompetisi, namun harus mengikuti ketentuan dan hal – hal lain yang telah ditetapkan panitia.
+                </p>
                 <br/><br/>
 
                 <h5 class="wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="1s">Timeline Lomba</h5>
@@ -39,13 +41,13 @@
                     </div>
 
                     <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.25s">
-                        <h6>Submisi Proposal dan Video</h6>
-                        <p>Submisi Proposal untuk tahap seleksi menuju final dilaksanakan pada tanggal <b>Juli – 9 September 2018</b></p>
+                        <h6>Submisi Desain MockUp Website</h6>
+                        <p>Submisi Desain MockUp Website untuk tahap penyisihan dilaksanakan pada tanggal <b>14 Juli – 9 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1.5s">
                         <h6>Pengumuman Finalis</h6>
-                        <p>Pengumuman daftar peserta kompetisi Application Development Competition 2018 yang lolos ke tahap final diberitahukan pada tanggal <b>22 September 2018</b></p>
+                        <p>Pengumuman daftar peserta kompetisi Web Design Competition 2018 yang lolos ke tahap final diberitahukan pada tanggal <b>22 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
@@ -59,7 +61,7 @@
                     <div id="penghargaan" class="col-lg-3 col-md-4 text-center wow zoomIn" data-wow-duration="0.5s" data-wow-delay="1s" style="margin:2%;">
                         <img src="{{ url('img/icons/juara_1.svg') }}" alt="Juara I" width="50%" class="mx-auto d-block">
                         <h6>Juara I</h6>
-                        <h5>Rp 3.000.000 ,-</h5>
+                        <h5>Rp 2.000.000 ,-</h5>
                         <p>Sertifikat, Plakat, Hadiah Menarik</p>
 
                     </div>
@@ -67,7 +69,7 @@
                     <div id="penghargaan" class="col-lg-3 col-md-4 text-center wow zoomIn" data-wow-duration="0.5s" data-wow-delay="1.25s" style="margin:2%;">
                         <img src="{{ url('img/icons/juara_2.svg') }}" alt="Juara II" width="50%" class="mx-auto d-block">
                         <h6>Juara II</h6>
-                        <h5>Rp 2.000.000 ,-</h5>
+                        <h5>Rp 1.000.000 ,-</h5>
                         <p>Sertifikat, Plakat, Hadiah Menarik</p>
 
                     </div>
@@ -75,11 +77,13 @@
                     <div id="penghargaan" class="col-lg-3 col-md-4 text-center wow zoomIn" data-wow-duration="0.5s" data-wow-delay="1.5s" style="margin:2%;">
                         <img src="{{ url('img/icons/juara_3.svg') }}" alt="Juara III" width="50%" class="mx-auto d-block">
                         <h6>Juara III</h6>
-                        <h5>Rp 1.000.000 ,-</h5>
+                        <h5>Rp 500.000 ,-</h5>
                         <p>Sertifikat, Plakat, Hadiah Menarik</p>
 
                     </div>
                 </div>
+                <br /><br />
+                <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Contact Person</h5>
             </div>
         </div>
 
