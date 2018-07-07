@@ -75,7 +75,7 @@
             {data: 'id_peserta', name: 'id_peserta'},
             {data: 'nama', name: 'nama'},
             {data: 'asal_institusi', name: 'asal_institusi'},
-            {data: 'foto_ktm', name: 'foto_ktm'},
+            {data: 'kategori', name: 'kategori'},
             {data: 'nomor_hp', name: 'nomor_hp'},
             {data: 'talkshow', name: 'talkshow'},
             {data: 'seminar', name: 'seminar'},
