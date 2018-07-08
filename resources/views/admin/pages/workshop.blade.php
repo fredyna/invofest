@@ -57,7 +57,7 @@
   </div>
   <!-- /.content-wrapper -->
 
-  @include('admin.form.form-workshop')
+  @include('admin.form.form-detail')
   <script>
     var table = $('#tableworkshop').DataTable({
             processing: false,
@@ -78,11 +78,44 @@
                       ]
                     });
 
+        $(function(){
+            $('#modal-form form').on('submit', function (e) {
+                if (!e.isDefaultPrevented()){
+                    var id = $('#id').val();
+                    if (save_method == 'add') url = "{{ url('product') }}";
+                    else url = "{{ url('admin/peserta/workshopupdate') . '/' }}" + id;
+
+                    $.ajax({
+                        url : url,
+                        type : "POST",
+                        // data : $('#modal-form form').serialize(),
+                        data: new FormData($("#modal-form form")[0]),
+                        contentType: false,
+                        processData: false,
+                        success : function($data) {
+                            $('#modal-form').modal('hide');
+              
+                            table.ajax.reload();
+                            alert('Berhasil');
+
+                            
+                        },
+                        error : function(){
+                          alert("eror , please kontak your it support :) ");
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+
                     
-                    function konfirmForm(id) {
+                    function detailForm(id) {
         save_method = 'edit';
         // $('input[name=_method]').val('post');
         $('#modal-form form')[0].reset();
+        $('#tombolsubmit').prop('style' , 'display : none');
+        $('#tomboledit').prop('style' , 'display : inline');
         $.ajax({
           url: "{{ url('admin/inbox') }}" + '/' + id,
           type: "GET",
@@ -153,5 +186,21 @@
         });
       }
 
+
+      function editForm() {
+        $('#tombolsubmit').prop('style' , 'display : inline');
+        $('#tomboledit').prop('style' , 'display : none');
+        $('#nama').prop('disabled',false);
+            $('#kategori').prop('disabled',false);
+            $('#asal_institusi').prop('disabled',false);
+            $('#nomor_hp').prop('disabled',false);
+            $('#email').prop('disabled',false);
+            $('#seminar').prop('disabled',false);
+            $('#workshop').prop('disabled',false);
+            $('#talkshow').prop('disabled',false);
+            $('#jenis_pembayaran').prop('disabled',false);
+            $('#kategori_workshop').prop('disabled',false);
+            
+      }
       </script>
   @endsection

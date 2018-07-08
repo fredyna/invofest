@@ -118,6 +118,23 @@ class AdminController extends Controller
         return $peserta;
     }
 
+    public function updateWorkshop(Request $request , $id)
+    {
+        // $id = $request->id_peserta;
+        $peserta = Peserta::findOrFail($id);
+        $peserta->nama = $request->nama;
+        $peserta->asal_institusi = $request->asal_institusi;
+        $peserta->nomor_hp = $request->nomor_hp;
+        $peserta->email = $request->email;
+        $peserta->kategori = $request->kategori;
+        $peserta->kategori_workshop = $request->kategori_workshop;
+        $peserta->jenis_pembayaran = $request->jenis_pembayaran;
+        $peserta->update();
+        // $peserta = dd($request->all());
+        // $peserta = 1;
+        return $peserta;
+    }
+
 
     public function apiPeserta()
     {
@@ -168,7 +185,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="konfirmForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="detailForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'umum'){
@@ -191,6 +208,46 @@ class AdminController extends Controller
             }
         })
         ->rawColumns(['action','kategori','kategori_workshop'])
+        ->make(true);
+    }
+
+    public function apiTalkshow()
+    {
+        $peserta = Peserta::all()->where('konfirmasi_bayar','1')->where('talkshow','1');
+ 
+        return Datatables::of($peserta)
+        ->addColumn('action', function($peserta){
+            return '<a onclick="detailForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+        })
+        ->editColumn('kategori', function($peserta){
+            if($peserta->kategori == 'umum'){
+                
+                return '<a  class="label label-info">Umum</a>';
+            }else{
+                return '<a class="label label-warning">Mahasiswa</a> ';
+            }
+        })
+        ->rawColumns(['action','kategori'])
+        ->make(true);
+    }
+
+    public function apiSeminar()
+    {
+        $peserta = Peserta::all()->where('konfirmasi_bayar','1')->where('seminar','1');
+ 
+        return Datatables::of($peserta)
+        ->addColumn('action', function($peserta){
+            return '<a onclick="detailForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+        })
+        ->editColumn('kategori', function($peserta){
+            if($peserta->kategori == 'umum'){
+                
+                return '<a  class="label label-info">Umum</a>';
+            }else{
+                return '<a class="label label-warning">Mahasiswa</a> ';
+            }
+        })
+        ->rawColumns(['action','kategori'])
         ->make(true);
     }
 }

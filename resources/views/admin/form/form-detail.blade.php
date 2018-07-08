@@ -117,7 +117,8 @@
                      
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-flat">Submit</button>
+                    <button id="tombolsubmit" type="submit" class="btn btn-primary btn-flat" style="display:none;">Submit</button>
+                    <button id="tomboledit" type="button" onclick="editForm()" class="btn btn-warning btn-flat">Edit</button>
                     <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">Cancel</button>
                 </div>
                 
