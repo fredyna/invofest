@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
+@section('mycss')
+    <style>
+        .alert span.p-black {
+            color: #000;
+        }
+    </style>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -16,6 +24,8 @@
                         </div>
                     @endif
 
+                    @include('member.partials._cekAlurDaftar')
+
                     @if (isset($user) && $user->id != null)
                         @if ($user->jenis_lomba == 'adc')
 
@@ -25,7 +35,7 @@
                                     <div class="kotak-acara">
                                         <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/app-development.png') }}" alt="APP DEV">
                                         <h5 class="text-center">APPLICATION DEVELOPMENT COMPETITION</h5>
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary btn-it">Terdaftar</a>
+                                        <a href="{{ url('member/isidata/adc') }}" class="btn btn-outline-primary btn-it">Lihat Data</a>
                                     </div>
                                 </div>
                             </div>
@@ -38,7 +48,7 @@
                                     <div class="kotak-acara">
                                         <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/web-design.png') }}" alt="WEB DEV">
                                         <h5 class="text-center">WEB DESIGN COMPETITION</h5>
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary btn-it">Terdaftar</a>
+                                        <a href="{{ url('member/isidata/wdc') }}" class="btn btn-outline-primary btn-it">Lihat Data</a>
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +60,7 @@
                                     <div class="kotak-acara">
                                         <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/database-programming.png') }}" alt="DATABASE">
                                         <h5 class="text-center">DATABASE PROGRAMMING COMPETITION</h5>
-                                        <a href="javascript:void(0)" class="btn btn-outline-primary btn-it">Terdaftar</a>
+                                        <a href="{{ url('member/isidata/dpc') }}" class="btn btn-outline-primary btn-it">Lihat Data</a>
                                     </div>
                                 </div>
                             </div>
@@ -69,22 +79,20 @@
                                 <div class="kotak-acara">
                                     <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/web-design.png') }}" alt="WEB DEV">
                                     <h5 class="text-center">WEB DESIGN COMPETITION</h5>
-                                    <a href="{{ url('/itcompetition/wdc') }}" class="btn btn-outline-primary btn-it">Daftar</a>
+                                    <a href="{{ url('member/isidata/wdc') }}" class="btn btn-outline-primary btn-it">Daftar</a>
                                 </div>
                             </div>
                             <div class="col-md-4 kompetisi wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
                                 <div class="kotak-acara">
                                     <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/database-programming.png') }}" alt="DATABASE">
                                     <h5 class="text-center">DATABASE PROGRAMMING COMPETITION</h5>
-                                    <a href="{{ url('/itcompetition/dpc') }}" class="btn btn-outline-primary btn-it">Daftar</a>
+                                    <a href="{{ url('member/isidata/dpc') }}" class="btn btn-outline-primary btn-it">Daftar</a>
                                 </div>
                             </div>
                         </div>  
 
                     @endif
                     
-                    
-
                 </div>
             </div>
         </div>

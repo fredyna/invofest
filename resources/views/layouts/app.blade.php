@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ url('css/animate.css') }}" />
     <link href="{{ url('css/styles.css') }}" rel="stylesheet" />
     <link href="{{ url('css/member.css') }}" rel="stylesheet" />
+    @yield('mycss')
 </head>
 <body>
     <div id="app">
@@ -55,33 +56,7 @@
                                 <a class="nav-link" href="{{ route('register') }}" style="color: #FFF;">{{ __('Register') }}</a>
                             </li>
                         @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #FFF;">Isi Data</a>
-                            </li>
-                            <li class="nav-item">
-                                    <a class="nav-link" href="#" style="color: #FFF;">Konfirmasi Pendaftaran</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" style="color: #FFF;">Upload Berkas</a>
-                            </li>
-                            &nbsp;&nbsp;&nbsp;
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #FFF;">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="background-color: #022851;">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" style="color:#FFF;">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                            @include('layouts.partials._menuAfterLogin')
                         @endguest
                     </ul>
                 </div>
@@ -89,9 +64,13 @@
         </nav>
 
         <main class="py-4">
-            @include('layouts.partials._alertRegisterSuccess');
+            @include('layouts.partials._alertSuccess')
+            @include('layouts.partials._alertError')
             @yield('content')
         </main>
     </div>
 </body>
+<script>
+    @yield('potongan_script')
+</script>
 </html>

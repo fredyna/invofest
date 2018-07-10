@@ -42,12 +42,12 @@ class CreateKompetisisTable extends Migration
             $table->string('no_anggota_2', 100)->nullable();
             $table->string('email_anggota_2', 100)->nullable();
             $table->string('foto_anggota_2', 100)->nullable();
-            $table->string('ket_mahasiswa_aktif', 100)->nullable();
+            $table->string('berkas_konfirmasi', 100)->nullable();
             /**
              * lock untuk keperluan kunci data peserta lomba
              */
             $table->boolean('lock')->default(false);
-            $table->boolean('konfirmasi_bayar')->default(false);
+            $table->boolean('konfirmasi')->default(false);
             $table->string('link_berkas', 255)->nullable();
             $table->string('link_video', 255)->nullable();
             $table->timestamps();

@@ -27,3 +27,14 @@
     bottom: 10px;
     left: 10%;
 }
+
+#kompetisi .kompetisi a:hover
+{
+    color: #fff;
+}
+
+#kuncidata a 
+{
+    width:100%;
+    font-size: 14px;
+}

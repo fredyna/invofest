@@ -54,12 +54,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     
 });
 
-Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
-    
+Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {  
     Route::get('/', 'MemberController@showKompetisi')->name('member');
     Route::get('isidata/{id}', 'MemberController@showFormIsiData');
-    
-    
+    Route::post('/', 'MemberController@simpanData');
+    Route::patch('/', 'MemberController@updateData');
+    Route::get('kuncidata', 'MemberController@kunciData')->name('member.kuncidata');
+    Route::get('konfirmasi', 'MemberController@showKonfirmasi')->name('member.konfirmasi');
+    Route::post('konfirmasi', 'MemberController@konfirmasi');
+    Route::get('upload_berkas', 'MemberController@showFormUploadBerkas')->name('member.upload_berkas');
+    Route::post('upload_berkas', 'MemberController@uploadBerkas');
 });
 
 use App\User;
