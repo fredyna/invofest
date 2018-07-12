@@ -53,18 +53,32 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/workshop', 'AdminController@workshop');
     Route::get('/seminar', 'AdminController@seminar');
     Route::get('/talkshow', 'AdminController@talkshow');
+
+    Route::get('/adc', 'AdminController@adc');
+    Route::get('/wdc', 'AdminController@wdc');
+    Route::get('/dc', 'AdminController@dc');
+
+    Route::get('/kompetisi', 'AdminController@kompetisi');
     
     Route::get('/inbox/{id}', 'AdminController@edit');
     Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
     Route::post('/peserta/workshopupdate/{id}', 'AdminController@updateWorkshop');
     // Route::post('/peserta/konfirmasi', 'AdminController@konfirmasi');
     // Route::resource('peserta', 'AdminController');
+    Route::get('/kompetisi/{id}', 'AdminController@kompetisiedit');
     
+
     //datatables api
     Route::get('/api/peserta', 'AdminController@apiPeserta')->name('api.peserta');
     Route::get('/api/peserta/seminar', 'AdminController@apiSeminar')->name('api.peserta.seminar');
     Route::get('/api/peserta/workshop', 'AdminController@apiWorkshop')->name('api.peserta.workshop');
     Route::get('/api/peserta/talkshow', 'AdminController@apiTalkshow')->name('api.peserta.talkshow');
+
+
+    Route::get('/api/kompetisi', 'AdminController@apiKompetisi')->name('api.kompetisi');
+    Route::get('/api/kompetisi/adc', 'AdminController@apiAdc')->name('api.kompetisi.adc');
+    Route::get('/api/kompetisi/wdc', 'AdminController@apiWdc')->name('api.kompetisi.wdc');
+    Route::get('/api/kompetisi/dc', 'AdminController@apiDc')->name('api.kompetisi.dc');
 });
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {

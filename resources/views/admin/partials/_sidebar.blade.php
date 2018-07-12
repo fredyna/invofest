@@ -30,16 +30,16 @@
       </a>
       <ul class="treeview-menu">
         <li>
-          <a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> Registrasi Baru
+          <a href="{{ url('/admin/kompetisi') }}"><i class="fa fa-angle-double-right"></i> Registrasi Baru
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
               <small class="label pull-right bg-red">5</small>
             </span>
           </a>
         </li>
-        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> ADC</a></li>
-        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> WDC</a></li>
-        <li><a href="javascript:void(0)"><i class="fa fa-angle-double-right"></i> DC</a></li>
+        <li><a href="{{ url('/admin/adc') }}"><i class="fa fa-angle-double-right"></i> ADC</a></li>
+        <li><a href="{{ url('/admin/wdc') }}"><i class="fa fa-angle-double-right"></i> WDC</a></li>
+        <li><a href="{{ url('/admin/dc') }}"><i class="fa fa-angle-double-right"></i> DC</a></li>
       </ul>
     </li>
   <li class="treeview">
