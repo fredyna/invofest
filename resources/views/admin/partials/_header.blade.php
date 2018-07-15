@@ -5,10 +5,10 @@
 <a href="javascript:void(0)" class="logo">
   <!-- mini logo for sidebar mini 50x50 pixels -->
   <span class="logo-mini">
-    Fredd
+    Inv18
   </span>
   <!-- logo for regular state and mobile devices -->
-  <span class="logo-lg"></span>Fredd Panel</span>
+  <span class="logo-lg"></span>Invofest 2018</span>
 </a>
 
 <!-- Header Navbar -->

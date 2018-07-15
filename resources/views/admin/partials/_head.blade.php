@@ -4,7 +4,7 @@
     <meta name="description" content="Template Admin Panel LTE Custom" />
     <meta name="keywords" content="Admin Panel, Admin, Panel"/>
     <meta name="author" content="Fredy Nur Apriyanto"/>
-    <title>Admin Panel</title>
+    <title>Admin Invofest2018</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- shorcut icon -->
@@ -16,7 +16,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminassets/css/AdminLTE.min.css') }}">
     <!--you can choose any other skin -->
-    <link rel="stylesheet" href="{{ asset('adminassets/css/skins/skin-green.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminassets/css/skins/skin-blue.min.css') }}">
     <!-- My Custom CSS -->
     <link rel="stylesheet" href="{{ asset('adminassets/css/main.css') }}">
     
@@ -28,6 +28,10 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('adminassets/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('adminassets/datatables.net-bs/css/buttons.dataTables.min.css') }}">
   
+    <!-- WYSIWYG -->
+
+    <link rel="stylesheet" href="{{asset('adminassets/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+    
     <!-- Datatables JS -->
     <script src="{{ asset('adminassets/datatables.net-bs/js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('adminassets/datatables.net-bs/js/dataTables.bootstrap.min.js') }}" type="text/javascript"></script>

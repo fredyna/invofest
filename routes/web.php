@@ -84,13 +84,63 @@ Route::get('/check', function() {})->middleware('auth','role');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
     
+<<<<<<< HEAD
     Route::get('/', function() {
         return view('admin.pages.beranda');
     });
 
     Route::post('/competition_confirm', 'Confirm\SendConfirmController@sendCompetitionConfirm')->name('admin.competition_confirm');
     Route::post('/event_confirm', 'Confirm\SendConfirmController@sendEventConfirm')->name('admin.event_confirm');
+=======
+    Route::get('/', 'AdminController@index');
+    Route::get('/inbox', 'AdminController@inbox');
+    Route::get('/workshop', 'AdminController@workshop');
+    Route::get('/seminar', 'AdminController@seminar');
+    Route::get('/talkshow', 'AdminController@talkshow');
+
+    Route::get('/adc', 'AdminController@adc');
+    Route::get('/wdc', 'AdminController@wdc');
+    Route::get('/dc', 'AdminController@dc');
+
+    Route::get('/kompetisi', 'AdminController@kompetisi');
+
+    Route::get('/post', 'AdminController@post');
+    Route::post('/postStore', 'AdminController@postStore');
+    Route::get('/post/{id}', 'AdminController@postEdit');
+    Route::post('/postUpdate/{id}', 'AdminController@updatePost');
+    Route::get('/postHapus/{id}', 'AdminController@destroyPost');
+
+
+    Route::get('/sponsor', 'AdminController@sponsor');
+    Route::post('/sponsorStore', 'AdminController@sponsorStore');
+    Route::get('/sponsor/{id}', 'AdminController@sponsorEdit');
+    Route::get('/sponsorHapus/{id}', 'AdminController@destroySponsor');
+    Route::post('/sponsorUpdate/{id}', 'AdminController@updateSponsor');
+
+    Route::get('/inbox/{id}', 'AdminController@edit');
+    Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
+    Route::post('/peserta/workshopupdate/{id}', 'AdminController@updateWorkshop');
+    // Route::post('/peserta/konfirmasi', 'AdminController@konfirmasi');
+    // Route::resource('peserta', 'AdminController');
+    Route::get('/kompetisi/{id}', 'AdminController@kompetisiedit');
+>>>>>>> origin/admin
     
+
+    //datatables api
+    Route::get('/api/peserta', 'AdminController@apiPeserta')->name('api.peserta');
+    Route::get('/api/peserta/seminar', 'AdminController@apiSeminar')->name('api.peserta.seminar');
+    Route::get('/api/peserta/workshop', 'AdminController@apiWorkshop')->name('api.peserta.workshop');
+    Route::get('/api/peserta/talkshow', 'AdminController@apiTalkshow')->name('api.peserta.talkshow');
+
+
+    Route::get('/api/kompetisi', 'AdminController@apiKompetisi')->name('api.kompetisi');
+    Route::get('/api/kompetisi/adc', 'AdminController@apiAdc')->name('api.kompetisi.adc');
+    Route::get('/api/kompetisi/wdc', 'AdminController@apiWdc')->name('api.kompetisi.wdc');
+    Route::get('/api/kompetisi/dc', 'AdminController@apiDc')->name('api.kompetisi.dc');
+
+    Route::get('/api/post', 'AdminController@apiPost')->name('api.post');
+    Route::get('/api/sponsor', 'AdminController@apiSponsor')->name('api.sponsor');
+    Route::get('/api/hitung', 'AdminController@apiCount')->name('api.count');
 });
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {  
