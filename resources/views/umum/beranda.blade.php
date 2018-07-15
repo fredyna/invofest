@@ -106,8 +106,8 @@
                         <div class="kotak-acara">
                             <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/microphone.png') }}" alt="TALKSHOW">
                             <h5 class="text-center">TALKSHOW</h5>
-                            <p class="ket-acara text-center">Talkshow interaktif dengan tema Big Data dan Machine Learning</p>
-                            <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
+                            <p class="ket-acara text-center">Talkshow interaktif dengan tema Big Data &amp; Machine Learning</p>
+                            <a href="{{ route('talkshow') }}" class="btn btn-outline-primary">Info Lengkap</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0s">
@@ -115,7 +115,7 @@
                             <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/student.png') }}" alt="WORKSHOP">
                             <h5 class="text-center">WORKSHOP</h5>
                             <p class="ket-acara text-center">Workshop IT : UI/UX Design, Data Science, Cyber Security, dan Web Services</p>
-                            <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
+                            <a href="{{ route('workshop') }}" class="btn btn-outline-primary">Info Lengkap</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0s">
@@ -123,7 +123,7 @@
                             <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/presentation.png') }}" alt="SEMINAR">
                             <h5 class="text-center">SEMINAR NASIONAL</h5>
                             <p class="ket-acara text-center">Seminar nasional dengan tema Artificial Intelegence dalam Transformasi Teknologi Industri Masa Depan</p>
-                            <a href="#" class="btn btn-outline-primary">Info Lengkap</a>
+                            <a href="{{ route('seminar') }}" class="btn btn-outline-primary">Info Lengkap</a>
                         </div>
                     </div>
                     <div class="col-md-6 col-lg-3 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
@@ -150,17 +150,17 @@
                         <div class="col-md-4 pemateri-left wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <img src="{{ url('img/tokoh/richardus.png') }}" alt="Richardus" class="img-fluid mx-auto d-block" width="150" height="150">
                             <h6 class="text-center">Prof. Dr. Ir. Richardus Eko Indrajit M.Sc., M.B.A., M.Phil., M.A.</h6>
-                            <p class="text-center">Rektor Pradita Institute</p>
+                            <p class="text-center">First Chairman ID-SIRTII</p>
                         </div>
                         <div class="col-md-4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
                             <img src="{{ url('img/tokoh/peter.png') }}" alt="Peter" class="img-fluid mx-auto d-block" width="150" height="150">
                             <h6 class="text-center">Peter Jack Kambey</h6>
-                            <p class="text-center">CEO at PHP Indonesia</p>
+                            <p class="text-center">IT Manager Titan Baking</p>
                         </div>
                         <div class="col-md-4 pemateri-right wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
                             <img src="{{ url('img/tokoh/alamsyah.png') }}" alt="Alamsyah" class="img-fluid mx-auto d-block" width="150" height="150">
                             <h6 class="text-center">Alamsyah Hanza</h6>
-                            <p class="text-center">Business Intellegence Analyst at GO-JEK</p>
+                            <p class="text-center">Business Intelligence Analyst at GO-JEK</p>
                         </div>
                     </div>
 

@@ -13,6 +13,7 @@
     <link href="{{ url('css/app.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ url('css/animate.css') }}" />
     <link href="{{ url('css/styles.css') }}" rel="stylesheet" />
+    @yield('mycss')
 </head>
 <body class="landing-page sidebar-collapse" data-spy="scroll" data-target=".navbar" data-offset="50">
     <!-- preloader -->

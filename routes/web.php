@@ -13,28 +13,64 @@
 
 // route untuk halaman depan
 Route::get('/', function () {
-    return view('member.beranda');
+    return view('umum.beranda');
+})->name('beranda');
+
+//route Talkshow
+Route::get('/talkshow', function(){
+    return view('umum.talkshow.talkshow');
+})->name('talkshow');
+
+//route Seminar
+Route::get('/seminar', function(){
+    return view('umum.seminar.seminar');
+})->name('seminar');
+
+//Route Workshop
+Route::group(['prefix' => 'workshop'], function() {
+    Route::get('/', function() {
+        return view('umum.workshop.workshop');
+    })->name('workshop');
+    // ui/ux design
+    Route::get('ui_ux', function() {
+        return view('umum.workshop.ui_ux');        
+    })->name('workshop.ui_ux');
+    // data science
+    Route::get('ds', function() {
+        return view('umum.workshop.ds');        
+    })->name('workshop.ds');
+    // cyber security
+    Route::get('cs', function() {
+        return view('umum.workshop.cs');        
+    })->name('workshop.cs');
+    // web services
+    Route::get('ws', function() {
+        return view('umum.workshop.ws');        
+    })->name('workshop.ws');
 });
+
+//route IT Competition
 Route::group(['prefix' => 'itcompetition'], function() {
     Route::get('/', function() {
-        return view('member.itcompetition');
-    });
+        return view('umum.competition.itcompetition');
+    })->name('itcompetition');
     
     Route::get('adc', function() {
-        return view('member.appsDev');        
-    });
+        return view('umum.competition.appsDev');        
+    })->name('itcompetition.adc');
 
     Route::get('wdc', function() {
-        return view('member.webDev');        
-    });
+        return view('umum.competition.webDev');        
+    })->name('itcompetition.wdc');
 
     Route::get('dpc', function() {
-        return view('member.dpc');        
-    });
-    
+        return view('umum.competition.dpc');        
+    })->name('itcompetition.dpc');
 });
 
-
+// route daftar acara
+Route::get('/event/registrasi', 'Event@showRegistrasi')->name('event.registrasi');
+Route::post('/event/registrasi', 'Event@registrasi');
 
 Auth::routes();
 
@@ -51,6 +87,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/', function() {
         return view('admin.pages.beranda');
     });
+
+    Route::post('/competition_confirm', 'Confirm\SendConfirmController@sendCompetitionConfirm')->name('admin.competition_confirm');
+    Route::post('/event_confirm', 'Confirm\SendConfirmController@sendEventConfirm')->name('admin.event_confirm');
     
 });
 
@@ -66,8 +105,17 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::post('upload_berkas', 'MemberController@uploadBerkas');
 });
 
+//route untuk uji coba
+
 use App\User;
 use App\Kompetisi;
+use App\Events\Confirm\UserRegistrationConfirm;
+
+
+Route::get('/konfirmasi_pendaftaran', 'Confirm\SendConfirmController@send')->name('member.konfirmasi_pemdaftaran');
+
+Route::get('/setujui', 'Confirm\RegistrationConfirmController@confirm')->name('setujui');
+
 
 Route::get('/daftar_kompetisi', function() {
     $user = User::find(Auth::user()->id);

@@ -30,7 +30,7 @@ class ActivationController extends Controller
     {
         $this->validateResendRequest($request);
         $user = User::where('email', $request->email)->first();
-        event(new userActivationEmail($user));
+        event(new UserActivationEmail($user));
 
         return redirect()->route('login')->withSuccess('Aktivasi email telah dikirim. Silahkan cek email anda!');
     }

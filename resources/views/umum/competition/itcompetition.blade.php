@@ -26,24 +26,36 @@
                         <div class="kotak-acara">
                             <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/app-development.png') }}" alt="APP DEV">
                             <h5 class="text-center">APPLICATION DEVELOPMENT COMPETITION</h5>
-                            <p class="ket-acara text-center">Laborum nostrud pariatur consectetur minim ad elit Lorem consequat veniam duis veniam nostrud ex.</p>
-                            <a href="{{ url('/itcompetition/adc') }}" class="btn btn-outline-primary btn-it">Info Lengkap</a>
+                            <p class="ket-acara text-center">
+                                {{
+                                    str_limit('Application Development Competition 2018 adalah kompetisi pengembangan perangkat lunak sebagai salah satu kategori IT Competition yang diadakan oleh INVOFEST 2018 dan dapat diikuti oleh mahasiswa-mahasiswi diseluruh Indonesia.', 100)
+                                }}
+                            </p>
+                            <a href="{{ route('itcompetition.adc') }}" class="btn btn-outline-primary btn-it">Info Lengkap</a>
                         </div>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-3 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
                         <div class="kotak-acara">
                             <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/web-design.png') }}" alt="WEB DEV">
                             <h5 class="text-center">WEB DESIGN COMPETITION</h5>
-                            <p class="ket-acara text-center">Laborum nostrud pariatur consectetur minim ad elit Lorem consequat veniam duis veniam nostrud ex.</p>
-                            <a href="{{ url('/itcompetition/wdc') }}" class="btn btn-outline-primary btn-it">Info Lengkap</a>
+                            <p class="ket-acara text-center">
+                                {{
+                                    str_limit('Web Design Competition (WDC) merupakan salah satu kategori dalam IT Competition di ajang Invofest 2018 yang diselenggarakan oleh Program Studi DIV Teknik Informatika Politeknik Harapan Bersama Tegal.', 100)
+                                }}
+                            </p>
+                            <a href="{{ route('itcompetition.wdc') }}" class="btn btn-outline-primary btn-it">Info Lengkap</a>
                         </div>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-3 wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="0.5s">
                         <div class="kotak-acara">
                             <img class="icons-acara mx-auto d-block" src="{{ url('img/icons/database-programming.png') }}" alt="DATABASE">
                             <h5 class="text-center">DATABASE PROGRAMMING COMPETITION</h5>
-                            <p class="ket-acara text-center">Laborum nostrud pariatur consectetur minim ad elit Lorem consequat veniam duis veniam nostrud ex.</p>
-                            <a href="{{ url('/itcompetition/dpc') }}" class="btn btn-outline-primary btn-it">Info Lengkap</a>
+                            <p class="ket-acara text-center">
+                                {{
+                                    str_limit('Database Programming Competition 2018 merupakan salah satu kategori IT Competition pada event INVOFEST 2018 (Informatics Vocational Festival 2018) yang diselenggarakan oleh Program Studi DIV Teknik Informatika Politeknik Harapan Bersama.', 100)
+                                }}
+                            </p>
+                            <a href="{{ route('itcompetition.dpc') }}" class="btn btn-outline-primary btn-it">Info Lengkap</a>
                         </div>
                     </div>
                 </div>
