@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 use App\Peserta;
+use App\Post;
+use App\Sponsor;
 use App\Kompetisi;
 use Yajra\DataTables\DataTables;
 // use Yajra\DataTables\Services\DataTable;
@@ -61,6 +64,16 @@ class AdminController extends Controller
         return view('admin.pages.kompetisi_inbox');
     }
 
+    public function post()
+    {
+        return view('admin.pages.post');
+    }
+
+    public function sponsor()
+    {
+        return view('admin.pages.sponsor');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -80,6 +93,55 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    public function postStore(Request $request)
+    {
+        $input = Input::all();
+        $file = array('gambar'=> Input::file('gambar'));
+
+        if (Input::file('gambar')->isValid()) {
+            $destinationPath = 'gambarpost';
+            $extension = Input::file('gambar')->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'.'.$extension;
+            Input::file('gambar')->move($destinationPath,$fileName) ;
+            $input['gambar']= $destinationPath.'/'.$fileName;
+            
+            $insert = new Post;
+            $insert->judul = $input['judul'];
+            $insert->gambar = $input['gambar'];
+            $insert->deskripsi = $input['deskripsi'];
+            $insert->save();
+            return $insert;
+        }
+        
+
+ 
+    }
+
+    public function sponsorStore(Request $request)
+    {
+        $input = Input::all();
+        $file = array('logo'=> Input::file('logo'));
+
+        if (Input::file('logo')) {
+            $destinationPath = 'gambarsponsor';
+            $extension = Input::file('logo')->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'.'.$extension;
+            Input::file('logo')->move($destinationPath,$fileName) ;
+            $input['logo']= $destinationPath.'/'.$fileName;
+            
+            $insert = new Sponsor;
+            $insert->nama = $input['nama'];
+            $insert->link = $input['link'];
+            $insert->logo = $input['logo'];
+            $insert->deskripsi = $input['deskripsi'];
+            $insert->save();
+            return $insert;
+        }
+        
+
+ 
     }
 
     /**
@@ -111,6 +173,20 @@ class AdminController extends Controller
         return $kompetisi;
     }
 
+    public function postEdit($id)
+    {
+        $peserta = Post::findOrFail($id);
+        $peserta->gambar = asset($peserta->gambar);
+        return $peserta;
+    }
+
+    public function sponsorEdit($id)
+    {
+        $peserta = Sponsor::findOrFail($id);
+        $peserta->logo = asset($peserta->logo);
+        return $peserta;
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -129,10 +205,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    
 
     public function konfirmasi(Request $request , $id)
     {
@@ -158,16 +231,86 @@ class AdminController extends Controller
         $peserta->kategori = $request->kategori;
         $peserta->kategori_workshop = $request->kategori_workshop;
         $peserta->jenis_pembayaran = $request->jenis_pembayaran;
-        $peserta->update();
+
+        // $peserta->workshop = $request->workshop;
+        // $peserta->talkshow = $request->talkshow;
+        // $peserta->seminar = $request->seminar;
+        // $peserta->update();
         // $peserta = dd($request->all());
         // $peserta = 1;
         return $peserta;
     }
 
+    public function updatePost(Request $request , $id)
+    {
+        // $id = $request->id_peserta;
+        $input = Input::all();
+        $file = array('gambar'=> Input::file('gambar'));
+        $insert = Post::findOrFail($id);
+        if (Input::file('gambar') != "") {
+            $destinationPath = 'gambarpost';
+            $extension = Input::file('gambar')->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'.'.$extension;
+            Input::file('gambar')->move($destinationPath,$fileName) ;
+            $input['gambar']= $destinationPath.'/'.$fileName;
+            $insert->gambar = $input['gambar'];            
+        }
+            $insert->judul = $input['judul'];
+            $insert->deskripsi = $input['deskripsi'];
+            $insert->update();
+            return $insert;
+    }
+
+    public function updateSponsor(Request $request , $id)
+    {
+        // $id = $request->id_peserta;
+        $input = Input::all();
+        $file = array('logo'=> Input::file('logo'));
+        $insert = Sponsor::findOrFail($id);
+        if (Input::file('logo') != "") {
+            $destinationPath = 'gambarsponsor';
+            $extension = Input::file('logo')->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'.'.$extension;
+            Input::file('logo')->move($destinationPath,$fileName) ;
+            $input['logo']= $destinationPath.'/'.$fileName;
+            $insert->logo = $input['logo'];            
+        }
+            $insert->nama = $input['nama'];
+            $insert->link = $input['link'];
+            $insert->deskripsi = $input['deskripsi'];
+            $insert->update();
+            return $insert;
+    }
+
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function destroyPost($id)
+    {
+
+        $post = Post::findOrFail($id);
+        $post->hapus = '1';
+        $post->update();
+        return $post;
+
+    }
+
+    public function destroySponsor($id)
+    {
+
+        $sponsor = Sponsor::findOrFail($id);
+        $sponsor->hapus = '1';
+        $sponsor->update();
+        return $sponsor;
+
+    }
+
 
     public function apiPeserta()
     {
-        $peserta = Peserta::all()->where('konfirmasi_bayar','0');
+        $peserta = Peserta::all()->where('hapus','0')->where('konfirmasi_bayar','0');
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
@@ -210,7 +353,7 @@ class AdminController extends Controller
 
     public function apiWorkshop()
     {
-        $peserta = Peserta::all()->where('konfirmasi_bayar','1')->where('workshop','1');
+        $peserta = Peserta::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('workshop','1');
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
@@ -242,7 +385,7 @@ class AdminController extends Controller
 
     public function apiTalkshow()
     {
-        $peserta = Peserta::all()->where('konfirmasi_bayar','1')->where('talkshow','1');
+        $peserta = Peserta::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('talkshow','1');
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
@@ -262,7 +405,7 @@ class AdminController extends Controller
 
     public function apiSeminar()
     {
-        $peserta = Peserta::all()->where('konfirmasi_bayar','1')->where('seminar','1');
+        $peserta = Peserta::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('seminar','1');
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
@@ -283,7 +426,7 @@ class AdminController extends Controller
 
     public function apiKompetisi()
     {
-        $kompetisi = Kompetisi::all()->where('konfirmasi_bayar','0');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','0');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
@@ -308,7 +451,7 @@ class AdminController extends Controller
 
     public function apiAdc()
     {
-        $kompetisi = Kompetisi::all()->where('konfirmasi_bayar','1')->where('jenis_lomba','ADC');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('jenis_lomba','ADC');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
@@ -333,7 +476,7 @@ class AdminController extends Controller
 
     public function apiDc()
     {
-        $kompetisi = Kompetisi::all()->where('konfirmasi_bayar','1')->where('jenis_lomba','DC');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('jenis_lomba','DC');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
@@ -355,7 +498,7 @@ class AdminController extends Controller
 
     public function apiWdc()
     {
-        $kompetisi = Kompetisi::all()->where('konfirmasi_bayar','1')->where('jenis_lomba','WDC');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('jenis_lomba','WDC');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
@@ -376,5 +519,49 @@ class AdminController extends Controller
         })
         ->rawColumns(['action','jenis_lomba'])
         ->make(true);
+    }
+
+    public function apiPost()
+    {
+        $post = Post::all()->where('hapus','0');
+        
+
+        return Datatables::of($post)
+        ->addColumn('action', function($post){
+            return '<a onclick="editForm('. $post->id .')" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+            <a onclick="deleteForm('. $post->id .')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a> ';
+        })
+        ->editColumn('gambar', function($post){
+            $link = asset($post->gambar);
+            $gambar = '<image src="'. $link .'" width="80px">';    
+            return $gambar;
+        })
+        ->rawColumns(['action','deskripsi','gambar'])
+        ->make(true);
+    }
+
+    public function apiSponsor()
+    {
+        $sponsor = Sponsor::all()->where('hapus','0');
+        
+
+        return Datatables::of($sponsor)
+        ->addColumn('action', function($sponsor){
+            return '<a onclick="editForm('. $sponsor->id .')" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+            <a onclick="deleteForm('. $sponsor->id .')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a> ';
+        })
+        ->editColumn('logo', function($sponsor){
+            $link = asset($sponsor->logo);
+            $gambar = '<image src="'. $link .'" width="80px">';    
+            return $gambar;
+        })
+        ->rawColumns(['action','deskripsi','logo'])
+        ->make(true);
+    }
+
+    public function apiCount(){
+        $hitung['kompetisi'] = Kompetisi::all()->where('konfirmasi_bayar','0')->where('hapus','0')->count();
+        $hitung['peserta'] = Peserta::all()->where('konfirmasi_bayar','0')->where('hapus','0')->count();
+        return $hitung;
     }
 }

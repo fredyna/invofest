@@ -65,19 +65,19 @@
                       <div class="col-md-6">
                           {{-- <input type="checkbox" id="workshop" name="workshop" class="form-control" required> --}}
                           <label>
-                            <input type="checkbox" class="pull-left" id="talkshow" >
+                            <input type="checkbox" name="talkshow" class="pull-left" id="talkshow" value="1">
                            Talkshow
                         </label>
                         <br/>  
 
                           <label>
-                          <input type="checkbox" class="pull-left" id="seminar" >
+                          <input type="checkbox" name="seminar" class="pull-left" id="seminar" value="1">
                            Seminar
                         </label>
                         <br/>
 
                         <label>
-                          <input type="checkbox" class="pull-left" id="workshop" >
+                          <input type="checkbox" name="workshop" class="pull-left" id="workshop" value="1">
                            Workshop
                         </label>
 

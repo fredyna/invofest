@@ -110,7 +110,7 @@
         });
 
                     
-                    function detailForm(id) {
+        function detailForm(id) {
         save_method = 'edit';
         // $('input[name=_method]').val('post');
         $('#modal-form form')[0].reset();

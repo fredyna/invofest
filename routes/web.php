@@ -59,7 +59,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/dc', 'AdminController@dc');
 
     Route::get('/kompetisi', 'AdminController@kompetisi');
-    
+
+    Route::get('/post', 'AdminController@post');
+    Route::post('/postStore', 'AdminController@postStore');
+    Route::get('/post/{id}', 'AdminController@postEdit');
+    Route::post('/postUpdate/{id}', 'AdminController@updatePost');
+    Route::get('/postHapus/{id}', 'AdminController@destroyPost');
+
+
+    Route::get('/sponsor', 'AdminController@sponsor');
+    Route::post('/sponsorStore', 'AdminController@sponsorStore');
+    Route::get('/sponsor/{id}', 'AdminController@sponsorEdit');
+    Route::get('/sponsorHapus/{id}', 'AdminController@destroySponsor');
+    Route::post('/sponsorUpdate/{id}', 'AdminController@updateSponsor');
+
     Route::get('/inbox/{id}', 'AdminController@edit');
     Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
     Route::post('/peserta/workshopupdate/{id}', 'AdminController@updateWorkshop');
@@ -79,6 +92,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/api/kompetisi/adc', 'AdminController@apiAdc')->name('api.kompetisi.adc');
     Route::get('/api/kompetisi/wdc', 'AdminController@apiWdc')->name('api.kompetisi.wdc');
     Route::get('/api/kompetisi/dc', 'AdminController@apiDc')->name('api.kompetisi.dc');
+
+    Route::get('/api/post', 'AdminController@apiPost')->name('api.post');
+    Route::get('/api/sponsor', 'AdminController@apiSponsor')->name('api.sponsor');
+    Route::get('/api/hitung', 'AdminController@apiCount')->name('api.count');
 });
 
 Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
