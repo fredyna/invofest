@@ -57,6 +57,7 @@ class CreatePesertasTable extends Migration
              */
             $table->string('jenis_pembayaran', 10)->nullable();
             $table->boolean('konfirmasi_bayar')->default(false);
+            $table->boolean('hapus')->default(false);
             $table->timestamps();
 
             $table->primary('id_peserta');

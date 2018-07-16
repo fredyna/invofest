@@ -30,6 +30,8 @@ class ActivationEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.auth.activation');
+        return $this->from('invofest@gmail.com')
+                    ->subject('Aktivasi Email Registrasi Invofest 2018')
+                    ->markdown('emails.auth.activation');
     }
 }

@@ -65,7 +65,11 @@
     </li>
     <li><a href="{{ url('/admin/post') }}"><i class="fa fa-list"></i> <span>Post</span></a></li>
     <li><a href="{{ url('/admin/sponsor') }}"><i class="fa fa-credit-card"></i> <span>Sponsor</span></a></li>
-  <li><a href="javascript:void(0)"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
+  <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+    document.getElementById('logout-form').submit();"><i class="fa fa-sign-out"></i> <span>Log Out</span></a></li>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+      @csrf
+    </form>
 </ul>
 <!-- /.sidebar-menu -->
   </section>

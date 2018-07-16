@@ -19,6 +19,7 @@ class CreateSponsorsTable extends Migration
             $table->string('logo', 100);
             $table->string('link', 255)->nullable();
             $table->text('deskripsi')->nullable();
+            $table->boolean('hapus')->default(false);
             $table->timestamps();
         });
     }

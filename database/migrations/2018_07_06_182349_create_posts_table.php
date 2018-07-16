@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('judul', 255);
             $table->string('gambar', 100)->nullable();
             $table->text('deskripsi');
+            $table->boolean('hapus')->default(false);
             $table->timestamps();
         });
     }

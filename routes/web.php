@@ -84,14 +84,6 @@ Route::get('/check', function() {})->middleware('auth','role');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
     
-<<<<<<< HEAD
-    Route::get('/', function() {
-        return view('admin.pages.beranda');
-    });
-
-    Route::post('/competition_confirm', 'Confirm\SendConfirmController@sendCompetitionConfirm')->name('admin.competition_confirm');
-    Route::post('/event_confirm', 'Confirm\SendConfirmController@sendEventConfirm')->name('admin.event_confirm');
-=======
     Route::get('/', 'AdminController@index');
     Route::get('/inbox', 'AdminController@inbox');
     Route::get('/workshop', 'AdminController@workshop');
@@ -123,7 +115,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     // Route::post('/peserta/konfirmasi', 'AdminController@konfirmasi');
     // Route::resource('peserta', 'AdminController');
     Route::get('/kompetisi/{id}', 'AdminController@kompetisiedit');
->>>>>>> origin/admin
     
 
     //datatables api
