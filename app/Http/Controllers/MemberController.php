@@ -65,7 +65,7 @@ class MemberController extends Controller
                 'no_anggota_1'    => 'required',
                 'email_anggota_1'    => 'required',
                 'foto_anggota_1'    => 'required|file|mimetypes:image/jpeg,image/png|max:2048',
-            ]);
+            ], $this->messages());
         }
 
         if($request->nama_anggota_2 != null){
@@ -74,7 +74,7 @@ class MemberController extends Controller
                 'no_anggota_2'    => 'required',
                 'email_anggota_2'    => 'required',
                 'foto_anggota_2'    => 'required|file|mimetypes:image/jpeg,image/png|max:2048',
-            ]);
+            ], $this->messages());
         }
 
         $user = User::find(Auth::user()->id);
@@ -147,6 +147,8 @@ class MemberController extends Controller
             'foto_anggota_2.max'    => 'Ukuran maksimal foto 2MB',
             'foto_anggota_1.mimetypes' => 'Foto harus berformat image/jpeg atau image/png',
             'foto_anggota_2.mimetypes' => 'Foto harus berformat image/jpeg atau image/png',
+            'berkas_konfirmasi.required' => 'Berkas harus dilampirkan',
+            'berkas_konfirmasi.mimetypes' => 'Berkas harus berformat .zip atau .rar',
 
         ];
     }
@@ -174,7 +176,7 @@ class MemberController extends Controller
         {
             $this->validate($request,[
                 'foto_ketua_tim'    => 'required'
-            ]);
+            ], $this->messages());
         }
 
         if($request->nama_anggota_1 != null){
@@ -183,13 +185,13 @@ class MemberController extends Controller
                 'no_anggota_1'    => 'required',
                 'email_anggota_1'    => 'required',
                 'foto_anggota_1'    => 'file|mimetypes:image/jpeg,image/png|max:2048',
-            ]);
+            ], $this->messages());
             
             if($kompetisi->foto_anggota_1 == null)
             {
                 $this->validate($request,[
                     'foto_anggota_1'    => 'required'
-                ]);
+                ], $this->messages());
             }
         }
 
@@ -199,13 +201,13 @@ class MemberController extends Controller
                 'no_anggota_2'    => 'required',
                 'email_anggota_2'    => 'required',
                 'foto_anggota_2'    => 'file|mimetypes:image/jpeg,image/png|max:2048',
-            ]);
+            ], $this->messages());
 
             if($kompetisi->foto_anggota_2 == null)
             {
                 $this->validate($request,[
                     'foto_anggota_2'    => 'required'
-                ]);
+                ], $this->messages());
             }
         }
 
@@ -313,7 +315,7 @@ class MemberController extends Controller
     {
         $this->validate($request, [
             'berkas_konfirmasi'    => 'required|file|mimetypes:application/x-compressed,application/x-zip-compressed,application/zip,multipart/x-zip,application/x-rar-compressed,application/octet-stream|max:2048'
-        ]);
+        ], $this->messages());
 
         $user = User::find(Auth::user()->id);
         $kompetisi = $user->kompetisi()->first();
@@ -375,7 +377,7 @@ class MemberController extends Controller
                     $this->validate($request, [
                         'link_berkas'   => 'required',
                         'link_video'    => 'required'
-                    ]);
+                    ], $this->messages());
                     $link = [
                         'link_berkas' => $request->link_berkas,
                         'link_video' => $request->link_video
@@ -384,7 +386,7 @@ class MemberController extends Controller
                 {
                     $this->validate($request, [
                         'link_berkas'   => 'required'
-                    ]);
+                    ], $this->messages());
                     $link = [
                         'link_berkas' => $request->link_berkas
                     ];

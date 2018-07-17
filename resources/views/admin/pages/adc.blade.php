@@ -29,12 +29,11 @@
                   <table id="kompetisiinbox" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Id Peserta</th>
                         <th>Nama Tim</th>
                         <th>Asal Sekolah / PT</th>
+                        <th>Email Tim</th>
+                        <th>Berkas Pendaftaran</th>
                         <th>Nama Ketua</th>
-                        <th>Nama Anggota 1</th>
-                        <th>Nama Anggota 2</th>
                         <th>Email Ketua</th>
                         <th>Detail</th>
                       </tr>
@@ -57,142 +56,78 @@
   </div>
   <!-- /.content-wrapper -->
 
-  @include('admin.form.konfirmasi-kompetisi')
+  @include('admin.modals.konfirmasi-kompetisi')
 
   <script>
-
-
-
     var table = $('#kompetisiinbox').DataTable({
-            processing: false,
-            serverSide: true,
-            ajax: {
-                url: '{{ url("admin/api/kompetisi/adc") }}'
-            },
-            columns: [
-            {data: 'id', name: 'id'},
-            {data: 'nama_tim', name: 'nama_tim'},
-            {data: 'asal_sekolah', name: 'asal_sekolah'},
-            {data: 'nama_ketua_tim', name: 'nama_ketua_tim'},
-            {data: 'nama_anggota_1', name: 'nama_anggota_1'},
-            {data: 'nama_anggota_2', name: 'nama_anggota_2'},
-            {data: 'email_ketua_tim', name: 'email_ketua_tim'},
-            {data: 'action', name: 'action'},
-                      ]
-                    });
+      processing: false,
+      serverSide: true,
+      ajax: {
+          url: '{{ url("admin/api/kompetisi/adc") }}'
+      },
+      columns: [
+        {data: 'nama_tim', name: 'nama_tim'},
+        {data: 'asal_sekolah', name: 'asal_sekolah'},
+        {data: 'email_tim', name: 'email_tim'},
+        {data: 'berkas_konfirmasi', name: 'berkas_konfirmasi'},
+        {data: 'nama_ketua_tim', name: 'nama_ketua_tim'},
+        {data: 'email_ketua_tim', name: 'email_ketua_tim'},
+        {data: 'action', name: 'action'},
+      ],
+      order: [0, 'desc'],
+    });
 
-    function addForm() {
-        save_method = "add";
-        $('input[name=_method]').val('POST');
+    function lihatData(id){
+      var url = "{{ url('admin/api') }}"+"/"+id+"/kompetisi";
+      $.getJSON( url, function( data ) {
         $('#modal-form').modal('show');
-        $('#modal-form form')[0].reset();
-        $('.modal-title').text('Tambah Peserta');
-      }
+        $('.modal-title').text('Data Peserta Kompetisi');
+        var jenis_lomba = "";
+        if(data.jenis_lomba == "adc"){
+          jenis_lomba = "Application Development Competition";
+        } else if(data.jenis_lomba == "wdc"){
+          jenis_lomba = "Web Develpoment Competition";
+        } else {
+          jenis_lomba = "Database Programming Competition";
+        }
 
+        $("#jenis_lomba").val(jenis_lomba);
+        $("#nama_tim").val(data.nama_tim);
+        $("#asal_sekolah").val(data.asal_sekolah);
+        $("#nama_ketua_tim").val(data.nama_ketua_tim);
+        $("#no_ketua_tim").val(data.no_ketua_tim);
+        $("#email_ketua_tim").val(data.email_ketua_tim);
+        $("#foto_ketua_tim").attr("src","{{ asset('storage/peserta') }}"+"/"+data.foto_ketua_tim);
 
-      $(function(){
-            $('#modal-form form').on('submit', function (e) {
-                if (!e.isDefaultPrevented()){
-                    var id = $('#id').val();
-                    if (save_method == 'add') url = "{{ url('product') }}";
-                    else url = "{{ url('admin/peserta/konfirmasi') . '/' }}" + id;
+        if(data.nama_anggota_1){
+          $("#data-anggota-1").show();
+          $("#nama_anggota_1").val(data.nama_anggota_1);
+          $("#no_anggota_1").val(data.no_anggota_1);
+          $("#email_anggota_1").val(data.email_anggota_1);
+          $("#foto_anggota_1").attr("src","{{ asset('storage/peserta') }}"+"/"+data.foto_anggota_1);
+        }
 
-                    $.ajax({
-                        url : url,
-                        type : "POST",
-                        // data : $('#modal-form form').serialize(),
-                        data: new FormData($("#modal-form form")[0]),
-                        contentType: false,
-                        processData: false,
-                        success : function($data) {
-                            $('#modal-form').modal('hide');
-              
-                            table.ajax.reload();
-                            alert('Berhasil');
+        if(data.nama_anggota_2){
+          $("#data-anggota-2").show();
+          $("#nama_anggota_2").val(data.nama_anggota_2);
+          $("#no_anggota_2").val(data.no_anggota_2);
+          $("#email_anggota_2").val(data.email_anggota_2);
+          $("#foto_anggota_2").attr("src","{{ asset('storage/peserta') }}"+"/"+data.foto_anggota_2);
+        }
 
-                            
-                        },
-                        error : function(){
-                          alert("eror cuk");
-                        }
-                    });
-                    return false;
-                }
-            });
-        });
+        if(!data.berkas_konfirmasi){
+          $("#berkas_konfirmasi").attr("disabled", true);
+        } else {
+          $("#berkas_konfirmasi").attr("href","{{ asset('storage/berkas_konfirmasi') }}"+"/"+data.berkas_konfirmasi);
+        }
 
-      function konfirmForm(id) {
-        save_method = 'edit';
-        // $('input[name=_method]').val('post');
-        $('#modal-form form')[0].reset();
-        $.ajax({
-          url: "{{ url('admin/kompetisi') }}" + '/' + id,
-          type: "GET",
-          dataType: "JSON",
-          success: function(data) {
-            $('#modal-form').modal('show');
-            $('.modal-title').text('Konfirmasi Peserta');
+        if(data.konfirmasi){
+          $("#konfirmasi").hide();
+        }
 
-            $('#id').val(data.id_peserta);
-            $('#nama').val(data.nama).prop('disabled',true);
-            $('#kategori').val(data.kategori).prop('disabled',true);
-            $('#asal_institusi').val(data.asal_institusi).prop('disabled',true);
-            $('#nomor_hp').val(data.nomor_hp).prop('disabled',true);
-            $('#email').val(data.email).prop('disabled',true);
-            $('#seminar').val(data.seminar).prop('disabled',true);
-            $('#workshop').val(data.workshop).prop('disabled',true);
-            $('#talkshow').val(data.talkshow).prop('disabled',true);
-            $('#kategori_workshop').val(data.kategori_workshop).prop('disabled',true);
-            
-            if (data.seminar =='1'){
-              $('#seminar').prop('checked',true);
-            }else{
-              $('#seminar').prop('checked',false);
-            }
-
-            if (data.workshop =='1'){
-              $('#workshop').prop('checked',true);
-            }else{
-              $('#workshop').prop('checked',false);
-            }
-
-            if (data.talkshow =='1'){
-              $('#talkshow').prop('checked',true);
-            }else{
-              $('#talkshow').prop('checked',false);
-            }
-
-            var hseminar = 0;
-            var hworkshop = 0;
-            var htalkshow = 0;
-            var bayar = 0;
-
-            if (data.kategori == 'umum'){
-              var hseminar = 100000;
-              var hworkshop = 100000;
-              var htalkshow = 100000;
-              var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
-              $('#ktm').prop('hidden',true);
-              $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/1.jpg')}}")
-              $('#bayar').empty();
-              $('#bayar').append("Total Bayar = Rp." + bayar);
-            }else{
-              var hseminar = 75000;
-              var hworkshop = 50000;
-              var htalkshow = 50000;
-              var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
-              $('#bayar').empty();
-              $('#bayar').append("Total Bayar = Rp." + bayar);
-              $('#ktm').prop('hidden',false);
-              // $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/')}}" + data.foto_ktm)
-            }
-
-          },
-          error : function() {
-              alert("Nothing Data");
-          }
-        });
-      }
-
-      </script>
+        $("#konfirmasi").attr("onclick","konfirmasi()");
+        $("#id").val(data.id);
+      });
+    }
+  </script>
   @endsection
