@@ -125,6 +125,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 
 
     Route::get('/api/kompetisi', 'AdminController@apiKompetisi')->name('api.kompetisi');
+    Route::get('/api/{id}/kompetisi', 'AdminController@apiKompetisiById');
+    Route::post('/api/kompetisi/konfirmasi', 'AdminController@konfirmasiKompetisi')->name('api.kompetisi.konfirmasi');
     Route::get('/api/kompetisi/adc', 'AdminController@apiAdc')->name('api.kompetisi.adc');
     Route::get('/api/kompetisi/wdc', 'AdminController@apiWdc')->name('api.kompetisi.wdc');
     Route::get('/api/kompetisi/dc', 'AdminController@apiDc')->name('api.kompetisi.dc');

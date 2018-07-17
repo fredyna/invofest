@@ -4,9 +4,11 @@
 <li class="nav-item">
         <a class="nav-link" href="{{ route('member.konfirmasi') }}" style="color: #FFF;">Konfirmasi Pendaftaran</a>
 </li>
-<li class="nav-item">
-    <a class="nav-link" href="{{ route('member.upload_berkas') }}" style="color: #FFF;">Upload Berkas</a>
-</li>
+@if($user->id != null && $user->jenis_lomba != 'dpc')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('member.upload_berkas') }}" style="color: #FFF;">Upload Berkas</a>
+    </li>
+@endif
 &nbsp;&nbsp;&nbsp;
 <li class="nav-item dropdown">
     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color: #FFF;">

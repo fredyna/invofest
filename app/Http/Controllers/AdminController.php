@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Confirm\SendConfirm;
 
 use App\Peserta;
 use App\Post;
 use App\Sponsor;
 use App\Kompetisi;
+use App\User;
 use Yajra\DataTables\DataTables;
 // use Yajra\DataTables\Services\DataTable;
 
@@ -426,98 +429,166 @@ class AdminController extends Controller
 
     public function apiKompetisi()
     {
-        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','0');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi','0');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
-            // return '<a onclick="konfirmForm('. $kompetisi->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
-            return '<a onclick="addForm()" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="lihatData(\''. $kompetisi->id .'\')" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> Lihat</a> ';
         })
         ->addColumn('nama_tim', function($kompetisi){
-            return $kompetisi->User->name;
+            return $kompetisi->user->name;
+        })
+        ->addColumn('email_tim', function($kompetisi){
+            return $kompetisi->user->email;
+        })
+        ->addColumn('tgl_registrasi', function($kompetisi){
+            return date('d-m-Y', strtotime($kompetisi->created_at));
+        })
+        ->editColumn('berkas_konfirmasi', function($kompetisi){
+            if($kompetisi->berkas_konfirmasi != null)
+            {
+                $url = asset('storage/berkas_konfirmasi/'.$kompetisi->berkas_konfirmasi);
+                return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
+            } 
+
+            return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
         })
         ->editColumn('jenis_lomba', function($kompetisi){
-            if($kompetisi->jenis_lomba == 'ADC'){
-                return '<a class="label bg-maroon">ADC</a>';
-            }elseif ($kompetisi->jenis_lomba == 'WDC'){
-                return '<a class="label bg-navy">WDC</a> ';
+            if($kompetisi->jenis_lomba == 'adc'){
+                return '<a class="label bg-navy">ADC</a>';
+            }elseif ($kompetisi->jenis_lomba == 'wdc'){
+                return '<a class="label bg-maroon">WDC</a> ';
             }else{
                 return '<a class="label bg-purple">DC</a> ';
             }
         })
-        ->rawColumns(['action','jenis_lomba'])
+        ->rawColumns(['action','jenis_lomba','berkas_konfirmasi'])
         ->make(true);
+    }
+
+    public function apiKompetisiById($id)
+    {
+        $kompetisi = Kompetisi::findOrFail($id);
+        $kompetisi['nama_tim'] = $kompetisi->user->name;
+        return json_encode($kompetisi);
+    }
+
+    public function konfirmasiKompetisi(Request $request)
+    {
+        $id = $request->id;
+        $kompetisi = Kompetisi::find($id);
+        $data = [
+            'konfirmasi' => true
+        ];
+        if($kompetisi->update($data)){
+            //send email confirm to competitor
+            $this->sendConfirmEmail($kompetisi->user->id);
+
+            //return statement
+            return redirect('/admin/kompetisi')->withSuccess("Konfirmasi Sukses! Tim yang dikonfirmasi telah masuk dalam daftar peserta sesuai jenis lomba yang diikuti.");
+        }
+
+        return view('admin.pages.kompetisi_inbox')->with("Konfirmasi gagal!");
+    }
+
+    /**
+     * method sendConfirmEmail($param)
+     * 
+     * this is used sending confirm email to competitor
+     */
+    public function sendConfirmEmail($id)
+    {
+        $user = User::find($id);
+        Mail::to($user->email)->send(new SendConfirm($user));
     }
 
     public function apiAdc()
     {
-        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('jenis_lomba','ADC');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi','1')->where('jenis_lomba','adc');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
-            // return '<a onclick="konfirmForm('. $kompetisi->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
-            return '<a onclick="addForm()" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="lihatData(\''. $kompetisi->id .'\')" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> Lihat</a> ';
         })
         ->addColumn('nama_tim', function($kompetisi){
-            return $kompetisi->User->name;
+            return $kompetisi->user->name;
+        })
+        ->addColumn('email_tim', function($kompetisi){
+            return $kompetisi->user->email;
+        })
+        ->editColumn('berkas_konfirmasi', function($kompetisi){
+            if($kompetisi->berkas_konfirmasi != null)
+            {
+                $url = asset('storage/berkas_konfirmasi/'.$kompetisi->berkas_konfirmasi);
+                return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
+            } 
+
+            return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
         })
         ->editColumn('jenis_lomba', function($kompetisi){
-            if($kompetisi->jenis_lomba == 'ADC'){
-                return '<a class="label bg-maroon">ADC</a>';
-            }elseif ($kompetisi->jenis_lomba == 'WDC'){
-                return '<a class="label bg-navy">WDC</a> ';
-            }else{
-                return '<a class="label bg-purple">DC</a> ';
-            }
+            return '<a class="label bg-navy">ADC</a>';
         })
-        ->rawColumns(['action','jenis_lomba'])
+        ->rawColumns(['action','jenis_lomba','berkas_konfirmasi'])
         ->make(true);
     }
 
     public function apiDc()
     {
-        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('jenis_lomba','DC');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi','1')->where('jenis_lomba','dpc');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
-            // return '<a onclick="konfirmForm('. $kompetisi->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
-            return '<a onclick="addForm()" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="lihatData(\''. $kompetisi->id .'\')" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> Lihat</a> ';
+        })
+        ->addColumn('nama_tim', function($kompetisi){
+            return $kompetisi->user->name;
+        })
+        ->addColumn('email_tim', function($kompetisi){
+            return $kompetisi->user->email;
+        })
+        ->editColumn('berkas_konfirmasi', function($kompetisi){
+            if($kompetisi->berkas_konfirmasi != null)
+            {
+                $url = asset('storage/berkas_konfirmasi/'.$kompetisi->berkas_konfirmasi);
+                return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
+            } 
+
+            return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
         })
         ->editColumn('jenis_lomba', function($kompetisi){
-            if($kompetisi->jenis_lomba == 'ADC'){
-                return '<a class="label bg-maroon">ADC</a>';
-            }elseif ($kompetisi->jenis_lomba == 'WDC'){
-                return '<a class="label bg-navy">WDC</a> ';
-            }else{
-                return '<a class="label bg-purple">DC</a> ';
-            }
+            return '<a class="label bg-purple">DC</a>';
         })
-        ->rawColumns(['action','jenis_lomba'])
+        ->rawColumns(['action','jenis_lomba','berkas_konfirmasi'])
         ->make(true);
     }
 
     public function apiWdc()
     {
-        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi_bayar','1')->where('jenis_lomba','WDC');
+        $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi','1')->where('jenis_lomba','wdc');
  
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
-            // return '<a onclick="konfirmForm('. $kompetisi->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
-            return '<a onclick="addForm()" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="lihatData(\''. $kompetisi->id .'\')" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> Lihat</a> ';
         })
         ->addColumn('nama_tim', function($kompetisi){
-            return $kompetisi->User->name;
+            return $kompetisi->user->name;
+        })
+        ->addColumn('email_tim', function($kompetisi){
+            return $kompetisi->user->email;
+        })
+        ->editColumn('berkas_konfirmasi', function($kompetisi){
+            if($kompetisi->berkas_konfirmasi != null)
+            {
+                $url = asset('storage/berkas_konfirmasi/'.$kompetisi->berkas_konfirmasi);
+                return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
+            } 
+
+            return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
         })
         ->editColumn('jenis_lomba', function($kompetisi){
-            if($kompetisi->jenis_lomba == 'ADC'){
-                return '<a class="label bg-maroon">ADC</a>';
-            }elseif ($kompetisi->jenis_lomba == 'WDC'){
-                return '<a class="label bg-navy">WDC</a> ';
-            }else{
-                return '<a class="label bg-purple">DC</a> ';
-            }
+            return '<a class="label bg-maroon">WDC</a>';
         })
-        ->rawColumns(['action','jenis_lomba'])
+        ->rawColumns(['action','jenis_lomba','berkas_konfirmasi'])
         ->make(true);
     }
 
