@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\Confirm\SendRegistrationEventSuccess;
 
 use App\Peserta;
+use Mail;
 
 class EventController extends Controller
 {
@@ -79,6 +81,10 @@ class EventController extends Controller
         $event = new Peserta($data);
         if($event->save())
         {
+            $peserta = Peserta::find($data['id_peserta']); //get data peserta yang baru registrasi
+            //kirim email info registrasi sukses
+            Mail::to($peserta->email)->send(new SendRegistrationEventSuccess($peserta));
+
             return redirect()->back()->withSuccess('Registrasi berhasil! Silahkan lakukan pembayaran dan konfirmasi pembayaran ke email invofest@gmail.com atau ke salah satu CP yang tertera di informasi acara.');
         } 
         else

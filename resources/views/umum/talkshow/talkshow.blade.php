@@ -65,12 +65,8 @@
                 <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">HTM &amp; Fasilitas</h5>
                 <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
                     <tr>
-                        <td style="width:100px;">Umum</td>
+                        <td style="width:100px;">HTM</td>
                         <td> : Rp 30.000,-</td>
-                    </tr>
-                    <tr>
-                        <td style="width:100px;">Mahasiswa</td>
-                        <td> : Rp 25.000,-</td>
                     </tr>
                 </table>
                 <br />
