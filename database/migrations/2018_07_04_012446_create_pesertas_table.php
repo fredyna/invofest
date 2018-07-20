@@ -20,9 +20,14 @@ class CreatePesertasTable extends Migration
              * sesuaikan mau pakai barcode atau qr code
              */
             $table->string('id_peserta', 15);
+            /**
+             * kategori
+             * 
+             * umum / mahasiswa
+             */
             $table->string('kategori', 10);
             $table->string('nama', 100);
-            $table->string('asal_institusi', 100);
+            $table->string('asal_institusi', 100)->nullable();
             $table->string('nomor_hp', 15);
             $table->string('email', 100);
             /**
@@ -33,7 +38,7 @@ class CreatePesertasTable extends Migration
              */
             $table->string('jenis_kelamin', 9);
             $table->string('alamat', 255);
-            $table->string('foto_ktm', 100);
+            $table->string('foto_ktm', 100)->nullable();
             $table->boolean('workshop')->default(false);
             $table->boolean('seminar')->default(false);
             $table->boolean('talkshow')->default(false);
@@ -45,7 +50,7 @@ class CreatePesertasTable extends Migration
              * Cyber Security
              * Data Science
              */
-            $table->string('kategori_workshop', 14);
+            $table->string('kategori_workshop', 14)->nullable();
             $table->boolean('validasi_workshop')->default(false);
             $table->boolean('validasi_seminar')->default(false);
             $table->boolean('validasi_talkshow')->default(false);

@@ -106,7 +106,10 @@
     <div class="form-group row">
         <label for="foto_anggota_1" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-6">
-            <img src="{{ asset('storage/peserta/'.$user->foto_anggota_1) }}" alt="Foto Anggota 1" style="width: 100px;">
+            @isset($user->foto_anggota_1)
+                <img src="{{ asset('storage/peserta/'.$user->foto_anggota_1) }}" alt="Foto Anggota 1" style="width: 100px;">
+            @endisset
+
             <input id="foto_anggota_1" type="file" class="form-control{{ $errors->has('foto_anggota_1') ? ' is-invalid' : '' }}" value="{{ old('foto_anggota_1') }}" name="foto_anggota_1" value="{{ $user->foto_anggota_1 }}">
             <p><small>Ukuran foto maksimal 2MB berformat jpg / jpeg / png</small></p>
 
@@ -147,7 +150,9 @@
     <div class="form-group row">
         <label for="foto_anggota_2" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-6">
-            <img src="{{ asset('storage/peserta/'.$user->foto_anggota_2) }}" alt="Foto Anggota 2" style="width: 100px;">
+            @isset($user->foto_anggota_2)
+                <img src="{{ asset('storage/peserta/'.$user->foto_anggota_2) }}" alt="Foto Anggota 2" style="width: 100px;">
+            @endisset
             <input id="foto_anggota_2" type="file" class="form-control{{ $errors->has('foto_anggota_2') ? ' is-invalid' : '' }}" value="{{ old('foto_anggota_2') }}" name="foto_anggota_2" value="{{ $user->foto_anggota_2 }}">
             <p><small>Ukuran foto maksimal 2MB berformat jpg / jpeg / png</small></p>
 

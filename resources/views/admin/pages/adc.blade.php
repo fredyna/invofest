@@ -123,6 +123,16 @@
 
         if(data.konfirmasi){
           $("#konfirmasi").hide();
+          $("#div_link_berkas").show();
+          $("#div_link_video").show();
+        }
+
+        if(data.link_berkas && data.link_video){
+          $("#link_berkas").attr("href",data.link_berkas);
+          $("#link_video").attr("href",data.link_video);
+        } else {
+          $("#link_berkas").attr("disabled",true);
+          $("#link_video").attr("disabled",true);
         }
 
         $("#konfirmasi").attr("onclick","konfirmasi()");

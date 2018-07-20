@@ -123,6 +123,14 @@
 
         if(data.konfirmasi){
           $("#konfirmasi").hide();
+          $("#div_link_berkas").show();
+          $("#div_link_video").hide();
+        }
+
+        if(data.link_berkas && data.link_video){
+          $("#link_berkas").attr("href",data.link_berkas);
+        } else {
+          $("#link_berkas").attr("disabled",true);
         }
 
         $("#konfirmasi").attr("onclick","konfirmasi()");

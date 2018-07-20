@@ -20,7 +20,7 @@
                     <a class="nav-link" href="{{ URL::to('/#section-acara') }}">Acara</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Jadwal</a>
+                    <a class="nav-link" href="{{ route('timeline') }}">Jadwal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ URL::to('/#section-info') }}">Informasi</a>

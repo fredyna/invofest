@@ -26,6 +26,11 @@ Route::get('/seminar', function(){
     return view('umum.seminar.seminar');
 })->name('seminar');
 
+//route timeline
+Route::get('/jadwal', function(){
+    return view('umum.timeline');
+})->name('timeline');
+
 //Route Workshop
 Route::group(['prefix' => 'workshop'], function() {
     Route::get('/', function() {
@@ -69,16 +74,15 @@ Route::group(['prefix' => 'itcompetition'], function() {
 });
 
 // route daftar acara
-Route::get('/event/registrasi', 'Event@showRegistrasi')->name('event.registrasi');
-Route::post('/event/registrasi', 'Event@registrasi');
+Route::get('/event/registrasi', 'EventController@showRegistrasi')->name('event.registrasi');
+Route::post('/event/registrasi', 'EventController@registrasi');
 
 Auth::routes();
 
+//route activate email
 Route::get('auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
 Route::get('auth/activate/resend', 'Auth\ActivationController@showResendForm')->name('auth.activate.resend');
 Route::post('auth/activate/resend', 'Auth\ActivationController@resend');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/check', function() {})->middleware('auth','role');
 
@@ -146,45 +150,6 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::post('konfirmasi', 'MemberController@konfirmasi');
     Route::get('upload_berkas', 'MemberController@showFormUploadBerkas')->name('member.upload_berkas');
     Route::post('upload_berkas', 'MemberController@uploadBerkas');
-});
-
-//route untuk uji coba
-
-use App\User;
-use App\Kompetisi;
-use App\Events\Confirm\UserRegistrationConfirm;
-
-
-Route::get('/konfirmasi_pendaftaran', 'Confirm\SendConfirmController@send')->name('member.konfirmasi_pemdaftaran');
-
-Route::get('/setujui', 'Confirm\RegistrationConfirmController@confirm')->name('setujui');
-
-
-Route::get('/daftar_kompetisi', function() {
-    $user = User::find(Auth::user()->id);
-
-    $kompetisi = new Kompetisi([
-        'jenis_lomba' => 'adc', 
-        'asal_sekolah' => 'Poltek Tegal', 
-        'nama_ketua_tim' => 'Fredy',
-        'no_ketua_tim' => '089989899989', 
-        'email_ketua_tim' => 'mail@sfdfdf.com', 
-        'foto_ketua_tim' => 'aye'
-    ]);
-
-    $user->kompetisi()->save($kompetisi);
-});
-
-Route::get('/update_kompetisi', function() {
-    $user = User::find(1);
-
-    $kompetisi = [
-        'jenis_lomba' => 'wdc', 
-        'asal_sekolah' => 'Poltek Tegal', 
-        'nama_ketua_tim' => 'Fredy Nur',
-    ];
-
-    $user->kompetisi()->update($kompetisi);
 });
 
 

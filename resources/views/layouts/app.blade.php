@@ -56,7 +56,10 @@
                                 <a class="nav-link" href="{{ route('register') }}" style="color: #FFF;">{{ __('Register') }}</a>
                             </li>
                         @else
-                            @include('layouts.partials._menuAfterLogin')
+                            @if(isset($user))
+                                @include('layouts.partials._menuAfterLogin')
+                            @endif
+                            
                         @endguest
                     </ul>
                 </div>
@@ -70,6 +73,8 @@
         </main>
     </div>
 </body>
+<script src="{{ url('js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
+<script src="{{ url('js/core/popper.min.js') }}" type="text/javascript"></script>
 <script>
     @yield('potongan_script')
 </script>
