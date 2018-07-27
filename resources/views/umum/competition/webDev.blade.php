@@ -13,7 +13,7 @@
                     <h2 class="title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s" >WEB DESIGN <br><span style="font-weight: 100;">COMPETITION</span></h2>
                     <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “”</h5>
                     <div class="row justify-content-center">
-                        <a href="javascript:void(0)" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
+                        <a href="{{ route('member') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
                         <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
                     </div>
                 </div>
@@ -83,7 +83,41 @@
                     </div>
                 </div>
                 <br /><br />
+
+                <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Info Registrasi</h5>
+                <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
+                    <tr>
+                        <td style="width:150px;">Biaya Registrasi</td>
+                        <td> : Rp 100.000,- / tim</td>
+                    </tr>
+                </table>
+                <br />
+                <p class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">Pembayaran via transfer :<br /> <br/>
+                    No Rekening <b>6072-01-015533-53-2</b> <br />
+                    a/n Fauziah Nur Rahmawati (BRI)</p>
+                <p class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.6s">Konfirmasi Pembayaran : </p>
+                <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
+                    <tr>
+                        <td style="width:100px;">WA</td>
+                        <td class="text-right"> : </td>
+                        <td>Via CP</td>
+                    </tr>
+                    <tr>
+                        <td style="width:100px;">Email</td>
+                        <td class="text-right"> : </td>
+                        <td>invofest@gmail.com</td>
+                    </tr>
+                </table>
+                <br /><br />
+
                 <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Contact Person</h5>
+                <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
+                    <tr>
+                        <td style="width:150px;">Elfan</td>
+                        <td class="text-right"> : </td>
+                        <td>0838 3905 3922</td>
+                    </tr>
+                </table>
             </div>
         </div>
 

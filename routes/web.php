@@ -153,4 +153,13 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 });
 
 
+// uji coba qrcode
+
+Route::get('/qr-code', function () 
+{
+    $path = public_path('storage/qrcode/inv012765432154.png');
+    return \QRCode::text('inv012765432154')->setOutfile($path)->png();    
+});
+
+
 

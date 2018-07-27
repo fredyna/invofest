@@ -130,6 +130,29 @@
     .timeline-body > p + p {
         margin-top: 5px;
     }
+    @media screen and (max-width: 576px) {
+        .timeline > li:not(.timeline-inverted) {
+            padding-right:0px;
+        }
+            
+        .timeline > li.timeline-inverted {
+            padding-left:0px;
+        }
+
+        .timeline-heading h4{
+            font-size: 1.3em;
+        }
+
+        .timeline > li > .timeline-panel{
+            width: 100%;
+        }
+        .timeline > li > .timeline-badge{
+            left:2%;
+        }
+        .timeline:before{
+            left:0;
+        }
+    }
     </style>
 @endsection
 
@@ -155,7 +178,7 @@
         <div class="section section-deskripsi">
             <div class="container">
                 <h4 class="section-title text-center wow bounceInDown" data-wow-duration="0.5s" data-wow-delay="0s">Timeline Invofest 2018</h4>
-
+                
                 <ul class="timeline">
                     <li>
                         <div class="timeline-badge primary"><i class="fa fa-calendar-check-o"></i></div>
@@ -206,6 +229,56 @@
                         </div>
                     </li>
                 </ul>
+                {{-- <ul class="timeline">
+                    <li>
+                        <div class="timeline-badge primary"><i class="fa fa-calendar-check-o"></i></div>
+                        <div class="timeline-panel text-right">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">GRAND OPENING &amp; TALKSHOW</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>25 OKTOBER 2018 <small>Pagi - Siang</small></p>
+                                <p>Grand Opening Invofest 2018 & Talkshow Interaktif dengan tema "Big Data Pada Software Engineering"</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-badge warning"><i class="fa fa-calendar-check-o"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">WORKSHOP</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>25 OKTOBER 2018 <small>Siang - Sore</small></p>
+                                <p>Workshop IT : UI/UX Design, Data Science, Cyber Security, dan Web Services</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-badge primary"><i class="fa fa-calendar-check-o"></i></div>
+                        <div class="timeline-panel text-right">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">Final IT COMPETITION</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>26 OKTOBER 2018</p>
+                                <p>Pelaksanaan final IT Competition : Application Development Competition, Web Design Competition &amp; Database Programming Competition</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="timeline-inverted">
+                        <div class="timeline-badge warning"><i class="fa fa-calendar-check-o"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title">SEMINAR NASIONAL</h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>27 OKTOBER 2018</p>
+                                <p>Seminar nasional dengan tema Artificial Intelegence dalam Transformasi Teknologi Industri Masa Depan</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul> --}}
             </div>
         </div>
     </div>

@@ -67,6 +67,23 @@
                     </tr>
                 </table>
                 <br />
+                <p class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.5s">Pembayaran via transfer :<br /> <br/>
+                    No Rekening <b>6072-01-015533-53-2</b> <br />
+                    a/n Fauziah Nur Rahmawati (BRI)</p>
+                <p class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.6s">Konfirmasi Pembayaran : </p>
+                <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
+                    <tr>
+                        <td style="width:100px;">WA</td>
+                        <td class="text-right"> : </td>
+                        <td>0852 0055 0071 (Murni Kurniasih)</td>
+                    </tr>
+                    <tr>
+                        <td style="width:100px;">Email</td>
+                        <td class="text-right"> : </td>
+                        <td>invofest@gmail.com</td>
+                    </tr>
+                </table>
+                <br/>
                 <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
                     <tr>
                         <td style="width:100px;">Fasilitas</td>

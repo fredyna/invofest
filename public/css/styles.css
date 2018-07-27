@@ -6724,6 +6724,11 @@ Created using IcoMoon - icomoon.io
     #section-acara #pembicara-pemateri #garis {
         display: none;
     }
+
+    .footer nav {
+        display: block;
+        text-align: center;
+    }
 }
 
 @media screen and (max-width: 1200px) {
