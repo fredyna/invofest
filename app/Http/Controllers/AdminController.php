@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use LaravelQRCode\Facades\QRCode;
 use App\Mail\Confirm\SendConfirm;
+use App\Mail\Confirm\SendTiket;
 
 use App\Peserta;
 use App\Post;
@@ -500,6 +502,16 @@ class AdminController extends Controller
     {
         $user = User::find($id);
         Mail::to($user->email)->send(new SendConfirm($user));
+    }
+
+    public function sendTiket($id)
+    {
+        $peserta = Peserta::find($id);
+        $path = public_path('storage/qrcode/');
+        $path_send = $path . $id . '.png';
+        QRCode::text($id)->setOutfile($path_send)->png(); 
+        Mail::to($peserta->email)->send(new SendTiket($peserta));    
+        echo $path_send;
     }
 
     public function apiAdc()
