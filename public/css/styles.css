@@ -4672,6 +4672,10 @@ Created using IcoMoon - icomoon.io
     background-color: #3870B0;
 }
 
+#section-info .card-img-top {
+    height : 50%;
+}
+
 /* ----------------------
     section foto
 -----------------------*/

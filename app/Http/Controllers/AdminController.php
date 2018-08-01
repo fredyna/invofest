@@ -607,6 +607,10 @@ class AdminController extends Controller
             $gambar = '<image src="'. $link .'" width="80px">';    
             return $gambar;
         })
+        ->editColumn('deskripsi', function($post){
+            $desc = str_limit($post->deskripsi, 100);    
+            return $desc;
+        })
         ->rawColumns(['action','deskripsi','gambar'])
         ->make(true);
     }

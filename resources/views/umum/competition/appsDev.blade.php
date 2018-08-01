@@ -35,20 +35,30 @@
                 <div class="row">
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                         <h6>Pendaftaran Lomba</h6>
-                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>14 Juli – 1 September 2018</b></p>
+                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>1 Agustus – 1 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.25s">
                         <h6>Submisi Proposal dan Video</h6>
-                        <p>Submisi Proposal untuk tahap seleksi menuju final dilaksanakan pada tanggal <b>Juli – 9 September 2018</b></p>
+                        <p>Submisi Proposal untuk tahap seleksi menuju final dilaksanakan pada tanggal <b>1 Agustus - 8 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1.5s">
-                        <h6>Pengumuman Finalis</h6>
-                        <p>Pengumuman daftar peserta kompetisi Application Development Competition 2018 yang lolos ke tahap final diberitahukan pada tanggal <b>22 September 2018</b></p>
+                        <h6>Pengumuman Seminfinalis</h6>
+                        <p>Pengumuman peserta lolos submisi proposal pada <b>10 September 2018</b></p>
                     </div>
 
-                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
+                    <div class="col-md-6 text-right wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
+                        <h6>Submisi Aplikasi dan Video</h6>
+                        <p>Batas akhir submisi pengumpulan aplikasi yang dikembangkan dan video secara onlline pada <b>10 September - 15 Oktober 2018</b></p>
+                    </div>
+
+                    <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="2s">
+                        <h6>Pengumuman Finalis</h6>
+                        <p>Pengumuman peserta lolos ke tahap final pada <b>20 Oktober 2018</b></p>
+                    </div>
+
+                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay="2.25s">
                         <h6>Final</h6>
                         <p>Babak final akan dilaksanakan di Kampus 1 Politeknik Harapan Bersama pada tanggal <b>26 Oktober 2018</b></p>
                     </div>

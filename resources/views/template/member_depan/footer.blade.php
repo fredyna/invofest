@@ -43,7 +43,7 @@
 <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 <script src="{{ url('js/TweenLite.min.js') }}"></script>
 <script src="{{ url('js/EasePack.min.js') }}"></script>
-<script src="{{ url('js/header-gerak.js') }}"></script>
+@yield('header-gerak-js')
 <script src="{{ url('js/plugins/wow.min.js') }}"></script>
 <script src="{{ url('js/now-ui-kit.js?v=1.1.0') }}" type="text/javascript"></script>
 <script>
@@ -64,3 +64,4 @@ $(document).ready(function(){
     });
 })
 </script>
+@yield('myscript')

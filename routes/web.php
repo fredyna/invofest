@@ -12,30 +12,20 @@
 */
 
 // route untuk halaman depan
-Route::get('/', function () {
-    return view('umum.beranda');
-})->name('beranda');
+Route::get('/', 'UmumController@showBeranda')->name('beranda');
 
 //route Talkshow
-Route::get('/talkshow', function(){
-    return view('umum.talkshow.talkshow');
-})->name('talkshow');
+Route::get('/talkshow', 'UmumController@showTalkshow')->name('talkshow');
 
 //route Seminar
-Route::get('/seminar', function(){
-    return view('umum.seminar.seminar');
-})->name('seminar');
+Route::get('/seminar', 'UmumController@showSeminar')->name('seminar');
 
 //route timeline
-Route::get('/jadwal', function(){
-    return view('umum.timeline');
-})->name('timeline');
+Route::get('/jadwal', 'UmumController@showJadwal')->name('timeline');
 
 //Route Workshop
 Route::group(['prefix' => 'workshop'], function() {
-    Route::get('/', function() {
-        return view('umum.workshop.workshop');
-    })->name('workshop');
+    Route::get('/', 'UmumController@showWorkshop')->name('workshop');
     // ui/ux design
     Route::get('ui_ux', function() {
         return view('umum.workshop.ui_ux');        
@@ -56,9 +46,7 @@ Route::group(['prefix' => 'workshop'], function() {
 
 //route IT Competition
 Route::group(['prefix' => 'itcompetition'], function() {
-    Route::get('/', function() {
-        return view('umum.competition.itcompetition');
-    })->name('itcompetition');
+    Route::get('/', 'UmumController@showCompetition')->name('itcompetition');
     
     Route::get('adc', function() {
         return view('umum.competition.appsDev');        
@@ -72,6 +60,14 @@ Route::group(['prefix' => 'itcompetition'], function() {
         return view('umum.competition.dpc');        
     })->name('itcompetition.dpc');
 });
+
+//route news
+Route::group(['prefix' => 'news'], function() {
+    Route::get('/', 'UmumController@showNews')->name('news');
+    Route::get('/detail', 'UmumController@showNewsById');
+    Route::get('/{offset}', 'UmumController@showNews');
+});
+
 
 // route daftar acara
 Route::get('/event/registrasi', 'EventController@showRegistrasi')->name('event.registrasi');

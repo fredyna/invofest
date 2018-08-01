@@ -84,7 +84,7 @@
         $('.modal-title').text('Tambah Post');
         $('#tombolsubmit').prop('style' , 'display : inline');
         $('#gambar').prop('required','true');
-        
+        $('#showgambar').hide();
         
       }
     
@@ -157,7 +157,7 @@
                             
                         },
                         error : function(){
-                          alert("eror cuk");
+                          alert("eror");
 
                         }
                     });

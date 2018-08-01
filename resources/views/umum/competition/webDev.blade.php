@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="content-center">
                     <h2 class="title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s" >WEB DESIGN <br><span style="font-weight: 100;">COMPETITION</span></h2>
-                    <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “”</h5>
+                    <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Impactful Design for Better Education”</h5>
                     <div class="row justify-content-center">
                         <a href="{{ route('member') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
                         <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
@@ -37,12 +37,12 @@
                 <div class="row">
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                         <h6>Pendaftaran Lomba</h6>
-                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>14 Juli – 1 September 2018</b></p>
+                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>1 Agustus – 1 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.25s">
                         <h6>Submisi Desain MockUp Website</h6>
-                        <p>Submisi Desain MockUp Website untuk tahap penyisihan dilaksanakan pada tanggal <b>14 Juli – 9 September 2018</b></p>
+                        <p>Submisi Desain MockUp Website untuk tahap penyisihan dilaksanakan pada tanggal <b>1 Agustus – 9 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1.5s">
@@ -50,7 +50,7 @@
                         <p>Pengumuman daftar peserta kompetisi Web Design Competition 2018 yang lolos ke tahap final diberitahukan pada tanggal <b>22 September 2018</b></p>
                     </div>
 
-                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
+                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.75s">
                         <h6>Final</h6>
                         <p>Babak final akan dilaksanakan di Kampus 1 Politeknik Harapan Bersama pada tanggal <b>26 Oktober 2018</b></p>
                     </div>

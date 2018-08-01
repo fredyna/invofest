@@ -36,10 +36,10 @@
                 <div class="row">
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                         <h6>Pendaftaran Lomba</h6>
-                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>14 Juli – 1 September 2018</b></p>
+                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>1 Agustus – 19 Oktober 2018</b></p>
                     </div>
 
-                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.25s">
+                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="1s" data-wow-delay="1.25s">
                         <h6>Tahap Penyisian</h6>
                         <p>Tahap penyisihan dilakukan on site Kampus 1 Politeknik Harapan Bersama pada tanggal <b>26 Oktober 2018</b></p>
                     </div>

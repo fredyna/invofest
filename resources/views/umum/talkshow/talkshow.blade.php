@@ -49,7 +49,7 @@
                         <img src="{{ url('img/tokoh/peter.png') }}" alt="PETER JACK KAMBEY" width="200px" class="mx-auto d-block">
                         <br />
                         <h5>PETER JACK KAMBEY</h5>
-                        <p>IT Manger Titan Baking</p>
+                        <p>Head of Executive PHP Indonesia Community</p>
                     </div>
 
                     <div class="col-md-5 text-center wow zoomIn" data-wow-duration="0.5s" data-wow-delay="1s" style="margin:2%;">
@@ -110,6 +110,5 @@
                 </table>
             </div>
         </div>
-
-
+    </div>
 @endsection

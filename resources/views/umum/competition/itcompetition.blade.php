@@ -18,7 +18,7 @@
         <!-- end section beranda -->
 
         <!-- section acara -->
-        <div id="section-acara" class="section section-acara" style="background-image: url('{{ url('img/bg_sm.jpg') }}');">
+        <div id="section-acara" class="section section-acara" style="background-image: url('{{ url('img/bg_sm.jpg') }}'); background-size:cover;">
             <div class="container-fluid">
                 <h4 class="section-title text-center">IT Competition Invofest 2018</h4>
                 <div class="row justify-content-md-center">
@@ -65,4 +65,5 @@
         <!-- end section acara -->
 
         @include('member.partials._sponsor')
+    </div>
 @endsection
