@@ -115,6 +115,7 @@
         <!-- end section-foto -->
 
         @include('member.partials._sponsor')
+        @include('member.partials._media')
     </div>
 @endsection
 
