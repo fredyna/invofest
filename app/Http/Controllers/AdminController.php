@@ -219,10 +219,21 @@ class AdminController extends Controller
         
         $peserta->konfirmasi_bayar = '1';
         $peserta->jenis_pembayaran = $request->jenis_pembayaran;
-        $peserta->update();
+        // $peserta->update();
+
+
+        if($peserta->update()){
+            //send email confirm to competitor
+            $this->sendTiket($peserta->id_peserta);
+
+            //return statement
+            return $peserta;
+        }
+
+        // return view('admin.pages.inbox')->with("Konfirmasi gagal!");
         // $peserta = dd($request->all());
         // $peserta = 1;
-        return $peserta;
+        // return $peserta;
     }
 
     public function updateWorkshop(Request $request , $id)
@@ -319,7 +330,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="konfirmForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="konfirmForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
         })
         ->editColumn('seminar', function($peserta){
             if($peserta->seminar == '1'){
@@ -337,7 +348,7 @@ class AdminController extends Controller
                 return '<a class="label label-danger">Tidak</a> ';
             }
         })->editColumn('kategori', function($peserta){
-            if($peserta->kategori == 'umum'){
+            if($peserta->kategori == 'Umum'){
                 
                 return '<a  class="label label-info">Umum</a>';
             }else{
@@ -362,10 +373,10 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="detailForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
-            if($peserta->kategori == 'umum'){
+            if($peserta->kategori == 'Umum'){
                 
                 return '<a  class="label label-info">Umum</a>';
             }else{
@@ -394,10 +405,10 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="detailForm('. $peserta->id_peserta .')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
-            if($peserta->kategori == 'umum'){
+            if($peserta->kategori == 'Umum'){
                 
                 return '<a  class="label label-info">Umum</a>';
             }else{
@@ -487,10 +498,10 @@ class AdminController extends Controller
             $this->sendConfirmEmail($kompetisi->user->id);
 
             //return statement
-            return redirect('/admin/kompetisi')->withSuccess("Konfirmasi Sukses! Tim yang dikonfirmasi telah masuk dalam daftar peserta sesuai jenis lomba yang diikuti.");
+            // return redirect('/admin/kompetisi')->withSuccess("Konfirmasi Sukses! Tim yang dikonfirmasi telah masuk dalam daftar peserta sesuai jenis lomba yang diikuti.");
         }
 
-        return view('admin.pages.kompetisi_inbox')->with("Konfirmasi gagal!");
+        // return view('admin.pages.kompetisi_inbox')->with("Konfirmasi gagal!");
     }
 
     /**
@@ -511,7 +522,7 @@ class AdminController extends Controller
         $path_send = $path . $id . '.png';
         QRCode::text($id)->setOutfile($path_send)->png(); 
         Mail::to($peserta->email)->send(new SendTiket($peserta));    
-        echo $path_send;
+        // echo $path_send;
     }
 
     public function apiAdc()

@@ -125,6 +125,7 @@
             $('.modal-title').text('Konfirmasi Peserta');
 
             $('#id').val(data.id_peserta);
+            $('#tanggal').val(data.created_at).prop('disabled',true);
             $('#nama').val(data.nama).prop('disabled',true);
             $('#kategori').val(data.kategori).prop('disabled',true);
             $('#asal_institusi').val(data.asal_institusi).prop('disabled',true);

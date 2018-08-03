@@ -12,6 +12,15 @@
 
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
+                    
+                    <div class="form-group">
+                        <label for="tanggal" class="col-md-3 control-label">Tanggal</label>
+                        <div class="col-md-6">
+                            <input type="text" id="tanggal" name="tanggal" class="form-control">
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+                    
                     <div class="form-group">
                         <label for="nama" class="col-md-3 control-label">Nama Peserta</label>
                         <div class="col-md-6">
@@ -19,6 +28,7 @@
                             <span class="help-block with-errors"></span>
                         </div>
                     </div>
+
 
                     <div class="form-group">
                       <label for="asal_institusi" class="col-md-3 control-label">Asal Institusi</label>

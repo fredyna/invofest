@@ -92,10 +92,12 @@ function Hitung() {
 
             if(data.kompetisi > 0){
               $('#kompetisihitung').text(data.kompetisi).prop('style','display : inline');
-              $('#kompetisihitung1').text(data.kompetisi).prop('style','display : inline');
+              $('#kompetisihitung1').text(data.kompetisi).prop('style','display : inline');  
+            }else if (data.peserta > 0){
               $('#acarahitung').text(data.peserta).prop('style','display : inline');
-              $('#acarahitung1').text(data.peserta).prop('style','display : inline');  
-            }else{
+              $('#acarahitung1').text(data.peserta).prop('style','display : inline');
+            }
+            else{
               $('#kompetisihitung').text(data.kompetisi).prop('style','display : none');
               $('#kompetisihitung1').text(data.kompetisi).prop('style','display : none');
               $('#acarahitung').text(data.peserta).prop('style','display : none');
