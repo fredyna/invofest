@@ -162,6 +162,8 @@ return [
 
         Yajra\DataTables\DataTablesServiceProvider::class,
 
+        LaravelQRCode\Providers\QRCodeServiceProvider::class,
+
     ],
 
     /*
@@ -212,6 +214,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'QRCode' => LaravelQRCode\Facades\QRCode::class,     
     
 
     ],

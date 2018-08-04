@@ -12,6 +12,15 @@
 
                 <div class="modal-body">
                     <input type="hidden" id="id" name="id">
+                    
+                    <div class="form-group">
+                        <label for="tanggal" class="col-md-3 control-label">Tanggal Registrasi</label>
+                        <div class="col-md-6">
+                            <input type="text" id="tanggal" name="tanggal" class="form-control">
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="nama" class="col-md-3 control-label">Nama Peserta</label>
                         <div class="col-md-6">
@@ -37,7 +46,7 @@
                       </div>
 
                       <div class="form-group" hidden id="ktm">
-                        <label for="foto_ktm" class="col-md-3 control-label">Kategori</label>
+                        <label for="foto_ktm" class="col-md-3 control-label">Foto KTM</label>
                         <div class="col-md-6">
                         <img id="foto_ktm" src="{{asset('img/foto_ktm/1.jpg')}}" style="width:30px; height:50px">
                             <span class="help-block with-errors"></span>
@@ -117,7 +126,7 @@
                      
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary btn-flat">Submit</button>
+                    <button type="submit" class="btn btn-primary btn-flat">Konfirmasi</button>
                     <button type="button" class="btn btn-danger btn-flat" data-dismiss="modal">Cancel</button>
                 </div>
                 

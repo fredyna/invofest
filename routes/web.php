@@ -112,6 +112,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/inbox/{id}', 'AdminController@edit');
     Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
     Route::post('/peserta/workshopupdate/{id}', 'AdminController@updateWorkshop');
+    
+    Route::get('/peserta/bayar/{id}', 'AdminController@sendTiket');
     // Route::post('/peserta/konfirmasi', 'AdminController@konfirmasi');
     // Route::resource('peserta', 'AdminController');
     Route::get('/kompetisi/{id}', 'AdminController@kompetisiedit');
@@ -153,8 +155,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 
 Route::get('/qr-code', function () 
 {
-    $path = public_path('storage/qrcode/inv012765432154.png');
-    return \QRCode::text('inv012765432154')->setOutfile($path)->png();    
+    $path = public_path('storage/qrcode/abc.png');
+    return \QRCode::text('abc')->setOutfile($path)->png();   
 });
 
 
