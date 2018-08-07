@@ -14,7 +14,7 @@
                     <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Impactful Design for Better Education”</h5>
                     <div class="row justify-content-center">
                         <a href="{{ route('member') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
-                        <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
+                        <a href="https://drive.google.com/open?id=1-07uZKH26Np7NHjvT3bPAnBXgZro8sTC" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
                     </div>
                 </div>
             </div>

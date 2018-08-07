@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mail\Confirm\SendRegistrationEventSuccess;
+use Illuminate\Support\Facades\Input;
 
 use App\Peserta;
 use Mail;
@@ -28,9 +29,10 @@ class EventController extends Controller
 
         $unix_time = time();
         $random    = rand(10, 99);
+        $id        = 'inv' . $unix_time . $random;
 
         $data = [
-            'id_peserta'    => 'inv' . $unix_time . $random, 
+            'id_peserta'    => $id, 
             'kategori'      => $request->kategori,
             'nama'          => strtoupper($request->nama),
             'email'         => $request->email,
@@ -70,12 +72,15 @@ class EventController extends Controller
         }
 
         $data['asal_institusi']     = $request->asal_institusi != '' ? strtoupper($request->asal_institusi) : null;
-        
 
-        if(isset($request->ktm)){
-            $request->ktm->store('public/ktm');
-            $path_foto = $request->ktm->hashName();
-            $data['foto_ktm']   = $path_foto;
+        if (Input::file('ktm')->isValid())
+        {
+            $destinationPath = 'uploads/ktm';
+            $extension = Input::file('ktm')->getClientOriginalExtension();
+            $fileName = $id . '.' . $extension;
+            Input::file('ktm')->move($destinationPath, $fileName);
+
+            $data['foto_ktm']   = $fileName;
         }
 
         $event = new Peserta($data);
@@ -85,7 +90,7 @@ class EventController extends Controller
             //kirim email info registrasi sukses
             Mail::to($peserta->email)->send(new SendRegistrationEventSuccess($peserta));
 
-            return redirect()->back()->withSuccess('Registrasi berhasil! Silahkan lakukan pembayaran dan konfirmasi pembayaran ke email invofest@gmail.com atau ke salah satu CP yang tertera di informasi acara.');
+            return redirect()->back()->withSuccess('Registrasi berhasil! Silahkan cek inbox email Anda. Jika tidak menemukan di inbox, cek di spam email!.');
         } 
         else
         {

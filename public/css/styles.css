@@ -4512,6 +4512,12 @@ Created using IcoMoon - icomoon.io
     top:10px;
     left:30px;
 }
+.section-video .live-md iframe {
+    position: absolute;
+    top:10px;
+    left:30px;
+    height:270px;
+}
 .section-video .live-sm {
     display:none;
 }
@@ -5210,14 +5216,6 @@ Created using IcoMoon - icomoon.io
 
 [data-background-color].section-nucleo-icons .icons-container i:nth-child(6) {
     color: #FFFFFF;
-}
-
-@media screen and (max-width: 992px) {
-
-    .section-video .live-md .behind-video {
-        height:150px;
-    }
-
 }
 
 @media screen and (max-width: 991px) {
@@ -6098,6 +6096,14 @@ Created using IcoMoon - icomoon.io
         top: 93%;
     }
 
+    .section-video .live-md .behind-video {
+        height:150px;
+    }
+
+    .section-video .live-md iframe {
+        height:175px;
+    }
+
     #section-acara .kotak-acara .btn {
         left: 37%;
     }
@@ -6654,6 +6660,10 @@ Created using IcoMoon - icomoon.io
     .image-container.image-left {
         margin-right: -100px;
     }
+
+    .section-video .live-sm iframe {
+        height:190px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -6686,6 +6696,10 @@ Created using IcoMoon - icomoon.io
 
     #section-video .live-sm {
         display: block;
+    }
+
+    .section-video .live-sm iframe {
+        height:240px;
     }
 
     #section-acara .kotak-acara .btn {
@@ -6732,19 +6746,6 @@ Created using IcoMoon - icomoon.io
     .footer nav {
         display: block;
         text-align: center;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .section-video .live-md .behind-video {
-        height:200px;
-        margin-bottom: 50px;
-    }
-}
-
-@media screen and (min-width: 992px) and (max-width: 1200px) {
-    .section-video .live-md .behind-video {
-        height:200px;
     }
 }
 

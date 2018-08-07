@@ -77,16 +77,10 @@
                     <div class="col-md-6 wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s">
                         <div class="live-md">
                             <div class="behind-video"></div>
-                            <video width="90%" controls="true">
-                                <source src="{{ url('video/trailer.mp4') }}" type="video/mp4">
-                                Browser Anda tidak mendukung HTML 5.
-                            </video>
+                            <iframe width="87%" src="https://www.youtube.com/embed/8o3t1_dQy2U" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
                         </div>
                         <div class="live-sm">
-                            <video width="90%" controls>
-                                <source src="{{ url('video/trailer.mp4') }}" type="video/mp4">
-                                Browser Anda tidak mendukung HTML 5.
-                            </video>
+                            <iframe width="87%" src="https://www.youtube.com/embed/8o3t1_dQy2U" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>
                         </div>
                     </div>
                     <div class="col-md-6 wow slideInRight" data-wow-duration="1s" data-wow-delay="0s">

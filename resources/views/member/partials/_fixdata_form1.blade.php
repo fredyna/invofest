@@ -44,7 +44,7 @@
 <div class="form-group row">
     <label for="foto_ketua_tim" class="col-sm-2 col-form-label">Foto</label>
     <div class="col-sm-6">
-        <img src="{{ asset('storage/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
+        <img src="{{ asset('uploads/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
     </div>
 </div>
 <br /><br />
@@ -78,7 +78,7 @@
     <label for="foto_anggota_1" class="col-sm-2 col-form-label">Foto</label>
     <div class="col-sm-6">
         @if ($user->foto_anggota_1 != null)
-            <img src="{{ asset('storage/peserta/'.$user->foto_anggota_1) }}" alt="Foto Anggota 1" style="width: 100px;">
+            <img src="{{ asset('uploads/peserta/'.$user->foto_anggota_1) }}" alt="Foto Anggota 1" style="width: 100px;">
         @endif
     </div>
 </div>
@@ -113,7 +113,7 @@
     <label for="foto_anggota_2" class="col-sm-2 col-form-label">Foto</label>
     <div class="col-sm-6">
         @if ($user->foto_anggota_2 != null)
-            <img src="{{ asset('storage/peserta/'.$user->foto_anggota_2) }}" alt="Foto Anggota 2" style="width: 100px;">
+            <img src="{{ asset('uploads/peserta/'.$user->foto_anggota_2) }}" alt="Foto Anggota 2" style="width: 100px;">
         @endif
     </div>
 </div>

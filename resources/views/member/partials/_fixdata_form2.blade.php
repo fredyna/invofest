@@ -37,6 +37,6 @@
 <div class="form-group row">
     <label for="foto_ketua_tim" class="col-sm-2 col-form-label">Foto</label>
     <div class="col-sm-6">
-        <img src="{{ asset('storage/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
+        <img src="{{ asset('uploads/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
     </div>
 </div>

@@ -48,7 +48,7 @@
                       <div class="form-group" hidden id="ktm">
                         <label for="foto_ktm" class="col-md-3 control-label">Foto KTM</label>
                         <div class="col-md-6">
-                        <img id="foto_ktm" src="{{asset('img/foto_ktm/1.jpg')}}" style="width:30px; height:50px">
+                        <img id="foto_ktm" src="{{asset('img/foto_ktm/1.jpg')}}" style="width:50px;>
                             <span class="help-block with-errors"></span>
                         </div>
                       </div>

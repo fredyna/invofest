@@ -498,7 +498,7 @@ class AdminController extends Controller
             $this->sendConfirmEmail($kompetisi->user->id);
 
             //return statement
-            // return redirect('/admin/kompetisi')->withSuccess("Konfirmasi Sukses! Tim yang dikonfirmasi telah masuk dalam daftar peserta sesuai jenis lomba yang diikuti.");
+            return redirect('/admin/kompetisi')->withSuccess("Konfirmasi Sukses! Tim yang dikonfirmasi telah masuk dalam daftar peserta sesuai jenis lomba yang diikuti.");
         }
 
         // return view('admin.pages.kompetisi_inbox')->with("Konfirmasi gagal!");
@@ -518,7 +518,7 @@ class AdminController extends Controller
     public function sendTiket($id)
     {
         $peserta = Peserta::find($id);
-        $path = public_path('storage/qrcode/');
+        $path = public_path('uploads/qrcode/');
         $path_send = $path . $id . '.png';
         QRCode::text($id)->setOutfile($path_send)->png(); 
         Mail::to($peserta->email)->send(new SendTiket($peserta));    

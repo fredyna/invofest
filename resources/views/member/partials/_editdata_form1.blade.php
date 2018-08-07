@@ -65,7 +65,7 @@
     <div class="form-group row">
         <label for="foto_ketua_tim" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-6">
-            <img src="{{ asset('storage/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
+            <img src="{{ asset('uploads/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
             <input id="foto_ketua_tim" type="file" class="form-control{{ $errors->has('foto_ketua_tim') ? ' is-invalid' : '' }}" value="{{ old('foto_ketua_tim') }}" name="foto_ketua_tim">
             <p><small>Ukuran foto maksimal 2MB berformat jpg / jpeg / png</small></p>
 
@@ -89,25 +89,43 @@
         <label for="nama_anggota_1" class="col-sm-2 col-form-label">Nama</label>
         <div class="col-sm-6">
             <input type="text" class="form-control" id="nama_anggota_1" name="nama_anggota_1" placeholder="Ketikan Nama Anggota 1" value="{{ $user->nama_anggota_1 }}">
+
+            @if ($errors->has('nama_anggota_1'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('nama_anggota_1') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="no_anggota_1" class="col-sm-2 col-form-label">No HP</label>
         <div class="col-sm-6">
             <input type="number" class="form-control" id="no_anggota_1" name="no_anggota_1" placeholder="Ketikan No HP Anggota 1" value="{{ $user->no_anggota_1 }}">
+
+            @if ($errors->has('no_anggota_1'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('no_anggota_1') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="email_anggota_1" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-6">
             <input type="email" class="form-control" id="email_anggota_1" name="email_anggota_1" placeholder="Ketikan Email Anggota 1" value="{{ $user->email_anggota_1 }}" autocomplete="email">
+
+            @if ($errors->has('email_anggota_1'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email_anggota_1') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="foto_anggota_1" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-6">
             @isset($user->foto_anggota_1)
-                <img src="{{ asset('storage/peserta/'.$user->foto_anggota_1) }}" alt="Foto Anggota 1" style="width: 100px;">
+                <img src="{{ asset('uploads/peserta/'.$user->foto_anggota_1) }}" alt="Foto Anggota 1" style="width: 100px;">
             @endisset
 
             <input id="foto_anggota_1" type="file" class="form-control{{ $errors->has('foto_anggota_1') ? ' is-invalid' : '' }}" value="{{ old('foto_anggota_1') }}" name="foto_anggota_1" value="{{ $user->foto_anggota_1 }}">
@@ -133,25 +151,43 @@
         <label for="nama_anggota_2" class="col-sm-2 col-form-label">Nama</label>
         <div class="col-sm-6">
             <input type="text" class="form-control" id="nama_anggota_2" name="nama_anggota_2" placeholder="Ketikan Nama Anggota 2" value="{{ $user->nama_anggota_2 }}">
+
+            @if ($errors->has('nama_anggota_2'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('nama_anggota_2') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="no_anggota_2" class="col-sm-2 col-form-label">No HP</label>
         <div class="col-sm-6">
             <input type="number" class="form-control" id="no_anggota_2" name="no_anggota_2" placeholder="Ketikan No HP Anggota 2" value="{{ $user->no_anggota_2 }}">
+
+            @if ($errors->has('no_anggota_2'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('no_anggota_2') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="email_anggota_2" class="col-sm-2 col-form-label">Email</label>
         <div class="col-sm-6">
             <input type="email" class="form-control" id="email_anggota_2" name="email_anggota_2" placeholder="Ketikan Email Anggota 2" value="{{ $user->email_anggota_2 }}" autocomplete="email">
+
+            @if ($errors->has('email_anggota_2'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email_anggota_2') }}</strong>
+                </span>
+            @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="foto_anggota_2" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-6">
             @isset($user->foto_anggota_2)
-                <img src="{{ asset('storage/peserta/'.$user->foto_anggota_2) }}" alt="Foto Anggota 2" style="width: 100px;">
+                <img src="{{ asset('uploads/peserta/'.$user->foto_anggota_2) }}" alt="Foto Anggota 2" style="width: 100px;">
             @endisset
             <input id="foto_anggota_2" type="file" class="form-control{{ $errors->has('foto_anggota_2') ? ' is-invalid' : '' }}" value="{{ old('foto_anggota_2') }}" name="foto_anggota_2" value="{{ $user->foto_anggota_2 }}">
             <p><small>Ukuran foto maksimal 2MB berformat jpg / jpeg / png</small></p>

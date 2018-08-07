@@ -149,14 +149,14 @@
                     <div id="div_link_berkas" class="form-group row">
                         <label for="link_berkas" class="col-sm-4 col-form-label"><b>Link Berkas</b></label>
                         <div class="col-sm-8">
-                            <a id="link_berkas" class="btn btn-success btn-sm">Visit <i class="fa fa-arrow-right"></i></a>
+                            <a id="link_berkas" class="btn btn-success btn-sm" style="display:none;">Visit <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
 
                     <div id="div_link_video" class="form-group row">
                         <label for="link_video" class="col-sm-4 col-form-label"><b>Link Video</b></label>
                         <div class="col-sm-8">
-                            <a id="link_video" class="btn btn-success btn-sm">Visit <i class="fa fa-arrow-right"></i></a>
+                            <a id="link_video" class="btn btn-success btn-sm" style="display:none;">Visit <i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
 

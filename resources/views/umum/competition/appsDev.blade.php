@@ -14,7 +14,7 @@
                     <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Innovative Apps for a Better Society”</h5>
                     <div class="row justify-content-center">
                         <a href="{{ route('member') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
-                        <a href="javascript:void(0)" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
+                        <a href="https://drive.google.com/open?id=1-07uZKH26Np7NHjvT3bPAnBXgZro8sTC" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
                     </div>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                     <tr>
                         <td style="width:150px;">Zihan</td>
                         <td class="text-right"> : </td>
-                        <td>0856 4661 9086</td>
+                        <td>0895 4228 09945</td>
                     </tr>
                 </table>
             </div>

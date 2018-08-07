@@ -9,21 +9,21 @@ Terimakasih telah registrasi di acara Invofest 2018. Untuk melanjutkan pendaftar
         $total = 0;
     @endphp
     @if($peserta->workshop)
-        <li>Workshop : Rp {{ $peserta->kategori == 'Mahasiswa' ? 'Rp 50.000,-':'Rp 75.000,-' }}</li>
+        <li>Workshop : Rp {{ $peserta->kategori == 'Mahasiswa' ? 'Rp 75.000,-':'Rp 100.000,-' }}</li>
         @php
-            $total += $peserta->kategori == 'Mahasiswa' ? 50000:75000;
+            $total += $peserta->kategori == 'Mahasiswa' ? 75000:100000;
         @endphp
     @endif
     @if($peserta->seminar)
-        <li>Seminar : Rp {{ $peserta->kategori == 'Mahasiswa' ? 'Rp 50.000,-':'Rp 75.000,-' }}</li>
+        <li>Seminar : Rp {{ $peserta->kategori == 'Mahasiswa' ? 'Rp 75.000,-':'Rp 100.000,-' }}</li>
         @php
-            $total += $peserta->kategori == 'Mahasiswa' ? 50000:75000;
+            $total += $peserta->kategori == 'Mahasiswa' ? 75000:100000;
         @endphp
     @endif
     @if($peserta->talkshow)
-        <li>Talkshow : Rp 30.000,-</li>
+        <li>Talkshow : Rp {{ $peserta->kategori == 'Mahasiswa' ? 'Rp 30.000,-':'Rp 50.000,-' }}</li>
         @php
-            $total += 30000;
+            $total += $peserta->kategori == 'Mahasiswa' ? 30000:50000;
         @endphp
     @endif
     <li>***********************************</li>

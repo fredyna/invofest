@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use App\User;
 use App\Kompetisi;
 use Auth;
@@ -79,8 +80,13 @@ class MemberController extends Controller
 
         $user = User::find(Auth::user()->id);
 
-        $request->foto_ketua_tim->store('public/peserta');
-        $path_foto = $request->foto_ketua_tim->hashName();
+        if (Input::file('foto_ketua_tim')->isValid())
+        {
+            $destinationPath = 'uploads/peserta';
+            $extension = Input::file('foto_ketua_tim')->getClientOriginalExtension();
+            $fileName = 'ketua'. time() . rand(10, 99) . '.' . $extension;
+            Input::file('foto_ketua_tim')->move($destinationPath, $fileName);
+        }
 
         $kompetisi = new Kompetisi([
             'jenis_lomba' => $request->jenis_lomba, 
@@ -88,7 +94,7 @@ class MemberController extends Controller
             'nama_ketua_tim' => strtoupper($request->nama_ketua_tim),
             'no_ketua_tim' => $request->no_ketua_tim, 
             'email_ketua_tim' => strtolower($request->email_ketua_tim), 
-            'foto_ketua_tim' => $path_foto,
+            'foto_ketua_tim' => $fileName,
             'nama_anggota_1' => strtoupper($request->nama_anggota_1),
             'no_anggota_1'   => $request->no_anggota_1,
             'email_anggota_1' => strtolower($request->email_anggota_1),
@@ -96,19 +102,23 @@ class MemberController extends Controller
             'no_anggota_2'   => $request->no_anggota_2,
             'email_anggota_2' => strtolower($request->email_anggota_2),
         ]);
-        
-        if($request->foto_anggota_1 != null)
+
+        if ($request->foto_anggota_1 != null && Input::file('foto_anggota_1')->isValid())
         {
-            $request->foto_anggota_1->store('public/peserta');
-            $path_foto_1 = $request->foto_anggota_1->hashName();
-            $kompetisi->foto_anggota_1   = $path_foto_1;
+            $destinationPath = 'uploads/peserta';
+            $extension = Input::file('foto_anggota_1')->getClientOriginalExtension();
+            $fileName1 = 'anggota1'. time() . rand(10, 99) . '.' . $extension;
+            Input::file('foto_anggota_1')->move($destinationPath, $fileName1);
+            $kompetisi->foto_anggota_1   = $fileName1;
         }
 
-        if($request->foto_anggota_2 != null)
+        if ($request->foto_anggota_2 != null && Input::file('foto_anggota_2')->isValid())
         {
-            $request->foto_anggota_2->store('public/peserta');
-            $path_foto_2 = $request->foto_anggota_2->hashName();
-            $kompetisi->foto_anggota_2   = $path_foto_2;
+            $destinationPath = 'uploads/peserta';
+            $extension = Input::file('foto_anggota_2')->getClientOriginalExtension();
+            $fileName2 = 'anggota2'. time() . rand(10, 99) . '.' . $extension;
+            Input::file('foto_anggota_2')->move($destinationPath, $fileName2);
+            $kompetisi->foto_anggota_2   = $fileName2;
         }
 
         if($user->kompetisi()->save($kompetisi))
@@ -172,13 +182,6 @@ class MemberController extends Controller
         $user       = User::find(Auth::user()->id);
         $kompetisi  = $user->kompetisi()->first();
 
-        if($kompetisi->foto_ketua_tim == null)
-        {
-            $this->validate($request,[
-                'foto_ketua_tim'    => 'required'
-            ], $this->messages());
-        }
-
         if($request->nama_anggota_1 != null){
             $this->validate($request, [
                 'nama_anggota_1'    => 'required',
@@ -186,15 +189,8 @@ class MemberController extends Controller
                 'email_anggota_1'    => 'required',
                 'foto_anggota_1'    => 'file|mimetypes:image/jpeg,image/png|max:2048',
             ], $this->messages());
-            
-            if($kompetisi->foto_anggota_1 == null)
-            {
-                $this->validate($request,[
-                    'foto_anggota_1'    => 'required'
-                ], $this->messages());
-            }
         }
-
+ 
         if($request->nama_anggota_2 != null){
             $this->validate($request, [
                 'nama_anggota_2'    => 'required',
@@ -202,13 +198,6 @@ class MemberController extends Controller
                 'email_anggota_2'    => 'required',
                 'foto_anggota_2'    => 'file|mimetypes:image/jpeg,image/png|max:2048',
             ], $this->messages());
-
-            if($kompetisi->foto_anggota_2 == null)
-            {
-                $this->validate($request,[
-                    'foto_anggota_2'    => 'required'
-                ], $this->messages());
-            }
         }
 
         $data = [
@@ -225,25 +214,31 @@ class MemberController extends Controller
             'email_anggota_2' => strtolower($request->email_anggota_2),
         ];
 
-        if($request->foto_ketua_tim != null)
+        if ($request->foto_ketua_tim != null && Input::file('foto_ketua_tim')->isValid())
         {
-            $request->foto_ketua_tim->store('public/peserta');
-            $path_foto = $request->foto_ketua_tim->hashName();
-            $data['foto_ketua_tim']   = $path_foto;
-        }
-        
-        if($request->foto_anggota_1 != null)
-        {
-            $request->foto_anggota_1->store('public/peserta');
-            $path_foto_1 = $request->foto_anggota_1->hashName();
-            $data['foto_anggota_1']   = $path_foto_1;
+            $destinationPath = 'uploads/peserta';
+            $extension = Input::file('foto_ketua_tim')->getClientOriginalExtension();
+            $fileName = 'ketua'. time() . rand(10, 99) . '.' . $extension;
+            Input::file('foto_ketua_tim')->move($destinationPath, $fileName);
+            $data['foto_ketua_tim']   = $fileName;
         }
 
-        if($request->foto_anggota_2 != null)
+        if ($request->foto_anggota_1 != null && Input::file('foto_anggota_1')->isValid())
         {
-            $request->foto_anggota_2->store('public/peserta');
-            $path_foto_2 = $request->foto_anggota_2->hashName();
-            $data['foto_anggota_2']   = $path_foto_2;
+            $destinationPath = 'uploads/peserta';
+            $extension = Input::file('foto_anggota_1')->getClientOriginalExtension();
+            $fileName1 = 'anggota1'. time() . rand(10, 99) . '.' . $extension;
+            Input::file('foto_anggota_1')->move($destinationPath, $fileName1);
+            $data['foto_anggota_1']   = $fileName1;
+        }
+
+        if ($request->foto_anggota_2 != null && Input::file('foto_anggota_2')->isValid())
+        {
+            $destinationPath = 'uploads/peserta';
+            $extension = Input::file('foto_anggota_2')->getClientOriginalExtension();
+            $fileName2 = 'anggota2'. time() . rand(10, 99) . '.' . $extension;
+            Input::file('foto_anggota_2')->move($destinationPath, $fileName2);
+            $data['foto_anggota_2']   = $fileName2;
         }
 
         if($user->kompetisi()->update($data))
@@ -323,18 +318,25 @@ class MemberController extends Controller
         
         if($kompetisi->lock)
         {
+            $filename = '';
             if($kompetisi->berkas_konfirmasi == null)
             {
-                $request->berkas_konfirmasi->storeAs('public/berkas_konfirmasi', $request->berkas_konfirmasi->getClientOriginalName());
-            }
+                if (Input::file('berkas_konfirmasi')->isValid())
+                {
+                    $destinationPath = 'uploads/berkas_konfirmasi';
+                    $extension = Input::file('berkas_konfirmasi')->getClientOriginalExtension();
+                    $fileName = Input::file('berkas_konfirmasi')->getClientOriginalName();
+                    Input::file('berkas_konfirmasi')->move($destinationPath, $fileName);
+                }
 
-            $berkas_konfirmasi = [
-                'berkas_konfirmasi' => $request->berkas_konfirmasi->getClientOriginalName()
-            ];
-
-            if($user->kompetisi()->update($berkas_konfirmasi))
-            {
-                return redirect()->back()->withSuccess("Berhasil mengunggah berkas konfirmasi!");
+                $berkas_konfirmasi = [
+                    'berkas_konfirmasi' => $fileName
+                ];
+    
+                if($user->kompetisi()->update($berkas_konfirmasi))
+                {
+                    return redirect()->back()->withSuccess("Berhasil mengunggah berkas konfirmasi!");
+                }
             }
         }
         

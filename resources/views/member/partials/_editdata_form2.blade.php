@@ -57,7 +57,7 @@
     <div class="form-group row">
         <label for="foto_ketua_tim" class="col-sm-2 col-form-label">Foto</label>
         <div class="col-sm-6">
-            <img src="{{ asset('storage/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
+            <img src="{{ asset('uploads/peserta/'.$user->foto_ketua_tim) }}" alt="Foto Ketua Tim" style="width: 100px;">
             <input id="foto_ketua_tim" type="file" class="form-control{{ $errors->has('foto_ketua_tim') ? ' is-invalid' : '' }}" value="{{ old('foto_ketua_tim') }}" name="foto_ketua_tim">
             <p><small>Ukuran foto maksimal 2MB berformat jpg / jpeg / png</small></p>
 

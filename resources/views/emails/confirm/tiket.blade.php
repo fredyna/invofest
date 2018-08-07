@@ -20,7 +20,7 @@
 # Informasi E-Ticket Invofest 2018
 
         @php
-            $url = 'storage/qrcode/'.  $peserta->id_peserta  . '.png';
+            $url = 'uploads/qrcode/'.  $peserta->id_peserta  . '.png';
         @endphp
 
 <br />

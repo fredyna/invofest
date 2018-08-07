@@ -171,25 +171,25 @@
             var hworkshop = 0;
             var htalkshow = 0;
             var bayar = 0;
+            var img_url = '{{ asset('uploads/ktm') }}';
 
             if (data.kategori == 'Umum'){
               var hseminar = 100000;
               var hworkshop = 100000;
-              var htalkshow = 100000;
-              var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
-              $('#ktm').prop('hidden',true);
-              $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/1.jpg')}}")
-              $('#bayar').empty();
-              $('#bayar').append("Total Bayar = Rp." + bayar);
-            }else{
-              var hseminar = 75000;
-              var hworkshop = 50000;
               var htalkshow = 50000;
               var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
+              $('#ktm').hide();
               $('#bayar').empty();
-              $('#bayar').append("Total Bayar = Rp." + bayar);
-              $('#ktm').prop('hidden',false);
-              // $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/')}}" + data.foto_ktm)
+              $('#bayar').append("Total Bayar = Rp " + bayar + ",-");
+            }else{
+              var hseminar = 75000;
+              var hworkshop = 75000;
+              var htalkshow = 30000;
+              var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
+              $('#bayar').empty();
+              $('#bayar').append("Total Bayar = Rp " + bayar + ",-");
+              $('#ktm').show();
+              $('#foto_ktm').prop('src', img_url + "/" + data.foto_ktm);
             }
 
           },
