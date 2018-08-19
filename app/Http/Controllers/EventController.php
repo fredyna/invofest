@@ -69,19 +69,19 @@ class EventController extends Controller
                 'asal_institusi'    => 'required',
                 'ktm'          => 'required|file|mimetypes:image/jpeg,image/png|max:2048',
             ], $this->messages());
+
+            if (Input::file('ktm')->isValid())
+            {
+                $destinationPath = 'uploads/ktm';
+                $extension = Input::file('ktm')->getClientOriginalExtension();
+                $fileName = $id . '.' . $extension;
+                Input::file('ktm')->move($destinationPath, $fileName);
+
+                $data['foto_ktm']   = $fileName;
+            }
         }
 
         $data['asal_institusi']     = $request->asal_institusi != '' ? strtoupper($request->asal_institusi) : null;
-
-        if (Input::file('ktm')->isValid())
-        {
-            $destinationPath = 'uploads/ktm';
-            $extension = Input::file('ktm')->getClientOriginalExtension();
-            $fileName = $id . '.' . $extension;
-            Input::file('ktm')->move($destinationPath, $fileName);
-
-            $data['foto_ktm']   = $fileName;
-        }
 
         $event = new Peserta($data);
         if($event->save())

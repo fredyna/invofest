@@ -88,7 +88,7 @@
                 <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
                     <tr>
                         <td style="width:150px;">Biaya Registrasi</td>
-                        <td> : Rp 100.000,- / tim</td>
+                        <td> : Rp 75.000,- / tim</td>
                     </tr>
                 </table>
                 <br />

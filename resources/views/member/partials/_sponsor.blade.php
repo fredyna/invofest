@@ -1,7 +1,7 @@
 <!-- section sponsor -->
 <div id="section-sponsor" class="section section-sponsor">
     <div class="container">
-        <h4 class="section-title text-center">Sponsor Acara</h4>
+        <h4 class="section-title text-center">Sponsor By</h4>
         <div class="row">
             @if(count($sponsor) > 0)
                 @foreach($sponsor as $d)

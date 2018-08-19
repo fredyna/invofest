@@ -2,7 +2,7 @@
 <div id="section-sponsor" class="section section-sponsor">
     <div class="row judul-pemateri">
         <div class="col-sm-2">
-            <h5 class="section-title text-center">Media Acara</h5>
+            <h5 class="section-title text-center">Media Partners</h5>
         </div>
         <div id="garis" class="col-sm-10">
             <hr style="height: 3px;background-color: #BA853A;">

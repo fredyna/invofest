@@ -77,7 +77,7 @@
                 <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="0.75s">
                     <tr>
                         <td style="width:150px;">Biaya Registrasi</td>
-                        <td> : Rp 50.000,- / mahasiswa</td>
+                        <td> : Rp 75.000,- / mahasiswa</td>
                     </tr>
                 </table>
                 <br />
@@ -102,9 +102,9 @@
                 <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Contact Person</h5>
                 <table class="wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                     <tr>
-                        <td style="width:150px;">Fulan</td>
+                        <td style="width:150px;">Maulana</td>
                         <td class="text-right"> : </td>
-                        <td>08xx xxxx xxxx</td>
+                        <td>0823 2465 3228</td>
                     </tr>
                 </table>
             </div>

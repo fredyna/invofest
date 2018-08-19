@@ -31,7 +31,7 @@ class SendTiket extends Mailable
      */
     public function build()
     {
-        return $this->from('invofest@gmail.com', 'INVOFEST')
+        return $this->from('admin@invofest.com', 'INVOFEST')
                     ->subject('E-Tiket Invofest 2018')
                     ->markdown('emails.confirm.tiket');
     }

@@ -9,7 +9,8 @@ class UmumController extends Controller
 {
     public function showBeranda()
     {
-        $post       = DB::table('posts')->orderBy('updated_at','desc')
+        $post       = DB::table('posts')->where('hapus',0)
+                                    ->orderBy('updated_at','desc')
                                     ->offset(0)
                                     ->limit(5)
                                     ->get();
@@ -57,7 +58,8 @@ class UmumController extends Controller
     public function showNews($offset=0)
     {
         $real_offset = $offset * 6;
-        $post   = DB::table('posts')->orderBy('updated_at','desc')
+        $post   = DB::table('posts')->where('hapus',0)
+                                    ->orderBy('updated_at','desc')
                                     ->offset($real_offset)
                                     ->limit(6)
                                     ->get();

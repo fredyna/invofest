@@ -31,7 +31,7 @@ class SendRegistrationEventSuccess extends Mailable
      */
     public function build()
     {
-        return $this->from('invofest@gmail.com', 'INVOFEST')
+        return $this->from('admin@invofest.com', 'INVOFEST')
                     ->subject('Registrasi Acara Invofest 2018 Sukses')
                     ->markdown('emails.confirm.registrationEventSuccess');
     }
