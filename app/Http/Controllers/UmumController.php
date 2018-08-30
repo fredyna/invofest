@@ -15,9 +15,11 @@ class UmumController extends Controller
                                     ->limit(5)
                                     ->get();
         $sponsor    = DB::table('sponsors')->get();
+        $media    = DB::table('medias')->get();
         $data   = [
             'post'      => $post,
-            'sponsor'   => $sponsor
+            'sponsor'   => $sponsor,
+            'media'     => $media
         ];
         return view('umum.beranda')->with($data);
     }
@@ -25,8 +27,10 @@ class UmumController extends Controller
     public function showWorkshop()
     {
         $sponsor    = DB::table('sponsors')->get();
+        $media    = DB::table('medias')->get();
         $data = [
-            'sponsor' => $sponsor
+            'sponsor' => $sponsor,
+            'media'   => $media
         ];
         return view('umum.workshop.workshop')->with($data);
     }
@@ -34,8 +38,10 @@ class UmumController extends Controller
     public function showCompetition()
     {
         $sponsor    = DB::table('sponsors')->get();
+        $media      = DB::table('medias')->get();
         $data = [
-            'sponsor' => $sponsor
+            'sponsor' => $sponsor,
+            'media'   => $media
         ];
         return view('umum.competition.itcompetition')->with($data);
     }

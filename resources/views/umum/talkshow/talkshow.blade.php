@@ -82,7 +82,7 @@
                     <tr>
                         <td style="width:100px;">WA</td>
                         <td class="text-right"> : </td>
-                        <td>0852 0055 0071 (Murni Kurniasih)</td>
+                        <td>0896 3891 9393 (Fauziah Nur Rahmawati)</td>
                     </tr>
                     <tr>
                         <td style="width:100px;">Email</td>

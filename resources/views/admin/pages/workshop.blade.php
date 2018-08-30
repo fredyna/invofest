@@ -160,7 +160,7 @@
             var htalkshow = 0;
             var bayar = 0;
 
-            if (data.kategori == 'umum'){
+            if (data.kategori == 'Umum'){
               var hseminar = 100000;
               var hworkshop = 100000;
               var htalkshow = 100000;

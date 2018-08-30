@@ -25,8 +25,8 @@
                     
                     @if (isset($user) && $user->id != null)
                         @if ($user->lock)
-                            <div class="alert alert-info" style="color: #000;">
-                               <i class="fa fa-lock"></i> Data telah terkunci! Apakah sudah melakukan konfirmasi pendaftaran? jika belum, lakukan konfirmasi pendaftaran di menu <a href="{{ url('member/konfirmasi') }}" target="_self" class="black">Konfirmasi Pendaftaran.</a>
+                            <div class="alert alert-warning" style="color: #000;">
+                               <i class="fa fa-lock"></i> Data telah terkunci! Apakah sudah melakukan konfirmasi pendaftaran? jika belum, lakukan konfirmasi pendaftaran di menu <a href="{{ url('member/konfirmasi') }}" target="_self" class="black" style="color:blue;text-decoration:underline;">Konfirmasi Pendaftaran.</a>
                             </div>
                             <p><b>Data Tim Anda :</b></p>
                             <br />

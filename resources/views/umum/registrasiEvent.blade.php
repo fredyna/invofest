@@ -28,7 +28,7 @@
                                 <select name="kategori" id="kategori" class="form-control{{ $errors->has('kategori') ? ' is-invalid' : '' }}" required autofocus>
                                     <option value="">-- Pilih Kategori --</option>
                                     <option value="Umum" {{ old('kategori') == 'Umum' ? 'selected' : '' }}>Umum</option>
-                                    <option value="Mahasiswa" {{ old('kategori') == 'Mahasiswa' ? 'selected' : '' }}>Mahasiswa</option>
+                                    <option value="Mahasiswa" {{ old('kategori') == 'Mahasiswa' ? 'selected' : '' }}>Mahasiswa/Pelajar</option>
                                 </select>
 
                                 @if ($errors->has('kategori'))
@@ -127,7 +127,7 @@
                             </div>
     
                             <div id="div_ktm" class="form-group row">
-                                <label for="ktm" class="col-md-4 col-form-label text-md-right">Foto KTM</label>
+                                <label for="ktm" class="col-md-4 col-form-label text-md-right">Foto KTM/Kartu OSIS</label>
     
                                 <div class="col-md-6">
                                     <input type="file" id="ktm" name="ktm" class="form-control{{ $errors->has('ktm') ? ' is-invalid' : '' }}">

@@ -12,7 +12,7 @@
                 <div class="content-center">
                     <h2 class="title wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s" >DATABASE PROGRAMMING <br><span style="font-weight: 100;">COMPETITION</span></h2>
                     <div class="row justify-content-center">
-                        <a href="{{ route('member') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
+                        <a href="{{ route('register') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
                         <a href="https://drive.google.com/open?id=1-07uZKH26Np7NHjvT3bPAnBXgZro8sTC" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
                     </div>
                 </div>

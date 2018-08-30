@@ -39,7 +39,7 @@
 
                 <h5 class="wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">Penjelasan Umum</h5>
                 <p class="text-justify wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.75s">
-                    Salah satu acara Invofest 2018 di mana peserta akan mendapatkan materi seminar dengan tema "Artificial Intelligence dalam Transformasi Teknologi Industri Masa Depan".
+                    Salah satu acara Invofest 2018 di mana peserta akan mendapatkan materi seminar dengan tema "Artificial Intelligence dalam Transformasi Teknologi Industri Masa Depan". Acara akan diselenggarakan pada Sabtu, 27 Oktober 2018 Pukul 09.00 WIB.
                 </p>
                 <br/><br/>
 
@@ -75,7 +75,7 @@
                     <tr>
                         <td style="width:100px;">WA</td>
                         <td class="text-right"> : </td>
-                        <td>0852 0055 0071 (Murni Kurniasih)</td>
+                        <td>0896 3891 9393 (Fauziah Nur Rahmawati)</td>
                     </tr>
                     <tr>
                         <td style="width:100px;">Email</td>

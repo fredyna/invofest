@@ -65,5 +65,6 @@
         <!-- end section acara -->
 
         @include('member.partials._sponsor')
+        @include('member.partials._media')
     </div>
 @endsection

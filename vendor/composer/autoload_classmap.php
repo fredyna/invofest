@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Barang' => $baseDir . '/app/Barang.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Events\\Auth\\UserActivationEmail' => $baseDir . '/app/Events/Auth/UserActivationEmail.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
@@ -34,6 +35,7 @@ return array(
     'App\\Mail\\Confirm\\SendConfirm' => $baseDir . '/app/Mail/Confirm/SendConfirm.php',
     'App\\Mail\\Confirm\\SendRegistrationEventSuccess' => $baseDir . '/app/Mail/Confirm/SendRegistrationEventSuccess.php',
     'App\\Mail\\Confirm\\SendTiket' => $baseDir . '/app/Mail/Confirm/SendTiket.php',
+    'App\\Media' => $baseDir . '/app/Media.php',
     'App\\Peserta' => $baseDir . '/app/Peserta.php',
     'App\\Post' => $baseDir . '/app/Post.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

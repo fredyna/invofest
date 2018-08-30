@@ -398,6 +398,7 @@ class ComposerStaticInit09975912aed421eb02154fea15126986
     );
 
     public static $classMap = array (
+        'App\\Barang' => __DIR__ . '/../..' . '/app/Barang.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Events\\Auth\\UserActivationEmail' => __DIR__ . '/../..' . '/app/Events/Auth/UserActivationEmail.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -426,6 +427,7 @@ class ComposerStaticInit09975912aed421eb02154fea15126986
         'App\\Mail\\Confirm\\SendConfirm' => __DIR__ . '/../..' . '/app/Mail/Confirm/SendConfirm.php',
         'App\\Mail\\Confirm\\SendRegistrationEventSuccess' => __DIR__ . '/../..' . '/app/Mail/Confirm/SendRegistrationEventSuccess.php',
         'App\\Mail\\Confirm\\SendTiket' => __DIR__ . '/../..' . '/app/Mail/Confirm/SendTiket.php',
+        'App\\Media' => __DIR__ . '/../..' . '/app/Media.php',
         'App\\Peserta' => __DIR__ . '/../..' . '/app/Peserta.php',
         'App\\Post' => __DIR__ . '/../..' . '/app/Post.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

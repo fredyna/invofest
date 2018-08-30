@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use LaravelQRCode\Facades\QRCode;
 use App\Mail\Confirm\SendConfirm;
@@ -12,6 +13,7 @@ use App\Mail\Confirm\SendTiket;
 use App\Peserta;
 use App\Post;
 use App\Sponsor;
+use App\Media;
 use App\Kompetisi;
 use App\User;
 use Yajra\DataTables\DataTables;
@@ -77,6 +79,11 @@ class AdminController extends Controller
     public function sponsor()
     {
         return view('admin.pages.sponsor');
+    }
+
+    public function media()
+    {
+        return view('admin.pages.media');
     }
 
     /**
@@ -149,6 +156,28 @@ class AdminController extends Controller
  
     }
 
+    public function mediaStore(Request $request)
+    {
+        $input = Input::all();
+        $file = array('logo'=> Input::file('logo'));
+
+        if (Input::file('logo')) {
+            $destinationPath = 'gambarmedia';
+            $extension = Input::file('logo')->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'.'.$extension;
+            Input::file('logo')->move($destinationPath,$fileName) ;
+            $input['logo']= $destinationPath.'/'.$fileName;
+            
+            $insert = new Media;
+            $insert->nama = $input['nama'];
+            $insert->link = $input['link'];
+            $insert->logo = $input['logo'];
+            $insert->deskripsi = $input['deskripsi'];
+            $insert->save();
+            return $insert;
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -190,6 +219,13 @@ class AdminController extends Controller
         $peserta = Sponsor::findOrFail($id);
         $peserta->logo = asset($peserta->logo);
         return $peserta;
+    }
+
+    public function mediaEdit($id)
+    {
+        $media = Media::findOrFail($id);
+        $media->logo = asset($media->logo);
+        return $media;
     }
 
     /**
@@ -298,6 +334,29 @@ class AdminController extends Controller
             return $insert;
     }
 
+    public function updateMedia(Request $request , $id)
+    {
+        $media = Media::findOrFail($id);
+        $input = Input::all();
+        $file = array('logo'=> Input::file('logo'));
+        $insert = Media::findOrFail($id);
+        if (Input::file('logo') != "") {
+            //hapus logo lama
+            File::delete($media->logo);
+            $destinationPath = 'gambarmedia';
+            $extension = Input::file('logo')->getClientOriginalExtension();
+            $fileName = rand(11111,99999).'.'.$extension;
+            Input::file('logo')->move($destinationPath,$fileName) ;
+            $input['logo']= $destinationPath.'/'.$fileName;
+            $insert->logo = $input['logo'];            
+        }
+            $insert->nama = $input['nama'];
+            $insert->link = $input['link'];
+            $insert->deskripsi = $input['deskripsi'];
+            $insert->update();
+            return $insert;
+    }
+
     public function destroy($id)
     {
         //
@@ -305,22 +364,28 @@ class AdminController extends Controller
 
     public function destroyPost($id)
     {
-
         $post = Post::findOrFail($id);
         $post->hapus = '1';
         $post->update();
         return $post;
-
     }
 
     public function destroySponsor($id)
     {
-
         $sponsor = Sponsor::findOrFail($id);
-        $sponsor->hapus = '1';
-        $sponsor->update();
+        //hapus gambar dari penyimpanan
+        File::delete($sponsor->logo);
+        $sponsor->delete();
         return $sponsor;
+    }
 
+    public function destroyMedia($id)
+    {
+        $media = Media::findOrFail($id);
+        //hapus gambar dari penyimpanan
+        File::delete($media->logo);
+        $media->delete();
+        return $media;
     }
 
 
@@ -428,7 +493,7 @@ class AdminController extends Controller
             return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
-            if($peserta->kategori == 'umum'){
+            if($peserta->kategori == 'Umum'){
                 
                 return '<a  class="label label-info">Umum</a>';
             }else{
@@ -654,6 +719,25 @@ class AdminController extends Controller
             return $gambar;
         })
         ->rawColumns(['action','deskripsi','logo'])
+        ->make(true);
+    }
+
+    public function apiMedia()
+    {
+        $media = Media::all()->where('hapus','0');
+        
+
+        return Datatables::of($media)
+        ->addColumn('action', function($media){
+            return '<a onclick="editForm('. $media->id .')" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+            <a onclick="deleteForm('. $media->id .')" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</a> ';
+        })
+        ->editColumn('logo', function($media){
+            $link = asset($media->logo);
+            $gambar = '<image src="'. $link .'" width="80px">';    
+            return $gambar;
+        })
+        ->rawColumns(['action','logo'])
         ->make(true);
     }
 

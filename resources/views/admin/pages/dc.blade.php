@@ -97,28 +97,12 @@
         $("#nama_ketua_tim").val(data.nama_ketua_tim);
         $("#no_ketua_tim").val(data.no_ketua_tim);
         $("#email_ketua_tim").val(data.email_ketua_tim);
-        $("#foto_ketua_tim").attr("src","{{ asset('storage/peserta') }}"+"/"+data.foto_ketua_tim);
-
-        if(data.nama_anggota_1){
-          $("#data-anggota-1").show();
-          $("#nama_anggota_1").val(data.nama_anggota_1);
-          $("#no_anggota_1").val(data.no_anggota_1);
-          $("#email_anggota_1").val(data.email_anggota_1);
-          $("#foto_anggota_1").attr("src","{{ asset('storage/peserta') }}"+"/"+data.foto_anggota_1);
-        }
-
-        if(data.nama_anggota_2){
-          $("#data-anggota-2").show();
-          $("#nama_anggota_2").val(data.nama_anggota_2);
-          $("#no_anggota_2").val(data.no_anggota_2);
-          $("#email_anggota_2").val(data.email_anggota_2);
-          $("#foto_anggota_2").attr("src","{{ asset('storage/peserta') }}"+"/"+data.foto_anggota_2);
-        }
+        $("#foto_ketua_tim").attr("src","{{ asset('uploads/peserta') }}"+"/"+data.foto_ketua_tim);
 
         if(!data.berkas_konfirmasi){
           $("#berkas_konfirmasi").attr("disabled", true);
         } else {
-          $("#berkas_konfirmasi").attr("href","{{ asset('storage/berkas_konfirmasi') }}"+"/"+data.berkas_konfirmasi);
+          $("#berkas_konfirmasi").attr("href","{{ asset('uploads/berkas_konfirmasi') }}"+"/"+data.berkas_konfirmasi);
         }
 
         if(data.konfirmasi){

@@ -10,13 +10,15 @@
     </div>
     <div class="container">
         <div class="row">
-            {{--  @if(count($media) > 0)
+             @if(count($media) > 0)
                 @foreach($media as $d)
                     <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
-                        <img src="{{ url($d->logo) }}" alt="LOGO" class="mx-auto d-block">
+                        <a href="{{ $d->link }}" target="_blank">
+                            <img src="{{ url($d->logo) }}" alt="LOGO" class="mx-auto d-block">
+                        </a>
                     </div>
                 @endforeach
-            @else  --}}
+            @else 
                 <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
                     <img src="{{ url('img/media/media.png') }}" alt="LOGO" class="mx-auto d-block">
                 </div>
@@ -35,7 +37,7 @@
                 <div class="col-lg-2 col-md-4 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0s">
                     <img src="{{ url('img/media/media.png') }}" alt="LOGO" class="mx-auto d-block">
                 </div>
-            {{--  @endif  --}}
+             @endif 
             
         </div>
     </div>

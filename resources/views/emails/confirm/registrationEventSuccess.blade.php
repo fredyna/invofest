@@ -30,8 +30,8 @@ Terimakasih telah registrasi di acara Invofest 2018. Untuk melanjutkan pendaftar
     <li>Total : Rp {{ number_format($total, 0, ',', '.').',-' }}</li>
 </ul>
 <br>
-Tagihan tersebut dapat dibayarkan dengan transfer melalui rekening 6072-01-015533-53-2 (BRI) a/n Fauziah Nur Rahmawati atau dapat juga dibayarkan secara langsung melalui salah satu panitia Invofest 2018 a/n Murni Kurniasih 0852 0055 0071 (WA).<br/><br/>
-Jika Anda membayar tagihan melalui transfer, maka Anda dapat melakukan konfirmasi pembayaran ke email invofest@gmail.com atau konfirmasi via WA a/n Murni Kurniasih 0852 0055 0071 dengan subject BuktiBayar_Invofest2018_NamaAnda dan dilampirkan foto/hasil scan bukti transfer.
+Tagihan tersebut dapat dibayarkan dengan transfer melalui rekening 6072-01-015533-53-2 (BRI) a/n Fauziah Nur Rahmawati atau dapat juga dibayarkan secara langsung melalui salah satu panitia Invofest 2018 a/n Fauziah Nur Rahmawati 0896 3891 9393 (WA).<br/><br/>
+Jika Anda membayar tagihan melalui transfer, maka Anda dapat melakukan konfirmasi pembayaran ke email invofest@gmail.com atau konfirmasi via WA a/n Fauziah Nur Rahmawati 0896 3891 9393 dengan subject BuktiBayar_Invofest2018_NamaAnda dan dilampirkan foto/hasil scan bukti transfer.
 
 <br /><br />
 Thanks,<br />

@@ -109,6 +109,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/sponsorHapus/{id}', 'AdminController@destroySponsor');
     Route::post('/sponsorUpdate/{id}', 'AdminController@updateSponsor');
 
+
+    Route::get('/media', 'AdminController@media');
+    Route::post('/mediaStore', 'AdminController@mediaStore');
+    Route::get('/media/{id}', 'AdminController@mediaEdit');
+    Route::get('/mediaHapus/{id}', 'AdminController@destroyMedia');
+    Route::post('/mediaUpdate/{id}', 'AdminController@updateMedia');
+
     Route::get('/inbox/{id}', 'AdminController@edit');
     Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
     Route::post('/peserta/workshopupdate/{id}', 'AdminController@updateWorkshop');
@@ -135,6 +142,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 
     Route::get('/api/post', 'AdminController@apiPost')->name('api.post');
     Route::get('/api/sponsor', 'AdminController@apiSponsor')->name('api.sponsor');
+    Route::get('/api/media', 'AdminController@apiMedia')->name('api.media');
     Route::get('/api/hitung', 'AdminController@apiCount')->name('api.count');
 });
 

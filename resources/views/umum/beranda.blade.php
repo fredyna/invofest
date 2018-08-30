@@ -110,6 +110,7 @@
 
         @include('member.partials._sponsor')
         @include('member.partials._media')
+        @include('member.partials._maps')
     </div>
 @endsection
 
