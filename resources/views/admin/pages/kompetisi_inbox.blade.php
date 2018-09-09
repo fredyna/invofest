@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.box-header -->
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
                     @include('admin.alert._alertSuccess')
                     @include('admin.alert._alertError')
                     <br/>
@@ -112,6 +112,12 @@
           $("#no_anggota_1").val(data.no_anggota_1);
           $("#email_anggota_1").val(data.email_anggota_1);
           $("#foto_anggota_1").attr("src","{{ asset('uploads/peserta') }}"+"/"+data.foto_anggota_1);
+        } else{
+          $("#data-anggota-1").hide();
+          $("#nama_anggota_1").val("");
+          $("#no_anggota_1").val("");
+          $("#email_anggota_1").val("");
+          $("#foto_anggota_1").attr("src","#");
         }
 
         if(data.nama_anggota_2){
@@ -120,6 +126,12 @@
           $("#no_anggota_2").val(data.no_anggota_2);
           $("#email_anggota_2").val(data.email_anggota_2);
           $("#foto_anggota_2").attr("src","{{ asset('uploads/peserta') }}"+"/"+data.foto_anggota_2);
+        } else{
+          $("#data-anggota-2").hide();
+          $("#nama_anggota_2").val("");
+          $("#no_anggota_2").val("");
+          $("#email_anggota_2").val("");
+          $("#foto_anggota_2").attr("src","#");
         }
 
         if(!data.berkas_konfirmasi){

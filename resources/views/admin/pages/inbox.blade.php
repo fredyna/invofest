@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.box-header -->
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
@@ -38,7 +38,7 @@
                         <th>Seminar</th>
                         <th>Workshop</th>
                         <th>Kategori Workshop</th>
-                        <th>Konfirmasi</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>

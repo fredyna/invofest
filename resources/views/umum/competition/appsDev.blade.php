@@ -14,7 +14,7 @@
                     <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Innovative Apps for a Better Society”</h5>
                     <div class="row justify-content-center">
                         <a href="{{ route('register') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
-                        <a href="https://drive.google.com/open?id=1-07uZKH26Np7NHjvT3bPAnBXgZro8sTC" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
+                        <a href="https://drive.google.com/open?id=15YvgZuH6JZVfnVtwZfJkH_V5zv6YqGZ8" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
                     </div>
                 </div>
             </div>
@@ -35,22 +35,22 @@
                 <div class="row">
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1s">
                         <h6>Pendaftaran Lomba</h6>
-                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>1 Agustus – 1 September 2018</b></p>
+                        <p>Pendaftaran lomba dilakukan secara online melalui website Invofest pada tanggal <b>1 Agustus – <span style="text-decoration: line-through;">1 September 2018</span> 12 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.25s">
                         <h6>Submisi Proposal</h6>
-                        <p>Submisi Proposal untuk tahap seleksi menuju final dilaksanakan pada tanggal <b>1 Agustus - 8 September 2018</b></p>
+                        <p>Submisi Proposal untuk tahap seleksi menuju final dilaksanakan pada tanggal <b>1 Agustus - <span style="text-decoration: line-through;">8 September 2018</span> 13 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1.5s">
                         <h6>Pengumuman Seminfinalis</h6>
-                        <p>Pengumuman peserta lolos submisi proposal pada <b>10 September 2018</b></p>
+                        <p>Pengumuman peserta lolos submisi proposal pada tanggal <b><span style="text-decoration: line-through;">10 September 2018</span> 14 September 2018</b></p>
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
                         <h6>Submisi Aplikasi dan Video</h6>
-                        <p>Batas akhir submisi pengumpulan aplikasi yang dikembangkan dan video secara onlline pada <b>10 September - 15 Oktober 2018</b></p>
+                        <p>Batas akhir submisi pengumpulan aplikasi yang dikembangkan dan video secara onlline pada <b><span style="text-decoration: line-through;">10 September 2018</span> 15 September - 15 Oktober 2018</b></p>
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="2s">

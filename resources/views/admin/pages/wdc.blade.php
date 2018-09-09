@@ -25,14 +25,14 @@
                 </div>
                 <!-- /.box-header -->
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
                   <table id="kompetisiinbox" class="table table-bordered table-hover">
                     <thead>
                       <tr>
                         <th>Nama Tim</th>
                         <th>Asal Sekolah / PT</th>
                         <th>Email Tim</th>
-                        <th>Berkas Pendaftaran</th>
+                        <th>Link Berkas</th>
                         <th>Nama Ketua</th>
                         <th>Email Ketua</th>
                         <th>Detail</th>
@@ -69,7 +69,7 @@
         {data: 'nama_tim', name: 'nama_tim'},
         {data: 'asal_sekolah', name: 'asal_sekolah'},
         {data: 'email_tim', name: 'email_tim'},
-        {data: 'berkas_konfirmasi', name: 'berkas_konfirmasi'},
+        {data: 'link_berkas', name: 'link_berkas'},
         {data: 'nama_ketua_tim', name: 'nama_ketua_tim'},
         {data: 'email_ketua_tim', name: 'email_ketua_tim'},
         {data: 'action', name: 'action'},

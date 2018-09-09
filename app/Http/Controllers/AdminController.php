@@ -395,7 +395,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="konfirmForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Konfirmasi</a> ';
+            return '<a onclick="konfirmForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Lihat</a> ';
         })
         ->editColumn('seminar', function($peserta){
             if($peserta->seminar == '1'){
@@ -438,7 +438,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'Umum'){
@@ -470,7 +470,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'Umum'){
@@ -490,7 +490,7 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-edit"></i> Detail</a> ';
+            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
         })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'Umum'){
@@ -593,7 +593,7 @@ class AdminController extends Controller
     public function apiAdc()
     {
         $kompetisi = Kompetisi::all()->where('hapus','0')->where('konfirmasi','1')->where('jenis_lomba','adc');
- 
+
         return Datatables::of($kompetisi)
         ->addColumn('action', function($kompetisi){
             return '<a onclick="lihatData(\''. $kompetisi->id .'\')" class="btn btn-sm btn-info"><i class="fa fa-eye"></i> Lihat</a> ';
@@ -604,10 +604,19 @@ class AdminController extends Controller
         ->addColumn('email_tim', function($kompetisi){
             return $kompetisi->user->email;
         })
-        ->editColumn('berkas_konfirmasi', function($kompetisi){
-            if($kompetisi->berkas_konfirmasi != null)
+        ->editColumn('link_berkas', function($kompetisi){
+            if($kompetisi->link_berkas != null)
             {
-                $url = asset('storage/berkas_konfirmasi/'.$kompetisi->berkas_konfirmasi);
+                $url = $kompetisi->link_berkas;
+                return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
+            } 
+
+            return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
+        })
+        ->editColumn('link_video', function($kompetisi){
+            if($kompetisi->link_video != null)
+            {
+                $url = $kompetisi->link_video;
                 return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
             } 
 
@@ -616,7 +625,7 @@ class AdminController extends Controller
         ->editColumn('jenis_lomba', function($kompetisi){
             return '<a class="label bg-navy">ADC</a>';
         })
-        ->rawColumns(['action','jenis_lomba','berkas_konfirmasi'])
+        ->rawColumns(['action','jenis_lomba','link_berkas','link_video'])
         ->make(true);
     }
 
@@ -664,10 +673,10 @@ class AdminController extends Controller
         ->addColumn('email_tim', function($kompetisi){
             return $kompetisi->user->email;
         })
-        ->editColumn('berkas_konfirmasi', function($kompetisi){
-            if($kompetisi->berkas_konfirmasi != null)
+        ->editColumn('link_berkas', function($kompetisi){
+            if($kompetisi->link_berkas != null)
             {
-                $url = asset('storage/berkas_konfirmasi/'.$kompetisi->berkas_konfirmasi);
+                $url = $kompetisi->link_berkas;
                 return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
             } 
 
@@ -676,7 +685,7 @@ class AdminController extends Controller
         ->editColumn('jenis_lomba', function($kompetisi){
             return '<a class="label bg-maroon">WDC</a>';
         })
-        ->rawColumns(['action','jenis_lomba','berkas_konfirmasi'])
+        ->rawColumns(['action','jenis_lomba','link_berkas'])
         ->make(true);
     }
 

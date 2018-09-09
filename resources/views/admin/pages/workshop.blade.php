@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.box-header -->
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
                   <table id="tableworkshop" class="table table-bordered table-hover">
                     <thead>
                       <tr id="pesertaworkshop">
@@ -37,7 +37,7 @@
                         <th>email</th>
                         <th>Kategori Workshop</th>
                         <th>Jenis Pembayaran</th>
-                        <th>Konfirmasi</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -125,7 +125,11 @@
             $('.modal-title').text('Konfirmasi Peserta');
 
             $('#id').val(data.id_peserta);
-            $('#tanggal').val(data.created_at).prop('disabled',true);
+            var bln = ["Januari", "Februari", "Maret", "April", 
+                        "Mei", "Juni", "Juli", "Agustus",
+                        "September", "Oktober", "November", "Desember"];
+            var tgl = new Date(data.created_at);
+            $('#tanggal').val(tgl.getDate()+' '+bln[tgl.getMonth()]+' '+tgl.getFullYear()).prop('disabled', true);
             $('#nama').val(data.nama).prop('disabled',true);
             $('#kategori').val(data.kategori).prop('disabled',true);
             $('#asal_institusi').val(data.asal_institusi).prop('disabled',true);
@@ -165,19 +169,20 @@
               var hworkshop = 100000;
               var htalkshow = 100000;
               var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
-              $('#ktm').prop('hidden',true);
+              $('#ktm').hide();
               $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/1.jpg')}}")
               $('#bayar').empty();
               $('#bayar').append("Total Bayar = Rp." + bayar);
             }else{
               var hseminar = 75000;
-              var hworkshop = 50000;
-              var htalkshow = 50000;
+              var hworkshop = 75000;
+              var htalkshow = 75000;
               var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
               $('#bayar').empty();
               $('#bayar').append("Total Bayar = Rp." + bayar);
-              $('#ktm').prop('hidden',false);
-              // $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/')}}" + data.foto_ktm)
+              $("#link_foto_ktm").prop('href',"{{ asset('uploads/ktm') }}"+"/"+ data.foto_ktm);
+              $('#foto_ktm').prop('src',"{{ asset('uploads/ktm') }}"+"/"+ data.foto_ktm);
+              $('#ktm').show();
             }
 
           },

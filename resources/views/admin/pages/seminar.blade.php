@@ -25,7 +25,7 @@
                 </div>
                 <!-- /.box-header -->
 
-                <div class="box-body">
+                <div class="box-body table-responsive">
                   <table id="tableseminar" class="table table-bordered table-hover">
                     <thead>
                       <tr>
@@ -36,7 +36,7 @@
                         <th>No.HP</th>
                         <th>Email</th>
                         <th>Jenis Pembayaran</th>
-                        <th>Konfirmasi</th>
+                        <th>Aksi</th>
                       </tr>
                     </thead>
 
@@ -166,19 +166,20 @@
               var hworkshop = 100000;
               var htalkshow = 100000;
               var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
-              $('#ktm').prop('hidden',true);
+              $('#ktm').hide();
               $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/1.jpg')}}")
               $('#bayar').empty();
               $('#bayar').append("Total Bayar = Rp." + bayar);
             }else{
               var hseminar = 75000;
-              var hworkshop = 50000;
-              var htalkshow = 50000;
+              var hworkshop = 75000;
+              var htalkshow = 75000;
               var bayar = (data.talkshow * htalkshow) + (data.seminar * hseminar) + (data.workshop * hworkshop);
               $('#bayar').empty();
               $('#bayar').append("Total Bayar = Rp." + bayar);
-              $('#ktm').prop('hidden',false);
-              // $('#foto_ktm').prop('src',"{{asset('img/foto_ktm/')}}" + data.foto_ktm)
+              $("#link_foto_ktm").prop('href',"{{ asset('uploads/ktm') }}"+"/"+ data.foto_ktm);
+              $('#foto_ktm').prop('src',"{{ asset('uploads/ktm') }}"+"/"+ data.foto_ktm);
+              $('#ktm').show();
             }
 
           },

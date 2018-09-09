@@ -49,7 +49,9 @@
                       <div class="form-group" id="ktm">
                         <label for="foto_ktm" class="col-md-3 control-label">Foto KTM</label>
                         <div class="col-md-6">
-                        <img id="foto_ktm" src="{{asset('img/foto_ktm/1.jpg')}}" style="width:50px;>
+                        <a id="link_foto_ktm" href="javascript:void(0)" target="_blank">
+                            <img id="foto_ktm" src="{{asset('img/foto_ktm/1.jpg')}}" style="width:50px;">
+                        </a>
                             <span class="help-block with-errors"></span>
                         </div>
                       </div>
