@@ -28,7 +28,78 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.pages.beranda');
+        $data = [
+            'adc'   => $this->countADC(),
+            'wdc'   => $this->countWDC(),
+            'dpc'   => $this->countDPC(),
+            'ws_uxd'   => $this->countUXD(),
+            'ws_ds'    => $this->countDS(),
+            'ws_cs'    => $this->countCS(),
+            'ws_ws'    => $this->countWS(),
+            'talkshow' => $this->countTalkshow(),
+            'seminar'  => $this->countSeminar()
+        ];
+        return view('admin.pages.beranda')->with($data);
+    }
+
+    //count peserta kompetisi
+
+    public function countADC()
+    {
+        $count = Kompetisi::all()->where('jenis_lomba','adc')->where('konfirmasi',true)->count();
+        return $count;
+    }
+
+    public function countWDC()
+    {
+        $count = Kompetisi::all()->where('jenis_lomba','wdc')->where('konfirmasi',true)->count();
+        return $count;
+    }
+
+    public function countDPC()
+    {
+        $count = Kompetisi::all()->where('jenis_lomba','dpc')->where('konfirmasi',true)->count();
+        return $count;
+    }
+
+    //count peserta workshop
+
+    public function countUXD()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','UI/UX Design')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countDS()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','Data Science')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countCS()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','Cyber Security')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countWS()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','Web Services')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    //count acara lainnya
+
+    public function countTalkshow()
+    {
+        $count = Peserta::all()->where('talkshow', true)->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countSeminar()
+    {
+        $count = Peserta::all()->where('seminar', true)->where('konfirmasi_bayar',true)->count();
+        return $count;
     }
 
     public function inbox()

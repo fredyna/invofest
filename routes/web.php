@@ -84,7 +84,7 @@ Route::get('/check', function() {})->middleware('auth','role');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
     
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/inbox', 'AdminController@inbox');
     Route::get('/workshop', 'AdminController@workshop');
     Route::get('/seminar', 'AdminController@seminar');

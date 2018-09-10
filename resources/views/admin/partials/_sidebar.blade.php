@@ -18,7 +18,7 @@
    <!-- Sidebar Menu -->
  <ul class="sidebar-menu" data-widget="tree">
   <li class="header">MENU</li>
-  <li class="active"><a href="javascript:void(0)"><i class="fa fa-home"></i> <span>BERANDA</span></a></li>
+  <li class="active"><a href="{{ route('admin') }}"><i class="fa fa-home"></i> <span>BERANDA</span></a></li>
   <li class="treeview">
       <a href="#">
         <i class="fa fa-trophy"></i> <span>Kompetisi</span>
