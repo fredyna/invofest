@@ -130,9 +130,13 @@
         }
 
         if(data.link_berkas && data.link_video){
-          $("#link_berkas").attr("href",data.link_berkas);
-          $("#link_video").attr("href",data.link_video);
+          $("#link_berkas").attr("href",data.link_berkas).show();
+          $("#link_video").attr("href",data.link_video).show();
+          $("#link_berkas").attr("disabled",false);
+          $("#link_video").attr("disabled",false);
         } else {
+          $("#link_berkas").attr("href","javascript:void(0)").hide();
+          $("#link_video").attr("href","javascript:void(0)").hide();
           $("#link_berkas").attr("disabled",true);
           $("#link_video").attr("disabled",true);
         }

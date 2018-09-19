@@ -129,7 +129,9 @@
 
         if(data.link_berkas){
           $("#link_berkas").attr("href",data.link_berkas).show();
+          $("#link_berkas").attr("disabled",false);
         } else {
+          $("#link_berkas").attr("href","javascript:void(0)");
           $("#link_berkas").attr("disabled",true).hide();
         }
 

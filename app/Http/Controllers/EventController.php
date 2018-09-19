@@ -41,11 +41,9 @@ class EventController extends Controller
             'alamat'        => $request->alamat,
         ];
 
-        if($request->workshop == '' && $request->talkshow == '' && $request->seminar == '')
+        if($request->input('workshop') == '' && $request->input('talkshow') == '' && $request->input('seminar') == '')
         {
-            $this->validate($request, [
-                'event' => 'required',
-            ], $this->messages());
+            return redirect()->back()->with('failed','Registrasi gagal. Pilih minimal 1 acara!');
         }
 
         if($request->workshop != ''){
@@ -53,14 +51,47 @@ class EventController extends Controller
                 'kategori_workshop'          => 'required',
             ], $this->messages());
 
+            $workshop = $request->kategori_workshop;
+            if($workshop == 'UI/UX Design'){
+                $count = $this->countUXD();
+                if($count >= 30){
+                    return redirect()->back()->with('failed','Registrasi gagal. Workshop ' . $workshop . ' sudah penuh!');
+                }
+            } else if($workshop == 'Web Services'){
+                $count = $this->countWS();
+                if($count >= 30){
+                    return redirect()->back()->with('failed','Registrasi gagal. Workshop ' . $workshop . ' sudah penuh!');
+                }
+            } else if($workshop == 'Cyber Security'){
+                $count = $this->countCS();
+                if($count >= 30){
+                    return redirect()->back()->with('failed','Registrasi gagal. Workshop ' . $workshop . ' sudah penuh!');
+                }
+            } else{
+                $count = $this->countDS();
+                if($count >= 30){
+                    return redirect()->back()->with('failed','Registrasi gagal. Workshop ' . $workshop . ' sudah penuh!');
+                }
+            }
+
             $data['workshop'] = true;
-            $data['kategori_workshop'] = $request->kategori_workshop;
+            $data['kategori_workshop'] = $workshop;
         }
 
         if($request->talkshow != ''){
+            $count = $this->countTalkshow();
+            if($count >= 250){
+                return redirect()->back()->with('failed','Registrasi gagal. Talkshow sudah penuh!');
+            }
+
             $data['talkshow'] = true;
         }
         if($request->seminar != ''){
+            $count = $this->countSeminar();
+            if($count >= 250){
+                return redirect()->back()->with('failed','Registrasi gagal. Seminar sudah penuh!');
+            }
+
             $data['seminar'] = true;
         }
 
@@ -90,11 +121,11 @@ class EventController extends Controller
             //kirim email info registrasi sukses
             Mail::to($peserta->email)->send(new SendRegistrationEventSuccess($peserta));
 
-            return redirect()->back()->withSuccess('Registrasi berhasil! Silahkan cek inbox email Anda. Jika tidak menemukan di inbox, cek di spam email!.');
+            return redirect()->back()->withSuccess('Registrasi berhasil! Silahkan cek inbox email Anda. Jika tidak menemukan di inbox, cek di spam email!');
         } 
         else
         {
-            return redirect()->back()->withError('Registrasi gagal. Silahkan lakukan registrasi ulang!.');
+            return redirect()->back()->with('failed', 'Registrasi gagal. Silahkan lakukan registrasi ulang!');
         }
     }
 
@@ -116,7 +147,46 @@ class EventController extends Controller
             'ktm.max:2048'         => 'Foto KTM tidak boleh melebihi 2MB',
             'ktm.file'             => 'Foto KTM harus berupa gambar/foto',
             'kategori_workshop.required'    => 'Kategori workshop harus dipilih!',
-            'event.required'            => 'Pilih minimal 1 acara!',
         ];
+    }
+
+    //count peserta workshop
+
+    public function countUXD()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','UI/UX Design')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countDS()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','Data Science')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countCS()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','Cyber Security')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countWS()
+    {
+        $count = Peserta::all()->where('workshop', true)->where('kategori_workshop','Web Services')->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    //count acara lainnya
+
+    public function countTalkshow()
+    {
+        $count = Peserta::all()->where('talkshow', true)->where('konfirmasi_bayar',true)->count();
+        return $count;
+    }
+
+    public function countSeminar()
+    {
+        $count = Peserta::all()->where('seminar', true)->where('konfirmasi_bayar',true)->count();
+        return $count;
     }
 }

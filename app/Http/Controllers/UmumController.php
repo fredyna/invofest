@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Peserta;
+
 class UmumController extends Controller
 {
     public function showBeranda()
@@ -90,4 +92,5 @@ class UmumController extends Controller
         ];
         return view('umum.news.detail_news')->with($data);
     }
+
 }
