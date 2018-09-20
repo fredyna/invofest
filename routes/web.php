@@ -156,6 +156,8 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::post('konfirmasi', 'MemberController@konfirmasi');
     Route::get('upload_berkas', 'MemberController@showFormUploadBerkas')->name('member.upload_berkas');
     Route::post('upload_berkas', 'MemberController@uploadBerkas');
+    Route::get('upload_app', 'MemberController@showFormUploadApp')->name('member.upload_app');
+    Route::post('upload_app', 'MemberController@uploadApp');
 });
 
 // //route uji coba qrcode

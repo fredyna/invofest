@@ -374,25 +374,12 @@ class MemberController extends Controller
         {
             if($kompetisi->link_berkas == null)
             {
-                if($kompetisi->jenis_lomba == 'adc')
-                {
-                    $this->validate($request, [
-                        'link_berkas'   => 'required',
-                        'link_video'    => 'required'
-                    ], $this->messages());
-                    $link = [
-                        'link_berkas' => $request->link_berkas,
-                        'link_video' => $request->link_video
-                    ];
-                } else
-                {
-                    $this->validate($request, [
-                        'link_berkas'   => 'required'
-                    ], $this->messages());
-                    $link = [
-                        'link_berkas' => $request->link_berkas
-                    ];
-                }
+                $this->validate($request, [
+                    'link_berkas'   => 'required'
+                ], $this->messages());
+                $link = [
+                    'link_berkas' => $request->link_berkas
+                ];
                 
                 if($user->kompetisi()->update($link))
                 {
@@ -401,6 +388,60 @@ class MemberController extends Controller
             } else
             {
                 return redirect()->back()->with("failed","Sudah pernah mengirim link!");
+            }
+        }
+        
+        return redirect()->back()->with("failed","Gagal mengirim link!");
+    }
+
+    /**
+     * method showFormUploadBerkas
+     * 
+     * untuk menampilkan form upload berkas
+     */
+    public function showFormUploadApp()
+    {
+        $user = User::find(Auth::user()->id)->kompetisi()->first(); 
+        if(isset($user->id) && $user->konfirmasi && $user->link_berkas)
+        {
+            $data = [
+                'user'  => $user
+            ];
+            return view('member.form_app')->with($data);
+        }
+
+        return redirect()->back()->with("failed","Tidak bisa upload App dan Video, belum konfirmasi pendaftaran atau belum upload proposal!");
+    }
+
+    /**
+     * Uplaod Aplikasi dan video
+     */
+
+    public function uploadApp(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $kompetisi = $user->kompetisi()->first();
+
+        if($kompetisi->id != null)
+        {
+            if($kompetisi->link_app == null || $kompetisi->link_video == null)
+            {
+                $this->validate($request, [
+                    'link_app'   => 'required',
+                    'link_video' => 'required'
+                ], $this->messages());
+                $link = [
+                    'link_app' => $request->link_app,
+                    'link_video' => $request->link_video
+                ];
+                
+                if($user->kompetisi()->update($link))
+                {
+                    return redirect()->back()->withSuccess("Berhasil mengirim link!");
+                }
+            } else
+            {
+                return redirect()->back()->with("failed","Sudah pernah mengirim link App dan Video!");
             }
         }
         

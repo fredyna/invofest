@@ -44,11 +44,11 @@
                     </div>
 
                     <div class="col-md-6 text-right wow fadeInLeft" data-wow-duration="0.5s" data-wow-delay="1.5s">
-                        <h6>Pengumuman Seminfinalis</h6>
+                        <h6>Pengumuman Semifinalis</h6>
                         <p>Pengumuman peserta lolos submisi proposal pada tanggal <b><span style="text-decoration: line-through;">10 September 2018</span> 14 September 2018</b></p>
                     </div>
 
-                    <div class="col-md-6 text-right wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
+                    <div class="col-md-6 offset-md-6 text-left wow fadeInRight" data-wow-duration="0.5s" data-wow-delay="1.75s">
                         <h6>Submisi Aplikasi dan Video</h6>
                         <p>Batas akhir submisi pengumpulan aplikasi yang dikembangkan dan video secara onlline pada <b><span style="text-decoration: line-through;">10 September 2018</span> 15 September - 15 Oktober 2018</b></p>
                     </div>

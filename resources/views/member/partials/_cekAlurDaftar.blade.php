@@ -16,6 +16,10 @@
     </div>
 @elseif($user->link_berkas == '')
     <div class="alert alert-warning" role="alert">
-        <span class="p-black">Anda belum upload berkas berkas lomba!</span>
+        <span class="p-black">Anda belum upload berkas lomba!</span>
+    </div>
+@elseif($user->link_app == '' && $user->link_video == '')
+    <div class="alert alert-warning" role="alert">
+        <span class="p-black">Anda belum upload berkas App &amp; Video!</span>
     </div>
 @endif

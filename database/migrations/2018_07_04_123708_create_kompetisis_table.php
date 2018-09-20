@@ -50,6 +50,7 @@ class CreateKompetisisTable extends Migration
             $table->boolean('konfirmasi')->default(false);
             $table->string('link_berkas', 255)->nullable();
             $table->string('link_video', 255)->nullable();
+            $table->string('link_app', 255)->nullable();
             $table->boolean('hapus')->default(false);
             $table->timestamps();
         });
