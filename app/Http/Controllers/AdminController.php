@@ -684,6 +684,15 @@ class AdminController extends Controller
 
             return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
         })
+        ->editColumn('link_app', function($kompetisi){
+            if($kompetisi->link_app != null)
+            {
+                $url = $kompetisi->link_app;
+                return '<a href="'.$url.'" class="btn btn-success btn-xs"><i class="fa fa-download"></i> Download</a>';
+            } 
+
+            return '<a href="javascript:void(0)" class="btn btn- btn-xs disabled"><i>Belum Upload</i></a>';
+        })
         ->editColumn('link_video', function($kompetisi){
             if($kompetisi->link_video != null)
             {
@@ -696,7 +705,7 @@ class AdminController extends Controller
         ->editColumn('jenis_lomba', function($kompetisi){
             return '<a class="label bg-navy">ADC</a>';
         })
-        ->rawColumns(['action','jenis_lomba','link_berkas','link_video'])
+        ->rawColumns(['action','jenis_lomba','link_berkas','link_app','link_video'])
         ->make(true);
     }
 

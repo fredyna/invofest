@@ -153,6 +153,13 @@
                         </div>
                     </div>
 
+                    <div id="div_link_app" class="form-group row">
+                        <label for="link_app" class="col-sm-4 col-form-label"><b>Link App</b></label>
+                        <div class="col-sm-8">
+                            <a id="link_app" class="btn btn-success btn-sm" style="display:none;">Visit <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+
                     <div id="div_link_video" class="form-group row">
                         <label for="link_video" class="col-sm-4 col-form-label"><b>Link Video</b></label>
                         <div class="col-sm-8">

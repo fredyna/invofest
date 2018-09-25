@@ -33,7 +33,7 @@
                             1. File hasil scan Surat Keterangan Siswa Aktif (1 lembar). <br />
                         @endif
                         2. Bukti bayar / transfer biaya registrasi. <br />
-                        Dua file di atas dijadikan satu dalam file zip / file rar. <br/><br/>
+                        Dua file di atas dijadikan satu dalam file zip. <br/><br/>
                         Ketentuan nama berkas : konfirINV18_jenisLomba_namaTim_asalInstansi<br/>
                         Jenis Lomba :<br />
                         1. ADC (Application Development Competition)<br/>

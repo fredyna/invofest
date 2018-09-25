@@ -14,7 +14,8 @@
                     <h5 class="wow shake" data-wow-duration="1s" data-wow-delay="0.5s" style="color: #BA853A;font-weight:600;margin-bottom:3%;">Tema : “Innovative Apps for a Better Society”</h5>
                     <div class="row justify-content-center">
                         <a href="{{ route('register') }}" class="btn btn-primary"><i class="fa fa-file-text"></i> Daftar</a> &nbsp;
-                        <a href="https://drive.google.com/open?id=15YvgZuH6JZVfnVtwZfJkH_V5zv6YqGZ8" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a>
+                        <a href="https://drive.google.com/open?id=15YvgZuH6JZVfnVtwZfJkH_V5zv6YqGZ8" class="btn btn-info"><i class="fa fa-download"></i> Rule Book</a> &nbsp;
+                        <a href="{{ url('gambar/CoverAppDevInvofest2018.jpg') }}" class="btn btn-primary"><i class="fa fa-download"></i> Cover Video</a>
                     </div>
                 </div>
             </div>

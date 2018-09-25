@@ -33,6 +33,7 @@
                         <th>Asal Sekolah / PT</th>
                         <th>Email Tim</th>
                         <th>Link Berkas</th>
+                        <th>Link App</th>
                         <th>Link Video</th>
                         <th>Nama Ketua</th>
                         <th>Email Ketua</th>
@@ -71,6 +72,7 @@
         {data: 'asal_sekolah', name: 'asal_sekolah'},
         {data: 'email_tim', name: 'email_tim'},
         {data: 'link_berkas', name: 'link_berkas'},
+        {data: 'link_app', name: 'link_app'},
         {data: 'link_video', name: 'link_video'},
         {data: 'nama_ketua_tim', name: 'nama_ketua_tim'},
         {data: 'email_ketua_tim', name: 'email_ketua_tim'},
@@ -129,15 +131,23 @@
           $("#div_link_video").show();
         }
 
-        if(data.link_berkas && data.link_video){
+        if(data.link_berkas){
           $("#link_berkas").attr("href",data.link_berkas).show();
-          $("#link_video").attr("href",data.link_video).show();
           $("#link_berkas").attr("disabled",false);
-          $("#link_video").attr("disabled",false);
         } else {
           $("#link_berkas").attr("href","javascript:void(0)").hide();
-          $("#link_video").attr("href","javascript:void(0)").hide();
           $("#link_berkas").attr("disabled",true);
+        }
+
+        if(data.link_app && data.link_video){
+          $("#link_app").attr("href",data.link_app).show();
+          $("#link_video").attr("href",data.link_video).show();
+          $("#link_app").attr("disabled",false);
+          $("#link_video").attr("disabled",false);
+        } else {
+          $("#link_app").attr("href","javascript:void(0)").hide();
+          $("#link_video").attr("href","javascript:void(0)").hide();
+          $("#link_app").attr("disabled",true);
           $("#link_video").attr("disabled",true);
         }
 
