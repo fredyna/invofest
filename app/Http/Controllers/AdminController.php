@@ -157,6 +157,13 @@ class AdminController extends Controller
         return view('admin.pages.media');
     }
 
+    // absensi
+
+    public function absensi()
+    {
+        return view('admin.pages.media');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -441,6 +448,8 @@ class AdminController extends Controller
         return $post;
     }
 
+    
+
     public function destroySponsor($id)
     {
         $sponsor = Sponsor::findOrFail($id);
@@ -511,6 +520,14 @@ class AdminController extends Controller
         ->addColumn('action', function($peserta){
             return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
         })
+        ->addColumn('absensi', function($peserta){
+            if($peserta->validasi_workshop == 0 ){
+                return '<a onclick="absensiForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Belum Hadir</a> ';
+            }else{
+                return '<a  class="btn btn-sm btn-success"><i class="fa fa-check"></i> Hadir</a> ';
+
+            }
+        })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'Umum'){
                 
@@ -531,8 +548,16 @@ class AdminController extends Controller
                 return '<a class="label bg-purple">Web Services</a> ';
             }
         })
-        ->rawColumns(['action','kategori','kategori_workshop'])
+        ->rawColumns(['action','kategori','kategori_workshop','absensi'])
         ->make(true);
+    }
+
+    public function absensiWorkshop($id)
+    {
+        $post = Peserta::findOrFail($id);
+        $post->validasi_workshop = '1';
+        $post->update();
+        return $post;
     }
 
     public function apiTalkshow()
@@ -541,7 +566,15 @@ class AdminController extends Controller
  
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
-            return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
+            return '<a onclick="absensiForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
+        })
+        ->addColumn('absensi', function($peserta){
+            if($peserta->validasi_talkshow == 0 ){
+                return '<a onclick="absensiForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Belum Hadir</a> ';
+            }else{
+                return '<a  class="btn btn-sm btn-success"><i class="fa fa-check"></i> Hadir</a> ';
+
+            }
         })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'Umum'){
@@ -551,8 +584,16 @@ class AdminController extends Controller
                 return '<a class="label label-warning">Mahasiswa</a> ';
             }
         })
-        ->rawColumns(['action','kategori'])
+        ->rawColumns(['action','kategori','absensi'])
         ->make(true);
+    }
+
+    public function absensiTalkshow($id)
+    {
+        $post = Peserta::findOrFail($id);
+        $post->validasi_talkshow = '1';
+        $post->update();
+        return $post;
     }
 
     public function apiSeminar()
@@ -562,6 +603,13 @@ class AdminController extends Controller
         return Datatables::of($peserta)
         ->addColumn('action', function($peserta){
             return '<a onclick="detailForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Detail</a> ';
+        })->addColumn('absensi', function($peserta){
+            if($peserta->validasi_seminar == 0 ){
+                return '<a onclick="absensiForm(\''. $peserta->id_peserta .'\')" class="btn btn-sm btn-danger"><i class="fa fa-close"></i> Belum Hadir</a> ';
+            }else{
+                return '<a  class="btn btn-sm btn-success"><i class="fa fa-check"></i> Hadir</a> ';
+
+            }
         })
         ->editColumn('kategori', function($peserta){
             if($peserta->kategori == 'Umum'){
@@ -571,8 +619,16 @@ class AdminController extends Controller
                 return '<a class="label label-warning">Mahasiswa</a> ';
             }
         })
-        ->rawColumns(['action','kategori'])
+        ->rawColumns(['action','kategori','kategori','absensi'])
         ->make(true);
+    }
+
+    public function absensiSeminar($id)
+    {
+        $post = Peserta::findOrFail($id);
+        $post->validasi_seminar = '1';
+        $post->update();
+        return $post;
     }
 
 

@@ -38,6 +38,7 @@
                         <th>Kategori Workshop</th>
                         <th>Jenis Pembayaran</th>
                         <th>Aksi</th>
+                        <th>Absensi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -75,6 +76,7 @@
               {data: 'kategori_workshop', name: 'kategori_workshop'},
               {data: 'jenis_pembayaran', name: 'jenis_pembayaran'},
               {data: 'action', name: 'action'},
+              {data: 'absensi', name: 'absensi'},
             ],
             lengthMenu: [
               [ 10, 25, 50, 100, 200, -1 ],
@@ -216,5 +218,45 @@
             $('#kategori_workshop').prop('disabled',false);
             
       }
+
+      function absensiForm(id) {
+
+event.preventDefault(); // prevent form submit
+var form = event.target.form; // storing the form
+        swal({
+  title: "Hadir Workshop ?",
+  text: "anda yakin untuk konfirmasi kehadiran ?",
+  type: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#00a65a",
+  confirmButtonText: "Hadir",
+  cancelButtonText: "Tidaaaaaaaaaak",
+  closeOnConfirm: false,
+  closeOnCancel: false
+}).then(function(result) {
+  
+    url = "{{ url('admin/absensiWorkshop') . '/' }}" + id;
+    $.ajax({
+                url : url,
+                type : "get",
+                contentType: false,
+                processData: false,
+                success : function($data) {
+                    table.ajax.reload();
+                    swal(
+                      'Berhasil!',
+                      'Proses Data telah berhasil',
+                      'success'
+                    )
+
+                    
+                },
+                error : function(){
+                  alert("eror cuk");
+
+                }
+            });
+  }).catch(swal.noop);
+}
       </script>
   @endsection

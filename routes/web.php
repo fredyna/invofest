@@ -103,6 +103,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::post('/postUpdate/{id}', 'AdminController@updatePost');
     Route::get('/postHapus/{id}', 'AdminController@destroyPost');
 
+    
+    Route::get('/absensiTalkshow/{id}', 'AdminController@absensiTalkshow');
+    Route::get('/absensiSeminar/{id}', 'AdminController@absensiSeminar');
+    Route::get('/absensiWorkshop/{id}', 'AdminController@absensiWorkshop');
+
 
     Route::get('/sponsor', 'AdminController@sponsor');
     Route::post('/sponsorStore', 'AdminController@sponsorStore');
