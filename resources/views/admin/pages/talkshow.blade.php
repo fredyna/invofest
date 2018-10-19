@@ -65,16 +65,24 @@
                 url: '{{ url("admin/api/peserta/talkshow") }}'
             },
             columns: [
-            {data: 'id_peserta', name: 'id_peserta'},
-            {data: 'nama', name: 'nama'},
-            {data: 'asal_institusi', name: 'asal_institusi'},
-            {data: 'kategori', name: 'kategori'},
-            {data: 'nomor_hp', name: 'nomor_hp'},
-            {data: 'email', name: 'email'},
-            {data: 'jenis_pembayaran', name: 'jenis_pembayaran'},
-            {data: 'action', name: 'action'},
-                      ]
-                    });
+              {data: 'id_peserta', name: 'id_peserta'},
+              {data: 'nama', name: 'nama'},
+              {data: 'asal_institusi', name: 'asal_institusi'},
+              {data: 'kategori', name: 'kategori'},
+              {data: 'nomor_hp', name: 'nomor_hp'},
+              {data: 'email', name: 'email'},
+              {data: 'jenis_pembayaran', name: 'jenis_pembayaran'},
+              {data: 'action', name: 'action'},
+            ],
+            lengthMenu: [
+              [ 10, 25, 50, 100, 200, -1 ],
+              [ '10', '25', '50', '100', '200', 'Show all' ]
+            ],
+            dom: 'lBfrtip',  
+            buttons: [  
+              'excel'  
+            ],
+        });
 
         $(function(){
             $('#modal-form form').on('submit', function (e) {
