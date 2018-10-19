@@ -28,36 +28,36 @@ Route::group(['prefix' => 'workshop'], function() {
     Route::get('/', 'UmumController@showWorkshop')->name('workshop');
     // ui/ux design
     Route::get('ui_ux', function() {
-        return view('umum.workshop.ui_ux');        
+        return view('umum.workshop.ui_ux');
     })->name('workshop.ui_ux');
     // data science
     Route::get('ds', function() {
-        return view('umum.workshop.ds');        
+        return view('umum.workshop.ds');
     })->name('workshop.ds');
     // cyber security
     Route::get('cs', function() {
-        return view('umum.workshop.cs');        
+        return view('umum.workshop.cs');
     })->name('workshop.cs');
     // web services
     Route::get('ws', function() {
-        return view('umum.workshop.ws');        
+        return view('umum.workshop.ws');
     })->name('workshop.ws');
 });
 
 //route IT Competition
 Route::group(['prefix' => 'itcompetition'], function() {
     Route::get('/', 'UmumController@showCompetition')->name('itcompetition');
-    
+
     Route::get('adc', function() {
-        return view('umum.competition.appsDev');        
+        return view('umum.competition.appsDev');
     })->name('itcompetition.adc');
 
     Route::get('wdc', function() {
-        return view('umum.competition.webDev');        
+        return view('umum.competition.webDev');
     })->name('itcompetition.wdc');
 
     Route::get('dpc', function() {
-        return view('umum.competition.dpc');        
+        return view('umum.competition.dpc');
     })->name('itcompetition.dpc');
 });
 
@@ -71,6 +71,7 @@ Route::group(['prefix' => 'news'], function() {
 
 // route daftar acara
 Route::get('/event/registrasi', 'EventController@showRegistrasi')->name('event.registrasi');
+Route::get('/event/kirimulang', 'EventController@kirimulang')->name('event.kirimulang');
 Route::post('/event/registrasi', 'EventController@registrasi');
 
 Auth::routes();
@@ -83,7 +84,7 @@ Route::post('auth/activate/resend', 'Auth\ActivationController@resend');
 Route::get('/check', function() {})->middleware('auth','role');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function() {
-    
+
     Route::get('/', 'AdminController@index')->name('admin');
     Route::get('/inbox', 'AdminController@inbox');
     Route::get('/workshop', 'AdminController@workshop');
@@ -124,12 +125,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/inbox/{id}', 'AdminController@edit');
     Route::post('/peserta/konfirmasi/{id}', 'AdminController@konfirmasi');
     Route::post('/peserta/workshopupdate/{id}', 'AdminController@updateWorkshop');
-    
+
     Route::get('/peserta/bayar/{id}', 'AdminController@sendTiket');
     // Route::post('/peserta/konfirmasi', 'AdminController@konfirmasi');
     // Route::resource('peserta', 'AdminController');
     Route::get('/kompetisi/{id}', 'AdminController@kompetisiedit');
-    
+
 
     //datatables api
     Route::get('/api/peserta', 'AdminController@apiPeserta')->name('api.peserta');
@@ -151,7 +152,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
     Route::get('/api/hitung', 'AdminController@apiCount')->name('api.count');
 });
 
-Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {  
+Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
     Route::get('/', 'MemberController@showKompetisi')->name('member');
     Route::get('isidata/{id}', 'MemberController@showFormIsiData');
     Route::post('/', 'MemberController@simpanData');
@@ -168,7 +169,7 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 // //route uji coba qrcode
 // Route::get('/qrcode',function(){
 //     $path = public_path('uploads/qrcode/inv153350901977.png');
-//     QRCode::text('inv153350901977.png')->setOutfile($path)->png(); 
+//     QRCode::text('inv153350901977.png')->setOutfile($path)->png();
 //     echo 'sukse generate barcode';
 // });
 
@@ -207,6 +208,3 @@ Route::group(['prefix' => 'member', 'middleware' => ['auth']], function() {
 //     $exitCode = Artisan::call('config:cache');
 //     return '<h1>Clear Config cleared</h1>';
 // });
-
-
-

@@ -82,6 +82,14 @@
         {data: 'action', name: 'action'},
       ],
       order: [6, 'desc'],
+      lengthMenu: [
+        [ 10, 25, 50, 100, 200, -1 ],
+        [ '10', '25', '50', '100', '200', 'Show all' ]
+      ],
+      dom: 'lBfrtip',  
+      buttons: [  
+        'excel'  
+      ],
     });
 
     function lihatData(id){

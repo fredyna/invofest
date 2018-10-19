@@ -98,7 +98,7 @@ class EventController extends Controller
         if($request->kategori == 'Mahasiswa'){
             $this->validate($request, [
                 'asal_institusi'    => 'required',
-                'ktm'          => 'required|file|mimetypes:image/jpeg,image/png|max:2048',
+                'ktm'          => 'required|file|mimetypes:image/jpeg,image/png|max:5128',
             ], $this->messages());
 
             if (Input::file('ktm')->isValid())
@@ -127,6 +127,12 @@ class EventController extends Controller
         {
             return redirect()->back()->with('failed', 'Registrasi gagal. Silahkan lakukan registrasi ulang!');
         }
+    }
+
+    public function kirimulang(){
+        $peserta = Peserta::find('inv153801732680'); //get data peserta yang baru registrasi
+        //kirim email info registrasi sukses
+        Mail::to($peserta->email)->send(new SendRegistrationEventSuccess($peserta));
     }
 
     private function messages()

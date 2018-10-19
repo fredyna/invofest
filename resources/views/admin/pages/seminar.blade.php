@@ -60,12 +60,12 @@
   @include('admin.form.form-detail')
   <script>
         var table = $('#tableseminar').DataTable({
-            processing: false,
-            serverSide: true,
-            ajax: {
-                url: '{{ url("admin/api/peserta/seminar") }}'
-            },
-            columns: [
+          processing: false,
+          serverSide: true,
+          ajax: {
+              url: '{{ url("admin/api/peserta/seminar") }}'
+          },
+          columns: [
             {data: 'id_peserta', name: 'id_peserta'},
             {data: 'nama', name: 'nama'},
             {data: 'asal_institusi', name: 'asal_institusi'},
@@ -75,8 +75,18 @@
             {data: 'jenis_pembayaran', name: 'jenis_pembayaran'},
             {data: 'action', name: 'action'},
             {data: 'absensi', name: 'absensi'},
-                      ]
-                    });
+              ]
+            });
+          ],
+          lengthMenu: [
+            [ 10, 25, 50, 100, 200, -1 ],
+            [ '10', '25', '50', '100', '200', 'Show all' ]
+          ],
+          dom: 'lBfrtip',  
+          buttons: [  
+            'excel'  
+          ],
+        });
 
         $(function(){
             $('#modal-form form').on('submit', function (e) {
